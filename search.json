@@ -81,20 +81,13 @@
     "href": "pages/notebooks.html",
     "title": "Notebooks",
     "section": "",
-    "text": "Diese Seite wird automatisch aus den vorhandenen .ipynb-Dateien erzeugt.\nHinweis: Auf GitHub Pages werden Notebooks nicht ausgeführt; es werden nur vorhandene Outputs gerendert."
+    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n\n\nSeite Colab Binder nbviewer GitHub Download\n\n\n\n\n\nSeite Colab Binder nbviewer GitHub Download"
   },
   {
-    "objectID": "pages/notebooks.html#alle-nachnutzen",
-    "href": "pages/notebooks.html#alle-nachnutzen",
+    "objectID": "pages/notebooks.html#nachnutzen",
+    "href": "pages/notebooks.html#nachnutzen",
     "title": "Notebooks",
-    "section": "Alle Nachnutzen",
-    "text": "Alle Nachnutzen\nDiese Links beziehen sich auf die Nachnutzung des gesamten Repositories (nicht auf ein einzelnes Notebook).\n\nDownload ZIP VS Code (Web) Codespaces Kaggle GitHub Desktop\n\nHinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein. Kaggle-Import: im Editor File → Import Notebook → GitHub (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics)."
-  },
-  {
-    "objectID": "pages/notebooks.html#einzelne-nachnutzen",
-    "href": "pages/notebooks.html#einzelne-nachnutzen",
-    "title": "Notebooks",
-    "section": "Einzelne Nachnutzen",
-    "text": "Einzelne Nachnutzen\nHier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\nAuffällige Mehrfachwerte je Provider inspection-invalid_multiple_facets_values.ipynb\n\nSeite Colab Binder nbviewer GitHub Download\n\n\n\nStatistik nach Bundesland statistic-federal_state.ipynb\n\nSeite Colab Binder nbviewer GitHub Download"
+    "section": "",
+    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n\n\nSeite Colab Binder nbviewer GitHub Download\n\n\n\n\n\nSeite Colab Binder nbviewer GitHub Download"
   }
 ]

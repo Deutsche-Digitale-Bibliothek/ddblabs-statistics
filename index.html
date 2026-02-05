@@ -146,10 +146,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="nachnutzen">Nachnutzen</h2>
 <p>Diese Links beziehen sich auf die <strong>Nachnutzung des gesamten Repositories</strong> (nicht auf ein einzelnes Notebook).</p>
 <div class="launch-buttons">
-<p><a class="btn btn-sm btn-primary" href="./pages/notebooks.html" title="Zur Notebook-Übersicht (pro Notebook: Seite/Colab/Binder/nbviewer)">Notebooks</a> <a class="btn btn-sm btn-outline-primary" href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip" title="Repository als ZIP herunterladen">Download ZIP</a> <a class="btn btn-sm btn-outline-primary" href="https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)">VS Code (Web)</a> <a class="btn btn-sm btn-outline-primary" href="https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&amp;ref=main" title="Repository in GitHub Codespaces starten (Cloud-IDE)">Codespaces</a> <a class="btn btn-sm btn-outline-primary" href="https://www.kaggle.com/code/new" title="Neues Kaggle-Notebook anlegen; anschließend im Editor via File → Import Notebook → GitHub importieren (Kaggle-Account erforderlich)">Kaggle</a> <a class="btn btn-sm btn-outline-primary" href="x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)">GitHub Desktop</a></p>
+<p><a class="btn btn-sm btn-primary" href="./pages/notebooks.html" title="Zur Notebook-Übersicht (pro Notebook: Seite/Colab/Binder/nbviewer)">Notebooks</a> <a class="btn btn-sm btn-outline-primary" href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer" title="Repository als ZIP herunterladen">Download ZIP</a> <a class="btn btn-sm btn-outline-primary" href="https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics" target="_blank" rel="noopener noreferrer" title="Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)">VS Code (Web)</a> <a class="btn btn-sm btn-outline-primary" href="https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&amp;ref=main" target="_blank" rel="noopener noreferrer" title="Repository in GitHub Codespaces starten (Cloud-IDE)">Codespaces</a> <a class="btn btn-sm btn-outline-primary" href="https://www.kaggle.com/code/new" target="_blank" rel="noopener noreferrer" title="Neues Kaggle-Notebook anlegen; anschließend im Editor via File → Import Notebook → GitHub importieren (Kaggle-Account erforderlich)">Kaggle</a> <a class="btn btn-sm btn-outline-primary" href="x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)">GitHub Desktop</a></p>
 </div>
 <p>Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.</p>
-<p>Kaggle-Import: im Editor <em>File → Import Notebook → GitHub</em> (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).</p>
+<p>Kaggle-Import: im Editor <em>File → Import Notebook → GitHub</em> (Repository-URL: <a href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics" target="_blank" rel="noopener noreferrer">https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics</a>).</p>
 </section>
 <section id="weitere-ausführungsoptionen" class="level2">
 <h2 class="anchored" data-anchor-id="weitere-ausführungsoptionen">Weitere Ausführungsoptionen</h2>
@@ -249,6 +249,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
