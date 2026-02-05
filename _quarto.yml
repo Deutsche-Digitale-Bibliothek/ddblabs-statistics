@@ -23,6 +23,10 @@ format:
   html:
     theme: cosmo
     css: assets/styles.css
+    include-in-header:
+      - assets/quarto-head.html
+    include-after-body:
+      - assets/quarto-after-body.html
     toc: true
     lang: de
     link-external-newwindow: true

@@ -20,3 +20,10 @@
   margin-left: 0.5rem;
   white-space: nowrap;
 }
+
+.table-export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.25rem 0;
+}
