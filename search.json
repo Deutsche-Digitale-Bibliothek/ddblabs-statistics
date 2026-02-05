@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "inspection-invalid_multiple_facets_values.html",
+    "href": "inspection-invalid_multiple_facets_values.html",
+    "title": "Auffällige Mehrfachwerte je Provider",
+    "section": "",
+    "text": "Einige Felder können je dataprovider_id mehrere unterschiedliche Werte haben (z.B. durch Datenmischung). Dafür wird ein Solr JSON-Facet genutzt und anschließend client-seitig auf nvals &gt; 1 sowie 32-stellige IDs gefiltert. Hinweis: unique(...) ist in Solr oft ein schneller, näherungsweiser Distinct-Count (für das Finden von Kandidaten meist ausreichend).\nimport requests\nimport pandas as pd\nimport json\n# Organization-Daten (ddb-institution) laden -&gt; DataFrame\nurl_org = \"https://api.deutsche-digitale-bibliothek.de/2/search/index/organization/select\"\nparams_org = {\n    \"q\": \"type:ddb-institution OR type:ddb-aggregator\",\n    \"fl\": \"id,label\",\n    \"rows\": 10000,\n    \"wt\": \"json\",\n}\n\nresp_org = requests.get(url_org, params=params_org, timeout=300)\nresp_org.raise_for_status()\ndata_org = resp_org.json()\n\ndocs = data_org.get(\"response\", {}).get(\"docs\", [])\n\ndef _as_list(value):\n    if value is None:\n        return []\n    # Solr liefert bei *_fct i.d.R. Listen; zur Sicherheit wird auch ein Scalar zu einer Liste normalisiert\n    return value if isinstance(value, list) else [value]\n\ndf_org = pd.DataFrame({\n    \"id\": [d.get(\"id\") for d in docs],\n    \"label\": [_as_list(d.get(\"label\")) for d in docs],\n})\n\ndf_org\n\n\n\n\n\n\n\n\nid\nlabel\n\n\n\n\n0\n5IMBCSZN7ZVL77HVH4GKX3GXNPD6X2NO\n[Deutsche Fotothek]\n\n\n1\nDWIVLJW5JBO7X4XRO2Y7PCGZSHLTUS6F\n[Digitales Kunst- und Kulturarchiv Düsseldorf ...\n\n\n2\n7GAIUS5GGMSBZWXPPPNTXAQPG5UPXKUA\n[Rheinische Friedrich-Wilhelms-Universität Bonn]\n\n\n3\nX5L26OPZUGHRAXCAENZ4YSIABDSQBDCG\n[Georg-August-Universität Göttingen]\n\n\n4\nIWHIY724L2AQF33GY3GGGIMUMQB5IJ3L\n[Universität Hamburg]\n\n\n...\n...\n...\n\n\n4944\nQGCRF5ETJ7S746OUN3EWT76HLCI2EJNF\n[Stadtarchiv Holzminden]\n\n\n4945\n5XW2AKKSDPK3RF5NXIFRV4WOYOVF5UFW\n[Kreisarchiv des Landkreises Verden]\n\n\n4946\n6RZWY2PNOT35GHAV3V5A3WOOMMFLMCUA\n[Deutsches Adelsarchiv]\n\n\n4947\nDPKPCTEIZ5OAC4Z45H54PK3ABSCJTVZK\n[Stadtarchiv Friedrichroda]\n\n\n4948\n5TLSCVVSTMDVOJH5ZVMKLFJPMQE5A3JH\n[Heimatmuseum]\n\n\n\n\n4949 rows × 2 columns\nurl = \"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select\"\nparams = {\n    \"q\": \"*:*\",\n    \"rows\": 0,\n    \"wt\": \"json\",\n    \"json.facet\": json.dumps({\n        \"providers\": {\n            \"type\": \"terms\",\n            \"field\": \"dataprovider_id\",\n            \"limit\": -1,\n            \"mincount\": 1,\n            \"facet\": {\n                # distinct count (i.d.R. HLL/approx, dafür schnell)\n                \"nvals\": \"unique(dataprovider_fct)\"\n            },\n            \"sort\": \"nvals desc\"\n        }\n    })\n}\n\nj = requests.get(url, params=params, timeout=300).json()\nbuckets = j[\"facets\"][\"providers\"][\"buckets\"]\n\n# Nur auffällige Fälle\nauffaellig = [b for b in buckets if b.get(\"nvals\", 0) &gt; 1]\n\n# -&gt; DataFrame\ndf_auffaellig = pd.DataFrame([\n    {\n        \"dataprovider_id\": str(b.get(\"val\", \"\")),\n        \"dataprovider_fct_nvalues\": int(b.get(\"nvals\", 0) or 0),\n    }\n    for b in auffaellig\n])\n\n# nur 32-stellige IDs behalten\ndf_auffaellig = df_auffaellig[df_auffaellig[\"dataprovider_id\"].str.len() == 32].copy()\n\n# Label aus df_org anreichern (falls df_org existiert)\ndf_auffaellig = (\n    df_auffaellig\n    .merge(df_org[[\"id\", \"label\"]], left_on=\"dataprovider_id\", right_on=\"id\", how=\"left\")\n    .drop(columns=[\"id\"])\n)\n\ndf_auffaellig\n\n\n\n\n\n\n\n\ndataprovider_id\ndataprovider_fct_nvalues\nlabel\n\n\n\n\n0\n7A5GWWGTIAUDXLN6JNTFKKZUM27GCGGI\n2\n[Staatliche Kunstsammlungen Dresden. GRASSI Mu...\n\n\n1\nZCXCMB7WXARQK27QKZY6ZQSH23D4YEOA\n2\n[Queer*Feministische Bibliothek und Archiv LIE..."
+  },
+  {
+    "objectID": "inspection-invalid_multiple_facets_values.html#variante-mehrfachwerte-in-sector_fct",
+    "href": "inspection-invalid_multiple_facets_values.html#variante-mehrfachwerte-in-sector_fct",
+    "title": "Auffällige Mehrfachwerte je Provider",
+    "section": "Variante: Mehrfachwerte in sector_fct",
+    "text": "Variante: Mehrfachwerte in sector_fct\nGleiche Logik wie oben, aber für sector_fct (Sektor-Klassifikation). Ergebnis: df_auffaellig, angereichert mit label aus df_join.\n\nurl = \"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select\"\nparams = {\n    \"q\": \"*:*\",\n    \"rows\": 0,\n    \"wt\": \"json\",\n    \"json.facet\": json.dumps({\n        \"providers\": {\n            \"type\": \"terms\",\n            \"field\": \"dataprovider_id\",\n            \"limit\": -1,\n            \"mincount\": 1,\n            \"facet\": {\n                # distinct count (i.d.R. HLL/approx, dafür schnell)\n                \"nvals\": \"unique(sector_fct)\"\n            },\n            \"sort\": \"nvals desc\"\n        }\n    })\n}\n\nj = requests.get(url, params=params, timeout=300).json()\nbuckets = j[\"facets\"][\"providers\"][\"buckets\"]\n\n# Nur auffällige Fälle\nauffaellig = [b for b in buckets if b.get(\"nvals\", 0) &gt; 1]\n\n# -&gt; DataFrame\ndf_auffaellig = pd.DataFrame([\n    {\n        \"dataprovider_id\": str(b.get(\"val\", \"\")),\n        \"sector_fct_nvalues\": int(b.get(\"nvals\", 0) or 0),\n    }\n    for b in auffaellig\n])\n\n# nur 32-stellige IDs behalten\ndf_auffaellig = df_auffaellig[df_auffaellig[\"dataprovider_id\"].str.len() == 32].copy()\n\n# Label aus df_org anreichern (falls df_org existiert)\ndf_auffaellig = (\n    df_auffaellig\n    .merge(df_org[[\"id\", \"label\"]], left_on=\"dataprovider_id\", right_on=\"id\", how=\"left\")\n    .drop(columns=[\"id\"])\n)\n\ndf_auffaellig\n\n\n\n\n\n\n\n\ndataprovider_id\nsector_fct_nvalues\nlabel\n\n\n\n\n0\nA52WOLFHOQ4JDAPIGD7O7XJTP6N7FZ5E\n2\n[Stiftung Berliner Mauer]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ddblabs-statistics",
+    "section": "",
+    "text": "Eine kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digitalen Bibliothek."
+  },
+  {
+    "objectID": "index.html#nachnutzen",
+    "href": "index.html#nachnutzen",
+    "title": "ddblabs-statistics",
+    "section": "Nachnutzen",
+    "text": "Nachnutzen\n\nVS Code for the Web: https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics\nDownload ZIP: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip\nOpen in GitHub Desktop: &lt;x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics&gt;"
+  },
+  {
+    "objectID": "index.html#notebooks",
+    "href": "index.html#notebooks",
+    "title": "ddblabs-statistics",
+    "section": "Notebooks",
+    "text": "Notebooks\n\nStatistik nach Bundesland\n\nSeite: statistics-federal_state.ipynb\nColab: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistics-federal_state.ipynb\nBinder: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=statistics-federal_state.ipynb\nnbviewer: https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistics-federal_state.ipynb\n\n\n\nAuffällige Mehrfachwerte je Provider\n\nSeite: inspection-invalid_multiple_facets_values.ipynb\nColab: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb\nBinder: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=inspection-invalid_multiple_facets_values.ipynb\nnbviewer: https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb"
+  },
+  {
+    "objectID": "index.html#weitere-ausführungsoptionen",
+    "href": "index.html#weitere-ausführungsoptionen",
+    "title": "ddblabs-statistics",
+    "section": "Weitere Ausführungsoptionen",
+    "text": "Weitere Ausführungsoptionen\n\nGitHub Codespaces: https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main\nKaggle: https://www.kaggle.com/code/new (im Editor: File → Import Notebook → GitHub)\n\n\nHinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds)."
+  }
+]

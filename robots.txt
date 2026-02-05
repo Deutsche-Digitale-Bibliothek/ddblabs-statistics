@@ -1,0 +1,1 @@
+Sitemap: https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/sitemap.xml
