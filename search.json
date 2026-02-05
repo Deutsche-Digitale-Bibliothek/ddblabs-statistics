@@ -67,7 +67,7 @@
     "href": "index.html#nachnutzen",
     "title": "ddblabs-statistics",
     "section": "Nachnutzen",
-    "text": "Nachnutzen\n\nVS Code for the Web: https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics\nDownload ZIP: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip\nOpen in GitHub Desktop: &lt;x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics&gt;"
+    "text": "Nachnutzen\n\nNotebooks VS Code (Web) Download ZIP GitHub Desktop Codespaces Kaggle"
   },
   {
     "objectID": "index.html#notebooks",
@@ -81,7 +81,7 @@
     "href": "index.html#weitere-ausführungsoptionen",
     "title": "ddblabs-statistics",
     "section": "Weitere Ausführungsoptionen",
-    "text": "Weitere Ausführungsoptionen\n\nGitHub Codespaces: https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main\nKaggle: https://www.kaggle.com/code/new (im Editor: File → Import Notebook → GitHub)\n\n\nHinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds)."
+    "text": "Weitere Ausführungsoptionen\nKaggle-Import: im Editor File → Import Notebook → GitHub.\n\nHinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds)."
   },
   {
     "objectID": "notebooks.html",
@@ -95,20 +95,20 @@
     "href": "notebooks.html#nachnutzen",
     "title": "Notebooks",
     "section": "Nachnutzen",
-    "text": "Nachnutzen\n\nVS Code for the Web: https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics\nDownload ZIP: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip\nOpen in GitHub Desktop: &lt;x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics&gt;\nGitHub Codespaces: https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main\nKaggle: https://www.kaggle.com/code/new (im Editor: File → Import Notebook → GitHub)"
+    "text": "Nachnutzen\n\nVS Code (Web) Download ZIP GitHub Desktop Codespaces Kaggle\n\nKaggle-Import: im Editor File → Import Notebook → GitHub."
   },
   {
     "objectID": "notebooks.html#auffällige-mehrfachwerte-je-provider",
     "href": "notebooks.html#auffällige-mehrfachwerte-je-provider",
     "title": "Notebooks",
     "section": "Auffällige Mehrfachwerte je Provider",
-    "text": "Auffällige Mehrfachwerte je Provider\n\nSeite: inspection-invalid_multiple_facets_values.ipynb\nColab: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb\nBinder: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=inspection-invalid_multiple_facets_values.ipynb\nnbviewer: https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb"
+    "text": "Auffällige Mehrfachwerte je Provider\n\nColab Binder nbviewer GitHub Download\n\n\nSeite: inspection-invalid_multiple_facets_values.ipynb"
   },
   {
     "objectID": "notebooks.html#statistik-nach-bundesland",
     "href": "notebooks.html#statistik-nach-bundesland",
     "title": "Notebooks",
     "section": "Statistik nach Bundesland",
-    "text": "Statistik nach Bundesland\n\nSeite: statistic-federal_state.ipynb\nColab: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistic-federal_state.ipynb\nBinder: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=statistic-federal_state.ipynb\nnbviewer: https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistic-federal_state.ipynb"
+    "text": "Statistik nach Bundesland\n\nColab Binder nbviewer GitHub Download\n\n\nSeite: statistic-federal_state.ipynb"
   }
 ]
