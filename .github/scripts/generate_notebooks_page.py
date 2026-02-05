@@ -76,10 +76,6 @@ def main() -> int:
     branch = os.getenv("REPO_BRANCH") or os.getenv("GITHUB_REF_NAME") or DEFAULT_BRANCH
 
     repo_url = f"https://github.com/{repo_slug}"
-    zip_url = f"{repo_url}/archive/refs/heads/{branch}.zip"
-    vscode_url = f"https://vscode.dev/github/{repo_slug}"
-    codespaces_url = f"https://github.com/codespaces/new?repo={repo_slug}&ref={branch}"
-    github_desktop_url = f"x-github-client://openRepo/{repo_url}"
 
     notebooks = sorted(iter_notebooks(REPO_ROOT), key=lambda p: p.as_posix().lower())
 
@@ -88,33 +84,13 @@ def main() -> int:
         "---",
         'title: "Notebooks"',
         "---",
-        "",
-        "Diese Seite wird automatisch aus den vorhandenen `.ipynb`-Dateien erzeugt.",
-        "",
-        "Hinweis: Auf GitHub Pages werden Notebooks **nicht ausgeführt**; es werden nur vorhandene Outputs gerendert.",
-        "",
-        "## Alle Nachnutzen",
-        "",
-        "Diese Links beziehen sich auf die **Nachnutzung des gesamten Repositories** (nicht auf ein einzelnes Notebook).",
-        "",
-        "::: {.launch-buttons}",
-        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{zip_url}\" title=\"Repository als ZIP herunterladen\">Download ZIP</a>",
-        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{vscode_url}\" title=\"Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)\">VS Code (Web)</a>",
-        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{codespaces_url}\" title=\"Repository in GitHub Codespaces starten (Cloud-IDE)\">Codespaces</a>",
-        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"https://www.kaggle.com/code/new\" title=\"Neues Kaggle-Notebook anlegen; anschließend im Editor via File → Import Notebook → GitHub importieren (Kaggle-Account erforderlich). Repository-URL: {repo_url}\">Kaggle</a>",
-        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{github_desktop_url}\" title=\"Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)\">GitHub Desktop</a>",
-        ":::",
-        "",
-        "Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.",
-        f"Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: {repo_url}).",
-        "",
     ]
 
     if not notebooks:
         lines += ["Keine Notebooks gefunden.", ""]
     else:
         lines += [
-            "## Einzelne Nachnutzen",
+            "## Nachnutzen",
             "",
             "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.",
             "",
@@ -123,6 +99,11 @@ def main() -> int:
             rel = nb.relative_to(REPO_ROOT).as_posix()
             rel_escaped = url_escape_path(rel)
             title = notebook_title(nb)
+
+            # Link to the rendered HTML page on GitHub Pages.
+            # This page itself lives at `pages/notebooks.html`, so we need to go one level up.
+            rel_html = rel[:-6] + ".html" if rel.lower().endswith(".ipynb") else rel
+            page_href = "../" + url_escape_path(rel_html)
 
             github_file = f"{repo_url}/blob/{branch}/{rel_escaped}"
             raw_file = f"https://raw.githubusercontent.com/{repo_slug}/{branch}/{rel_escaped}"
@@ -135,12 +116,12 @@ def main() -> int:
                 f"### {title} <span class=\"nb-filename\">{rel}</span>",
                 "",
                 "::: {.launch-buttons}",
-                f"<a class=\"btn btn-sm btn-primary\" href=\"{rel}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{colab}\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{binder}\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{nbviewer}\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{github_file}\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{raw_file}\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
+                f"<a class=\"btn btn-sm btn-primary\" href=\"{page_href}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{colab}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{binder}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{nbviewer}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{github_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
                 ":::",
                 "",
             ]

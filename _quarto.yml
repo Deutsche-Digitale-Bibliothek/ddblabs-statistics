@@ -25,5 +25,6 @@ format:
     css: assets/styles.css
     toc: true
     lang: de
+    link-external-newwindow: true
     code-fold: true
     code-summary: "Quelltext anzeigen"

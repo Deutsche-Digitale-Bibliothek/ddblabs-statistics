@@ -2,21 +2,11 @@
 title: "Notebooks"
 ---
 
-Diese Seite wird automatisch aus den vorhandenen `.ipynb`-Dateien erzeugt.
-
-Hinweis: Auf GitHub Pages werden Notebooks **nicht ausgeführt**; es werden nur vorhandene Outputs gerendert.
-
 > Diese Datei wird im CI vor dem Rendern überschrieben. Lokal kannst du sie via
 > `python .github/scripts/generate_notebooks_page.py` aktualisieren.
 
-::: {.launch-buttons}
-<a class="btn btn-sm btn-outline-primary" href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip" title="Repository als ZIP herunterladen">Download ZIP</a>
-<a class="btn btn-sm btn-outline-primary" href="https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)">VS Code (Web)</a>
-<a class="btn btn-sm btn-outline-primary" href="https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main" title="Repository in GitHub Codespaces starten (Cloud-IDE)">Codespaces</a>
-<a class="btn btn-sm btn-outline-primary" href="https://www.kaggle.com/code/new" title="Neues Kaggle-Notebook anlegen; anschließend im Editor via File → Import Notebook → GitHub importieren (Kaggle-Account erforderlich)">Kaggle</a>
-<a class="btn btn-sm btn-outline-primary" href="x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)">GitHub Desktop</a>
-:::
+## Nachnutzen
 
-Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.
+Diese Sektion wird im CI automatisch aus den vorhandenen `.ipynb`-Dateien erzeugt.
 
-Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).
+Hinweis: Der Button „Seite“ verweist auf die gerenderte HTML-Seite des Notebooks (z. B. `../mein-notebook.html`).
