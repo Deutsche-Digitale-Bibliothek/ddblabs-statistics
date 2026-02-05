@@ -12,3 +12,11 @@
 .launch-buttons .btn .bi {
   margin-right: 0.35rem;
 }
+
+.nb-filename {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
