@@ -24,6 +24,20 @@
 .table-export-buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.5rem;
-  margin: 0.5rem 0 0.25rem 0;
+  margin: 0.25rem 0 0.25rem 0;
+  width: 100%;
+}
+
+.table-export-buttons .btn {
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  opacity: 0.75;
+}
+
+.table-export-buttons .btn:hover,
+.table-export-buttons .btn:focus {
+  opacity: 1;
 }
