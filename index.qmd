@@ -1,0 +1,34 @@
+---
+title: "ddblabs-statistics"
+---
+
+Eine kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digitalen Bibliothek.
+
+## Nachnutzen
+
+- **VS Code for the Web**: <https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics>
+- **Download ZIP**: <https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip>
+- **Open in GitHub Desktop**: <x-github-client://openRepo/https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics>
+
+## Notebooks
+
+### Statistik nach Bundesland
+
+- Seite: [statistics-federal_state.ipynb](statistics-federal_state.ipynb)
+- Colab: <https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistics-federal_state.ipynb>
+- Binder: <https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=statistics-federal_state.ipynb>
+- nbviewer: <https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistics-federal_state.ipynb>
+
+### Auffällige Mehrfachwerte je Provider
+
+- Seite: [inspection-invalid_multiple_facets_values.ipynb](inspection-invalid_multiple_facets_values.ipynb)
+- Colab: <https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb>
+- Binder: <https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=inspection-invalid_multiple_facets_values.ipynb>
+- nbviewer: <https://nbviewer.org/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb>
+
+## Weitere Ausführungsoptionen
+
+- **GitHub Codespaces**: <https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main>
+- **Kaggle**: <https://www.kaggle.com/code/new> (im Editor: *File → Import Notebook → GitHub*)
+
+> Hinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds).

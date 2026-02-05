@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - statistics-federal_state.ipynb
+    - inspection-invalid_multiple_facets_values.ipynb
+
+execute:
+  enabled: false
+
+website:
+  title: "ddblabs-statistics"
+  site-url: "https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/"
+  repo-url: "https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics"
+  repo-actions: [issue]
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: statistics-federal_state.ipynb
+        text: Statistik nach Bundesland
+      - href: inspection-invalid_multiple_facets_values.ipynb
+        text: Auffällige Mehrfachwerte
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    lang: de
