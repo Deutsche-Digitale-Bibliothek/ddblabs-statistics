@@ -26,7 +26,7 @@ DEFAULT_BRANCH = "main"
 def iter_notebooks(root: Path) -> Iterable[Path]:
     # Prefer notebooks in the repo root and in a conventional notebooks/ folder.
     # Skip checkpoints and Quarto build outputs.
-    skip_parts = {".ipynb_checkpoints", "_site", ".quarto", ".git"}
+    skip_parts = {".ipynb_checkpoints", "_site", ".quarto", ".git", ".github"}
 
     for path in root.rglob("*.ipynb"):
         if any(part in skip_parts for part in path.parts):
@@ -95,11 +95,15 @@ def main() -> int:
         "",
         "## Nachnutzen",
         "",
-        f"- VS Code for the Web: <{vscode_url}>",
-        f"- Download ZIP: <{zip_url}>",
-        f"- Open in GitHub Desktop: <{github_desktop_url}>",
-        f"- GitHub Codespaces: <{codespaces_url}>",
-        "- Kaggle: <https://www.kaggle.com/code/new> (im Editor: *File → Import Notebook → GitHub*)",
+        "::: {.launch-buttons}",
+         f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{vscode_url}\" title=\"Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)\">VS Code (Web)</a>",
+        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{zip_url}\" title=\"Repository als ZIP herunterladen\">Download ZIP</a>",
+        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{github_desktop_url}\" title=\"Repository in GitHub Desktop öffnen\">GitHub Desktop</a>",
+        f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{codespaces_url}\" title=\"Repository in GitHub Codespaces starten (Cloud-IDE)\">Codespaces</a>",
+        "<a class=\"btn btn-sm btn-outline-primary\" href=\"https://www.kaggle.com/code/new\" title=\"Neues Kaggle-Notebook anlegen; anschließend via GitHub importieren\">Kaggle</a>",
+        ":::",
+        "",
+        "Kaggle-Import: im Editor *File → Import Notebook → GitHub*.",
         "",
     ]
 
@@ -111,6 +115,9 @@ def main() -> int:
             rel_escaped = url_escape_path(rel)
             title = notebook_title(nb)
 
+            github_file = f"{repo_url}/blob/{branch}/{rel_escaped}"
+            raw_file = f"https://raw.githubusercontent.com/{repo_slug}/{branch}/{rel_escaped}"
+
             colab = f"https://colab.research.google.com/github/{repo_slug}/blob/{branch}/{rel_escaped}"
             binder = f"https://mybinder.org/v2/gh/{repo_slug}/{branch}?filepath={rel_escaped}"
             nbviewer = f"https://nbviewer.org/github/{repo_slug}/blob/{branch}/{rel_escaped}"
@@ -118,10 +125,15 @@ def main() -> int:
             lines += [
                 f"## {title}",
                 "",
+                "::: {.launch-buttons}",
+                f"<a class=\"btn btn-sm btn-primary\" href=\"{colab}\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
+                f"<a class=\"btn btn-sm btn-secondary\" href=\"{binder}\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{nbviewer}\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{github_file}\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{raw_file}\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
+                ":::",
+                "",
                 f"- Seite: [{rel}]({rel})",
-                f"- Colab: <{colab}>",
-                f"- Binder: <{binder}>",
-                f"- nbviewer: <{nbviewer}>",
                 "",
             ]
 
