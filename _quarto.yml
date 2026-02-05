@@ -16,13 +16,13 @@ website:
     left:
       - href: index.qmd
         text: Startseite
-      - href: notebooks.qmd
+      - href: pages/notebooks.qmd
         text: Jupyter Notebooks
 
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css: assets/styles.css
     toc: true
     lang: de
     code-fold: true

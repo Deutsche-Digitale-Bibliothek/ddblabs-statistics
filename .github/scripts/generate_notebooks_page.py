@@ -93,7 +93,7 @@ def main() -> int:
         "",
         "Hinweis: Auf GitHub Pages werden Notebooks **nicht ausgeführt**; es werden nur vorhandene Outputs gerendert.",
         "",
-        "## Nachnutzen",
+        "## Alle Nachnutzen",
         "",
         "Diese Links beziehen sich auf die **Nachnutzung des gesamten Repositories** (nicht auf ein einzelnes Notebook).",
         "",
@@ -105,14 +105,20 @@ def main() -> int:
         f"<a class=\"btn btn-sm btn-outline-primary\" href=\"{github_desktop_url}\" title=\"Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)\">GitHub Desktop</a>",
         ":::",
         "",
-        f"Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: {repo_url}).",
         "Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.",
+        f"Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: {repo_url}).",
         "",
     ]
 
     if not notebooks:
         lines += ["Keine Notebooks gefunden.", ""]
     else:
+        lines += [
+            "## Einzelne Nachnutzen",
+            "",
+            "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.",
+            "",
+        ]
         for nb in notebooks:
             rel = nb.relative_to(REPO_ROOT).as_posix()
             rel_escaped = url_escape_path(rel)
@@ -126,7 +132,7 @@ def main() -> int:
             nbviewer = f"https://nbviewer.org/github/{repo_slug}/blob/{branch}/{rel_escaped}"
 
             lines += [
-                f"## {title}",
+                f"### {title} <span class=\"nb-filename\">{rel}</span>",
                 "",
                 "::: {.launch-buttons}",
                 f"<a class=\"btn btn-sm btn-primary\" href=\"{rel}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
@@ -139,7 +145,7 @@ def main() -> int:
                 "",
             ]
 
-    out_path = REPO_ROOT / "notebooks.qmd"
+    out_path = REPO_ROOT / "pages" / "notebooks.qmd"
     out_path.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {out_path}")
     return 0

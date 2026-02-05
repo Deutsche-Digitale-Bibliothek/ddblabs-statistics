@@ -18,3 +18,5 @@ Hinweis: Auf GitHub Pages werden Notebooks **nicht ausgeführt**; es werden nur 
 :::
 
 Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.
+
+Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).

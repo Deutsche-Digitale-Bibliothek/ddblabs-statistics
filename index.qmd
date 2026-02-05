@@ -9,7 +9,7 @@ Eine kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digit
 Diese Links beziehen sich auf die **Nachnutzung des gesamten Repositories** (nicht auf ein einzelnes Notebook).
 
 ::: {.launch-buttons}
-<a class="btn btn-sm btn-primary" href="notebooks.qmd" title="Zur Notebook-Übersicht (pro Notebook: Seite/Colab/Binder/nbviewer)">Notebooks</a>
+<a class="btn btn-sm btn-primary" href="pages/notebooks.qmd" title="Zur Notebook-Übersicht (pro Notebook: Seite/Colab/Binder/nbviewer)">Notebooks</a>
 <a class="btn btn-sm btn-outline-primary" href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/archive/refs/heads/main.zip" title="Repository als ZIP herunterladen">Download ZIP</a>
 <a class="btn btn-sm btn-outline-primary" href="https://vscode.dev/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics" title="Repository im Browser öffnen (zum Ansehen/Bearbeiten; nicht zum Ausführen)">VS Code (Web)</a>
 <a class="btn btn-sm btn-outline-primary" href="https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main" title="Repository in GitHub Codespaces starten (Cloud-IDE)">Codespaces</a>
@@ -19,14 +19,10 @@ Diese Links beziehen sich auf die **Nachnutzung des gesamten Repositories** (nic
 
 Hinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.
 
-## Notebooks
-
-Die Notebook-Liste wird automatisch generiert:
-
-- [notebooks.qmd](notebooks.qmd)
+Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).
 
 ## Weitere Ausführungsoptionen
 
-Kaggle-Import: im Editor *File → Import Notebook → GitHub* (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).
+Weitere Ausführungsoptionen sind auf der Notebook-Seite pro Notebook verlinkt.
 
 > Hinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds).
