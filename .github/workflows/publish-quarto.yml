@@ -28,6 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Generate notebooks page
+        run: |
+          python .github/scripts/generate_notebooks_page.py
+
       - name: Render site
         run: quarto render
 
@@ -35,6 +39,6 @@ jobs:
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          publish_dir: _site
+          path: _site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

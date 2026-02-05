@@ -1,10 +1,8 @@
 project:
   type: website
   output-dir: _site
-  render:
-    - index.qmd
-    - statistics-federal_state.ipynb
-    - inspection-invalid_multiple_facets_values.ipynb
+  # Render all site content by default. This avoids maintaining a manual list
+  # when the number of notebooks grows.
 
 execute:
   enabled: false
@@ -17,14 +15,14 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - href: statistics-federal_state.ipynb
-        text: Statistik nach Bundesland
-      - href: inspection-invalid_multiple_facets_values.ipynb
-        text: Auffällige Mehrfachwerte
+        text: Startseite
+      - href: notebooks.qmd
+        text: Jupyter Notebooks
 
 format:
   html:
     theme: cosmo
     toc: true
     lang: de
+    code-fold: true
+    code-summary: "Quelltext anzeigen"

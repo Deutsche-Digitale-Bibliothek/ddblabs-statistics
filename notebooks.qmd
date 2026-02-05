@@ -1,0 +1,10 @@
+---
+title: "Notebooks"
+---
+
+Diese Seite wird automatisch aus den vorhandenen `.ipynb`-Dateien erzeugt.
+
+Hinweis: Auf GitHub Pages werden Notebooks **nicht ausgeführt**; es werden nur vorhandene Outputs gerendert.
+
+> Diese Datei wird im CI vor dem Rendern überschrieben. Lokal kannst du sie via
+> `python .github/scripts/generate_notebooks_page.py` aktualisieren.

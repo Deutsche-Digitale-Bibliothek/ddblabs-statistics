@@ -14,10 +14,10 @@ Kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digitalen 
 Die Notebooks können in mehreren Umgebungen gestartet werden:
 
 - Google Colab (sehr niedrigschwellig, schnell):
-	- statistics-federal_state.ipynb: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistics-federal_state.ipynb
+	- statistic-federal_state.ipynb: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/statistic-federal_state.ipynb
 	- inspection-invalid_multiple_facets_values.ipynb: https://colab.research.google.com/github/Deutsche-Digitale-Bibliothek/ddblabs-statistics/blob/main/inspection-invalid_multiple_facets_values.ipynb
 - Binder (reproduzierbar, ggf. langsamer Start):
-	- statistics-federal_state.ipynb: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=statistics-federal_state.ipynb
+	- statistic-federal_state.ipynb: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=statistic-federal_state.ipynb
 	- inspection-invalid_multiple_facets_values.ipynb: https://mybinder.org/v2/gh/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main?filepath=inspection-invalid_multiple_facets_values.ipynb
 - GitHub Codespaces (volle IDE, Login/Quota nötig):
 	- https://github.com/codespaces/new?repo=Deutsche-Digitale-Bibliothek/ddblabs-statistics&ref=main
@@ -36,5 +36,4 @@ jupyter lab
 
 ## Inhalt
 
-- statistics-federal_state.ipynb — Statistik/Auswertung nach Bundesland
-- inspection-invalid_multiple_facets_values.ipynb — Auffällige Mehrfachwerte je Provider
+Die Notebook-Übersicht wird für GitHub Pages automatisch generiert (siehe die Seite **Notebooks** auf der Website).
