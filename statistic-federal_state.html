@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistik nach Bundesland – ddblabs-statistics</title>
+<title>Datenpartner mit Anzahl der Objekte pro Bundesland – ddblabs-statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,25 +149,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Auf dieser Seite</h2>
-   
-  <ul>
-  <li><a href="#provider-facets-dataprovider_id" id="toc-provider-facets-dataprovider_id" class="nav-link active" data-scroll-target="#provider-facets-dataprovider_id">1) Provider-Facets (dataprovider_id)</a></li>
-  <li><a href="#organisationsdaten-ddb-institution-ddb-aggregator" id="toc-organisationsdaten-ddb-institution-ddb-aggregator" class="nav-link" data-scroll-target="#organisationsdaten-ddb-institution-ddb-aggregator">2) Organisationsdaten (ddb-institution / ddb-aggregator)</a></li>
-  <li><a href="#join-export-df_join" id="toc-join-export-df_join" class="nav-link" data-scroll-target="#join-export-df_join">3) Join &amp; Export (<code>df_join</code>)</a></li>
-  <li><a href="#auswertung-nach-bundesland-agg" id="toc-auswertung-nach-bundesland-agg" class="nav-link" data-scroll-target="#auswertung-nach-bundesland-agg">4) Auswertung nach Bundesland (<code>agg</code>)</a></li>
-  <li><a href="#visualisierung" id="toc-visualisierung" class="nav-link" data-scroll-target="#visualisierung">5) Visualisierung</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/issues/new" class="toc-action"><i class="bi bi-github"></i>Problem melden</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistik nach Bundesland</h1>
+<h1 class="title">Datenpartner mit Anzahl der Objekte pro Bundesland</h1>
 </div>
 
 
@@ -184,491 +174,186 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Notebook erzeugt <code>df_join</code> und wertet anschließend nach Bundesland aus.</p>
-<div id="ba02542b" class="cell" data-execution_count="7">
+<p>Dieses Notebook ruft Statistiken aus der API der Deutschen Digitalen Bibliothek ab und bereitet sie für eine Auswertung nach Bundesland auf:</p>
+<ol type="1">
+<li>Aus der Solr-Suche wird eine Facet-Statistik pro <code>dataprovider_id</code> geladen (Objektanzahlen je Datenpartner).</li>
+<li>Aus dem Organisationsindex kommen Metadaten zu Einrichtungen/Providern (u.a. Name und Bundesland).</li>
+<li>Beides wird zu <code>df_join</code> zusammengeführt (und kann als Excel exportiert werden).</li>
+<li>Anschließend wird nach Bundesland aggregiert (<code>agg</code>) und als Diagramme visualisiert.</li>
+</ol>
+<div id="ba02542b" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="provider-facets-dataprovider_id" class="level2">
-<h2 class="anchored" data-anchor-id="provider-facets-dataprovider_id">1) Provider-Facets (dataprovider_id)</h2>
-<p>Aus der DDB-Suche kommt eine Facet-Statistik zu <code>dataprovider_id</code> (Anzahl Objekte pro Provider). Das Ergebnis steht als DataFrame <code>df</code> bereit und ist auf 32-stellige Provider-IDs gefiltert.</p>
-<div id="2e7adfe2" class="cell" data-execution_count="8">
+<div id="2e7adfe2" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q"</span>: <span class="st">"*:*"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rows"</span>: <span class="dv">0</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet"</span>: <span class="st">"true"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.field"</span>: <span class="st">"dataprovider_id"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.limit"</span>: <span class="op">-</span><span class="dv">1</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.sort"</span>: <span class="st">"count"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wt"</span>: <span class="st">"json"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> requests.get(url, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>resp.raise_for_status()</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> resp.json()</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>facet_list <span class="op">=</span> data[<span class="st">"facet_counts"</span>][<span class="st">"facet_fields"</span>][<span class="st">"dataprovider_id"</span>]  <span class="co"># ["id1", count1, "id2", count2, ...]</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(facet_list[<span class="dv">0</span>::<span class="dv">2</span>], facet_list[<span class="dv">1</span>::<span class="dv">2</span>]))</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(pairs, columns<span class="op">=</span>[<span class="st">"dataprovider_id"</span>, <span class="st">"count"</span>])</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"dataprovider_id"</span>] <span class="op">=</span> df[<span class="st">"dataprovider_id"</span>].astype(<span class="bu">str</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"count"</span>] <span class="op">=</span> pd.to_numeric(df[<span class="st">"count"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).fillna(<span class="dv">0</span>).astype(<span class="st">"int64"</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zuerst wird aus der DDB-Suche eine Facet-Statistik zu `dataprovider_id` geladen. </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis dieser Zelle ist `df` mit zwei Spalten (`dataprovider_id`, `count`). </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Zusätzlich wird auf 32-stellige Provider-IDs gefiltert, damit im DataFrame nur echte Provider-IDs stehen.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># API-Call: https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select?q=*%3A*&amp;rows=0&amp;facet=true&amp;facet.field=dataprovider_id&amp;facet.limit=-1&amp;facet.sort=count&amp;wt=json</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q"</span>: <span class="st">"*:*"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rows"</span>: <span class="dv">0</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet"</span>: <span class="st">"true"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.field"</span>: <span class="st">"dataprovider_id"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.limit"</span>: <span class="op">-</span><span class="dv">1</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"facet.sort"</span>: <span class="st">"count"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wt"</span>: <span class="st">"json"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> requests.get(url, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>resp.raise_for_status()</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> resp.json()</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>facet_list <span class="op">=</span> data[<span class="st">"facet_counts"</span>][<span class="st">"facet_fields"</span>][<span class="st">"dataprovider_id"</span>]  <span class="co"># ["id1", count1, "id2", count2, ...]</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(facet_list[<span class="dv">0</span>::<span class="dv">2</span>], facet_list[<span class="dv">1</span>::<span class="dv">2</span>]))</span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(pairs, columns<span class="op">=</span>[<span class="st">"dataprovider_id"</span>, <span class="st">"count"</span>])</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"dataprovider_id"</span>] <span class="op">=</span> df[<span class="st">"dataprovider_id"</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"count"</span>] <span class="op">=</span> pd.to_numeric(df[<span class="st">"count"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).fillna(<span class="dv">0</span>).astype(<span class="st">"int64"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># df</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">dataprovider_id</th>
-<th data-quarto-table-cell-role="th">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>2Q37XY5KXJNJE5MV6SWP3UKKZ6RSBLK5</td>
-<td>7668317</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>XYMQPA4OHAYDDFYWHV6Q4RFUIISTLQJV</td>
-<td>6551893</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>VSHJWG7QLS7Y3NS2HKE43E5Q5NJ7OCLS</td>
-<td>4144240</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>UG6LMRBTZUJVW6YRDFGWG6CS2TMNUOK7</td>
-<td>3228053</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>PE423JPDSCU6C72BAC2PUBOHAINDRGFO</td>
-<td>2675700</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">815</th>
-<td>PO2SRBK67WA77KXNBM4OTLK3QBQZVLUU</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">816</th>
-<td>VH3B3BVEVLGX2XZA5SRAL2CYJOW6YV76</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">817</th>
-<td>VJTKMQU5TUCJUM6IAK3AIAKZ42T6TPPT</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">818</th>
-<td>X5ZAM2PHVI5EKZZ33QB6XRUBQ6MKA5L7</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">819</th>
-<td>Z572GP2DQDVYMC3KXUB6GTPAPFWYD47C</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-
-<p>820 rows × 2 columns</p>
 </div>
-</div>
-</div>
-</section>
-<section id="organisationsdaten-ddb-institution-ddb-aggregator" class="level2">
-<h2 class="anchored" data-anchor-id="organisationsdaten-ddb-institution-ddb-aggregator">2) Organisationsdaten (ddb-institution / ddb-aggregator)</h2>
-<p>Metadaten zu Einrichtungen/Providern werden aus dem Organisation-Index geladen; Listenfelder werden dabei normalisiert. Ergebnis: <code>df_org</code> (u.a. <code>label</code>, <code>sector_fct</code>, <code>city_de_fct</code>, <code>state_de_fct</code>).</p>
-<div id="b0b04fd9" class="cell" data-execution_count="9">
+<div id="b0b04fd9" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Organization-Daten (ddb-institution) laden -&gt; DataFrame</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url_org <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/organization/select"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>params_org <span class="op">=</span> {</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q"</span>: <span class="st">"type:ddb-institution OR type:ddb-aggregator"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fl"</span>: <span class="st">"id,label,type,sector_fct,city_de_fct,state_de_fct"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rows"</span>: <span class="dv">10000</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wt"</span>: <span class="st">"json"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>resp_org <span class="op">=</span> requests.get(url_org, params<span class="op">=</span>params_org, timeout<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>resp_org.raise_for_status()</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data_org <span class="op">=</span> resp_org.json()</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> data_org.get(<span class="st">"response"</span>, {}).get(<span class="st">"docs"</span>, [])</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _as_list(value):</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Solr liefert bei *_fct i.d.R. Listen; zur Sicherheit wird auch ein Scalar zu einer Liste normalisiert</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value <span class="cf">if</span> <span class="bu">isinstance</span>(value, <span class="bu">list</span>) <span class="cf">else</span> [value]</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>df_org <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: [d.get(<span class="st">"id"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"label"</span>: [_as_list(d.get(<span class="st">"label"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: [d.get(<span class="st">"type"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sector_fct"</span>:  [d.get(<span class="st">"sector_fct"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city_de_fct"</span>: [_as_list(d.get(<span class="st">"city_de_fct"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state_de_fct"</span>: [_as_list(d.get(<span class="st">"state_de_fct"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>df_org</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als nächstes werden Organisationsdaten (Einrichtungen und Aggregatoren) aus dem Organisation-Index geladen. </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Felder, die mal als Liste und mal als Einzelwert kommen, werden vereinheitlicht. </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis ist `df_org` mit Metadaten wie `label`, `type`, `sector_fct`, `city_de_fct` und `state_de_fct`.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># API-Call: https://api.deutsche-digitale-bibliothek.de/2/search/index/organization/select?q=type:ddb-institution%20OR%20type:ddb-aggregator&amp;fl=id,label,type,sector_fct,city_de_fct,state_de_fct&amp;rows=10000&amp;wt=json</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>url_org <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/organization/select"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>params_org <span class="op">=</span> {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q"</span>: <span class="st">"type:ddb-institution OR type:ddb-aggregator"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fl"</span>: <span class="st">"id,label,type,sector_fct,city_de_fct,state_de_fct"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rows"</span>: <span class="dv">10000</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wt"</span>: <span class="st">"json"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>resp_org <span class="op">=</span> requests.get(url_org, params<span class="op">=</span>params_org, timeout<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>resp_org.raise_for_status()</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>data_org <span class="op">=</span> resp_org.json()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> data_org.get(<span class="st">"response"</span>, {}).get(<span class="st">"docs"</span>, [])</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _as_list(value):</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Solr liefert bei *_fct i.d.R. Listen; zur Sicherheit wird auch ein Scalar zu einer Liste normalisiert</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value <span class="cf">if</span> <span class="bu">isinstance</span>(value, <span class="bu">list</span>) <span class="cf">else</span> [value]</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>df_org <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: [d.get(<span class="st">"id"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"label"</span>: [_as_list(d.get(<span class="st">"label"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: [d.get(<span class="st">"type"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sector_fct"</span>:  [d.get(<span class="st">"sector_fct"</span>) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"city_de_fct"</span>: [_as_list(d.get(<span class="st">"city_de_fct"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"state_de_fct"</span>: [_as_list(d.get(<span class="st">"state_de_fct"</span>)) <span class="cf">for</span> d <span class="kw">in</span> docs],</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># df_org</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">label</th>
-<th data-quarto-table-cell-role="th">type</th>
-<th data-quarto-table-cell-role="th">sector_fct</th>
-<th data-quarto-table-cell-role="th">city_de_fct</th>
-<th data-quarto-table-cell-role="th">state_de_fct</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>5IMBCSZN7ZVL77HVH4GKX3GXNPD6X2NO</td>
-<td>[Deutsche Fotothek]</td>
-<td>ddb-aggregator</td>
-<td>sec_05</td>
-<td>[Dresden]</td>
-<td>[Sachsen]</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>DWIVLJW5JBO7X4XRO2Y7PCGZSHLTUS6F</td>
-<td>[Digitales Kunst- und Kulturarchiv Düsseldorf ...</td>
-<td>ddb-aggregator</td>
-<td>sec_07</td>
-<td>[Düsseldorf]</td>
-<td>[Nordrhein-Westfalen]</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>3IJSQ3OFJZCXLJLKDTIQIPYYS5TUMJLB</td>
-<td>[Bayerische Julius-Maximilians-Universität Wür...</td>
-<td>ddb-institution</td>
-<td>sec_04</td>
-<td>[Würzburg]</td>
-<td>[Bayern]</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>CLELTYIEQZZMAYTTNY6TN4BV3KH6OXMT</td>
-<td>[Franckesche Stiftungen]</td>
-<td>ddb-institution</td>
-<td>sec_07</td>
-<td>[Halle (Saale)]</td>
-<td>[Sachsen-Anhalt]</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>IWHIY724L2AQF33GY3GGGIMUMQB5IJ3L</td>
-<td>[Universität Hamburg]</td>
-<td>ddb-institution</td>
-<td>sec_04</td>
-<td>[Hamburg]</td>
-<td>[Hamburg]</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4944</th>
-<td>J2DGHLWAB42ARH6LS2CXZ7ON2LEZMBY4</td>
-<td>[Katholische Öffentliche Bücherei St. Gertrud ...</td>
-<td>ddb-institution</td>
-<td>sec_02</td>
-<td>[Lohne]</td>
-<td>[Niedersachsen]</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">4945</th>
-<td>SIBSZ6D55YO5DF3I2ZAJCY463VMKLO2H</td>
-<td>[Unternehmensarchiv der Vollert GmbH &amp; Co. KG,...</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>[Weinsberg]</td>
-<td>[Baden-Württemberg]</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4946</th>
-<td>DPKPCTEIZ5OAC4Z45H54PK3ABSCJTVZK</td>
-<td>[Stadtarchiv Friedrichroda]</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>[Friedrichroda]</td>
-<td>[Thüringen]</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">4947</th>
-<td>DWBFG7HIHRMBSXBFZFXS237MY6DXDZOF</td>
-<td>[Museum Wassermühle Beelitz]</td>
-<td>ddb-institution</td>
-<td>sec_06</td>
-<td>[Spargelstadt Beelitz]</td>
-<td>[Brandenburg]</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4948</th>
-<td>5TLSCVVSTMDVOJH5ZVMKLFJPMQE5A3JH</td>
-<td>[Heimatmuseum]</td>
-<td>ddb-institution</td>
-<td>sec_06</td>
-<td>[Tribsees]</td>
-<td>[Mecklenburg-Vorpommern]</td>
-</tr>
-</tbody>
-</table>
-
-<p>4949 rows × 6 columns</p>
 </div>
-</div>
-</div>
-</section>
-<section id="join-export-df_join" class="level2">
-<h2 class="anchored" data-anchor-id="join-export-df_join">3) Join &amp; Export (<code>df_join</code>)</h2>
-<p>Die Provider-Facet-Statistik (<code>df</code>) wird mit den Organisationsdaten (<code>df_org</code>) zusammengeführt. So stehen pro <code>dataprovider_id</code> u.a. <code>label</code> und <code>state_de_fct</code> zur Verfügung; optionaler Export nach Excel.</p>
-<div id="e86d5a05" class="cell" data-execution_count="10">
+<div id="e86d5a05" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join: Provider-Facets (df) + Organisationsdaten (df_org)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_org[<span class="st">"id"</span>] <span class="op">=</span> df_org[<span class="st">"id"</span>].astype(<span class="bu">str</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_join <span class="op">=</span> df.merge(df_org, left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"outer"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Für Excel: Array-Spalten lesbar als Strings serialisieren (Listen -&gt; '; '-String)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"label"</span>, <span class="st">"city_de_fct"</span>, <span class="st">"state_de_fct"</span>]:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df_join.columns:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        df_join[col] <span class="op">=</span> df_join[col].<span class="bu">apply</span>(<span class="kw">lambda</span> xs: <span class="st">"; "</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, xs)) <span class="cf">if</span> <span class="bu">isinstance</span>(xs, <span class="bu">list</span>) <span class="cf">else</span> (<span class="st">""</span> <span class="cf">if</span> xs <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(xs)))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: doppelte Join-Spalte entfernen und Spaltenordnung setzen</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"dataprovider_id"</span> <span class="kw">in</span> df_join.columns:</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    df_join <span class="op">=</span> df_join.drop(columns<span class="op">=</span>[<span class="st">"dataprovider_id"</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anschließend werden die Provider-Statistik (`df`) und die Organisationsdaten (`df_org`) zusammengeführt.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Damit stehen pro Einrichtung/Provider sowohl Metadaten als auch die Objektanzahl (`count`) zur Verfügung.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Das Ergebnis kann als Excel-Datei mit aktuellem Datum gespeichert werden (`df_join`).</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Join: Provider-Facets (df) + Organisationsdaten (df_org)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_org[<span class="st">"id"</span>] <span class="op">=</span> df_org[<span class="st">"id"</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df_join <span class="op">=</span> df.merge(df_org, left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"outer"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Für Excel: Array-Spalten lesbar als Strings serialisieren (Listen -&gt; '; '-String)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"label"</span>, <span class="st">"city_de_fct"</span>, <span class="st">"state_de_fct"</span>]:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df_join.columns:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        df_join[col] <span class="op">=</span> df_join[col].<span class="bu">apply</span>(<span class="kw">lambda</span> xs: <span class="st">"; "</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, xs)) <span class="cf">if</span> <span class="bu">isinstance</span>(xs, <span class="bu">list</span>) <span class="cf">else</span> (<span class="st">""</span> <span class="cf">if</span> xs <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(xs)))</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df_join <span class="op">=</span> df_join[[<span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"type"</span>, <span class="st">"sector_fct"</span>, <span class="st">"city_de_fct"</span>, <span class="st">"state_de_fct"</span>, <span class="st">"count"</span>]]</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis in Excel-Datei speichern mit Datum</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>out_path <span class="op">=</span> <span class="st">"statistic-federal_state_"</span> <span class="op">+</span> pd.Timestamp.now().strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>) <span class="op">+</span> <span class="st">".xlsx"</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>df_join.to_excel(out_path, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: doppelte Join-Spalte entfernen und Spaltenordnung setzen</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"dataprovider_id"</span> <span class="kw">in</span> df_join.columns:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    df_join <span class="op">=</span> df_join.drop(columns<span class="op">=</span>[<span class="st">"dataprovider_id"</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>df_join <span class="op">=</span> df_join[[<span class="st">"id"</span>, <span class="st">"label"</span>, <span class="st">"type"</span>, <span class="st">"sector_fct"</span>, <span class="st">"city_de_fct"</span>, <span class="st">"state_de_fct"</span>, <span class="st">"count"</span>]]</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>df_join</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis in Excel-Datei speichern mit Datum</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># out_path = "statistic-federal_state_" + pd.Timestamp.now().strftime("%Y-%m-%d") + ".xlsx"</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># df_join.to_excel(out_path, index=False)</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># df_join</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">label</th>
-<th data-quarto-table-cell-role="th">type</th>
-<th data-quarto-table-cell-role="th">sector_fct</th>
-<th data-quarto-table-cell-role="th">city_de_fct</th>
-<th data-quarto-table-cell-role="th">state_de_fct</th>
-<th data-quarto-table-cell-role="th">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>2232YVSIZTZYDAZIBI25LW3TZUY6DZVH</td>
-<td>Bayerisches Hauptstaatsarchiv</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>München</td>
-<td>Bayern</td>
-<td>547576.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>226MOGFFOBKT6CHOUZTN7YNJSQBBDW44</td>
-<td>TU Dresden - Institut für Zoologie</td>
-<td>ddb-institution</td>
-<td>sec_04</td>
-<td>Dresden</td>
-<td>Sachsen</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>22TRYIUQYEFVQ3VION3IC3COCUCXDE6Q</td>
-<td>Archiv des Freiherrn von Loe, Raphael</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Weeze</td>
-<td>Nordrhein-Westfalen</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>23H2TZEXAWO4MNHRYEGGR7FWP4KZQLZ2</td>
-<td>SLUB Dresden. Zweigbibliothek Forstwesen</td>
-<td>ddb-institution</td>
-<td>sec_02</td>
-<td>Tharandt</td>
-<td>Sachsen</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>23SQB2WOH356NR7UHLNPB6UQOWNFAU5J</td>
-<td>Kreisarchiv des Kreises Steinburg und der Stad...</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Itzehoe</td>
-<td>Schleswig-Holstein</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4944</th>
-<td>ZZ73OW3EYCPB6AW4NX7JSWIBCD6KCFOG</td>
-<td>Stadtarchiv Crailsheim</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Crailsheim</td>
-<td>Baden-Württemberg</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">4945</th>
-<td>ZZCJXBDSTGE54QDZOKZRFUN2MWY5O6NX</td>
-<td>Kreisarchiv des Saale-Holzland-Kreises</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Eisenberg</td>
-<td>Thüringen</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4946</th>
-<td>ZZDXSR6MZGWV7LMPQ5PDJNFXVTKDDIMK</td>
-<td>Stadtarchiv Gevelsberg</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Gevelsberg</td>
-<td>Nordrhein-Westfalen</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">4947</th>
-<td>ZZT2BWVIDOAU2KRL6MQJZOYVOSLFYFJ4</td>
-<td>Stadtarchiv Göppingen</td>
-<td>ddb-institution</td>
-<td>sec_01</td>
-<td>Göppingen</td>
-<td>Baden-Württemberg</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4948</th>
-<td>ZZXTNUHH5WCU72IYEM7KKV7BCBIND43G</td>
-<td>Staatliches Institut für Musikforschung PK</td>
-<td>ddb-institution</td>
-<td>sec_04</td>
-<td>Berlin</td>
-<td>Berlin</td>
-<td>NaN</td>
-</tr>
-</tbody>
-</table>
-
-<p>4949 rows × 7 columns</p>
 </div>
-</div>
-</div>
-</section>
-<section id="auswertung-nach-bundesland-agg" class="level2">
-<h2 class="anchored" data-anchor-id="auswertung-nach-bundesland-agg">4) Auswertung nach Bundesland (<code>agg</code>)</h2>
-<p>Aus <code>df_join</code> wird pro Bundesland aggregiert: - Anzahl Einrichtungen (gesamt) - Anzahl <em>liefernder</em> Einrichtungen (<code>count &gt; 0</code>) - Summe der Objekte (<code>count</code>) Ergebnis: DataFrame <code>agg</code> (absteigend sortiert).</p>
-<div id="f3e5fd64" class="cell" data-execution_count="11">
+<div id="13ae74aa" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bundesland-Auswertung (pandas-only)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Hinweis: Diese Zelle setzt voraus, dass oben bereits df_join erzeugt wurde.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df_bl <span class="op">=</span> df_join.loc[df_join[<span class="st">"id"</span>].notna(), [<span class="st">"id"</span>, <span class="st">"state_de_fct"</span>, <span class="st">"count"</span>]].copy()</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df_bl[<span class="st">"count"</span>] <span class="op">=</span> pd.to_numeric(df_bl[<span class="st">"count"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).fillna(<span class="dv">0</span>).astype(<span class="st">"int64"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># state_de_fct ist nach dem Join serialisiert ("; "-getrennt). Für die Zuordnung wird der erste Wert verwendet.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>df_bl[<span class="st">"bundesland"</span>] <span class="op">=</span> (</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    df_bl[<span class="st">"state_de_fct"</span>]</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="st">""</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="bu">str</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.split(<span class="st">"; "</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>[<span class="dv">0</span>]</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.strip()</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    .replace({<span class="st">""</span>: <span class="st">"Ausland"</span>})</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>einrichtungen <span class="op">=</span> df_bl.groupby(<span class="st">"bundesland"</span>)[<span class="st">"id"</span>].nunique().rename(<span class="st">"einrichtungen"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>liefernde <span class="op">=</span> (</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    df_bl.loc[df_bl[<span class="st">"count"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"bundesland"</span>)[<span class="st">"id"</span>]</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    .nunique()</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    .rename(<span class="st">"liefernde_einrichtungen"</span>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>objekte <span class="op">=</span> df_bl.groupby(<span class="st">"bundesland"</span>)[<span class="st">"count"</span>].<span class="bu">sum</span>().rename(<span class="st">"objekte"</span>)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>agg <span class="op">=</span> (</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    pd.concat([einrichtungen, liefernde, objekte], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="dv">0</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    .astype({<span class="st">"einrichtungen"</span>: <span class="st">"int64"</span>, <span class="st">"liefernde_einrichtungen"</span>: <span class="st">"int64"</span>, <span class="st">"objekte"</span>: <span class="st">"int64"</span>})</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    .sort_values([<span class="st">"objekte"</span>, <span class="st">"liefernde_einrichtungen"</span>, <span class="st">"einrichtungen"</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>agg</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stand: Datum/Uhrzeit der Notebook-Ausführung (lokale Zeitzone)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>stand <span class="op">=</span> datetime.now().astimezone().strftime(<span class="st">"</span><span class="sc">%d</span><span class="st">.%m.%Y um %H:%M:%S Uhr"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="ss">f"&gt; **Letzte Aktualisierung:** </span><span class="sc">{</span>stand<span class="sc">}</span><span class="ss">"</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display cell-output-markdown">
+<blockquote class="blockquote">
+<p><strong>Letzte Aktualisierung:</strong> 06.02.2026 um 17:46:19 Uhr</p>
+</blockquote>
+</div>
+</div>
+<div id="f3e5fd64" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Quelltext anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Im nächsten Schritt wird `df_join` nach Bundesland ausgewertet. Dafür wird das (ggf. mehrfach belegte)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Bundeslandfeld auf einen Wert reduziert und anschließend je Bundesland aggregiert:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Anzahl eindeutiger Einrichtungen</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Anzahl liefernder Einrichtungen (`count &gt; 0`)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - Summe der Objekte (`count`)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis ist der DataFrame `agg`.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df_bl <span class="op">=</span> df_join.loc[df_join[<span class="st">"id"</span>].notna(), [<span class="st">"id"</span>, <span class="st">"state_de_fct"</span>, <span class="st">"count"</span>]].copy()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df_bl[<span class="st">"count"</span>] <span class="op">=</span> pd.to_numeric(df_bl[<span class="st">"count"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).fillna(<span class="dv">0</span>).astype(<span class="st">"int64"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># state_de_fct ist nach dem Join serialisiert ("; "-getrennt). Für die Zuordnung wird der erste Wert verwendet.</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>df_bl[<span class="st">"Bundesland"</span>] <span class="op">=</span> (</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    df_bl[<span class="st">"state_de_fct"</span>]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="st">""</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="bu">str</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.split(<span class="st">"; "</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>[<span class="dv">0</span>]</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.strip()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    .replace({<span class="st">""</span>: <span class="st">"Ausland"</span>})</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>einrichtungen <span class="op">=</span> df_bl.groupby(<span class="st">"Bundesland"</span>)[<span class="st">"id"</span>].nunique().rename(<span class="st">"Einrichtungen"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>liefernde <span class="op">=</span> (</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    df_bl.loc[df_bl[<span class="st">"count"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"Bundesland"</span>)[<span class="st">"id"</span>]</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    .nunique()</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    .rename(<span class="st">"Liefernde Einrichtungen"</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>objekte <span class="op">=</span> df_bl.groupby(<span class="st">"Bundesland"</span>)[<span class="st">"count"</span>].<span class="bu">sum</span>().rename(<span class="st">"Objekte"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>agg <span class="op">=</span> (</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    pd.concat([einrichtungen, liefernde, objekte], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="dv">0</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    .astype({<span class="st">"Einrichtungen"</span>: <span class="st">"int64"</span>, <span class="st">"Liefernde Einrichtungen"</span>: <span class="st">"int64"</span>, <span class="st">"Objekte"</span>: <span class="st">"int64"</span>})</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    .sort_values([<span class="st">"Objekte"</span>, <span class="st">"Liefernde Einrichtungen"</span>, <span class="st">"Einrichtungen"</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>agg</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -676,12 +361,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">einrichtungen</th>
-<th data-quarto-table-cell-role="th">liefernde_einrichtungen</th>
-<th data-quarto-table-cell-role="th">objekte</th>
+<th data-quarto-table-cell-role="th">Einrichtungen</th>
+<th data-quarto-table-cell-role="th">Liefernde Einrichtungen</th>
+<th data-quarto-table-cell-role="th">Objekte</th>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">bundesland</th>
+<th data-quarto-table-cell-role="th">Bundesland</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -796,59 +481,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="visualisierung" class="level2">
-<h2 class="anchored" data-anchor-id="visualisierung">5) Visualisierung</h2>
-<p>Zwei horizontale Balkendiagramme (Top-N): - Objekte je Bundesland - Einrichtungen vs.&nbsp;datenliefernde Einrichtungen je Bundesland</p>
-<div id="da8d3c73" class="cell" data-execution_count="12">
+<div id="da8d3c73" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisierung (pandas plot; benötigt matplotlib)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>top_n <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> agg.head(top_n).copy()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> plot_df.iloc[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># für barh: klein -&gt; groß</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="bu">max</span>(<span class="dv">6</span>, <span class="fl">0.35</span> <span class="op">*</span> <span class="bu">len</span>(plot_df))))</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _format_int_no_sci(x, pos):</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    _ <span class="op">=</span> pos  <span class="co"># required by FuncFormatter signature</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">","</span>, <span class="st">"."</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Objekte</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plot_df[<span class="st">"objekte"</span>].plot(kind<span class="op">=</span><span class="st">"barh"</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"#4C78A8"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Objekte (Top)"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Anzahl"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">":"</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].xaxis.set_major_formatter(FuncFormatter(_format_int_no_sci))</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Einrichtungen vs. liefernde Einrichtungen</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plot_df_inst <span class="op">=</span> plot_df.rename(columns<span class="op">=</span>{</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"einrichtungen"</span>: <span class="st">"Einrichtung"</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"liefernde_einrichtungen"</span>: <span class="st">"datenliefernde Einrichtung"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>plot_df_inst[[<span class="st">"Einrichtung"</span>, <span class="st">"datenliefernde Einrichtung"</span>]].plot(kind<span class="op">=</span><span class="st">"barh"</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Einrichtungen (Top)"</span>)</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Anzahl"</span>)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">":"</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend(loc<span class="op">=</span><span class="st">"lower right"</span>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zum Schluss werden die aggregierten Werte aus `agg` als horizontale Balkendiagramme dargestellt:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Objekte je Bundesland</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Einrichtungen vs. liefernde Einrichtungen je Bundesland</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Achsenbeschriftung wird so formatiert, dass große Zahlen ohne wissenschaftliche Notation gut lesbar bleiben.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> agg.iloc[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># für barh: klein -&gt; groß</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="bu">max</span>(<span class="dv">6</span>, <span class="fl">0.35</span> <span class="op">*</span> <span class="bu">len</span>(plot_df))))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _format_int_no_sci(x, pos):</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    _ <span class="op">=</span> pos  <span class="co"># required by FuncFormatter signature</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">","</span>, <span class="st">"."</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Objekte</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plot_df[<span class="st">"Objekte"</span>].plot(kind<span class="op">=</span><span class="st">"barh"</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"#4C78A8"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Objekte"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Anzahl"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">":"</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].xaxis.set_major_formatter(FuncFormatter(_format_int_no_sci))</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plot_df[[<span class="st">"Einrichtungen"</span>, <span class="st">"Liefernde Einrichtungen"</span>]].plot(kind<span class="op">=</span><span class="st">"barh"</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Einrichtungen"</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Anzahl"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">":"</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend(loc<span class="op">=</span><span class="st">"lower right"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="statistic-federal_state_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="statistic-federal_state_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <!-- Table export buttons (CSV + Clipboard; Shift-click CSV for Excel if SheetJS loaded) -->
@@ -1263,4 +939,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/issues/new" class="toc-action"><i class="bi bi-github"></i>Problem melden</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/issues/new" class="toc-action"><i class="bi bi-github"></i>Problem melden</a></li></ul></div></div></div></footer></body></html>
