@@ -39,6 +39,57 @@ async function resolveCommitSha(repoSlug, path, untilIso) {
   return data[0]?.sha || null;
 }
 
+async function fetchCommits(repoSlug, path, page) {
+  const api = new URL(`https://api.github.com/repos/${repoSlug}/commits`);
+  api.searchParams.set("path", path);
+  api.searchParams.set("per_page", "100");
+  api.searchParams.set("page", String(page));
+
+  const resp = await fetch(api.toString(), {
+    headers: {
+      "Accept": "application/vnd.github+json",
+    },
+  });
+
+  if (!resp.ok) {
+    throw new Error(`GitHub API ${resp.status}`);
+  }
+
+  const data = await resp.json();
+  return Array.isArray(data) ? data : [];
+}
+
+function isoDay(isoString) {
+  if (!isoString || typeof isoString !== "string") return null;
+  // Expect ISO like 2026-02-09T12:34:56Z
+  const m = isoString.match(/^\d{4}-\d{2}-\d{2}/);
+  return m ? m[0] : null;
+}
+
+async function buildDayOptions(repoSlug, historyPath, maxPages) {
+  const dayToSha = new Map();
+  for (let page = 1; page <= maxPages; page++) {
+    const commits = await fetchCommits(repoSlug, historyPath, page);
+    if (commits.length === 0) break;
+
+    for (const c of commits) {
+      const sha = c?.sha;
+      const dateIso = c?.commit?.author?.date || c?.commit?.committer?.date;
+      const day = isoDay(dateIso);
+      if (!sha || !day) continue;
+
+      // Commits are returned newest-first. First sha per day is the latest snapshot for that day.
+      if (!dayToSha.has(day)) {
+        dayToSha.set(day, sha);
+      }
+    }
+  }
+
+  // Sort days descending
+  const days = Array.from(dayToSha.keys()).sort().reverse();
+  return days.map((day) => ({ day, sha: dayToSha.get(day) }));
+}
+
 function updateLinks(container, repoSlug, branchOrSha, nbPath) {
   const pathEnc = encodePath(nbPath);
   const nbviewer = `https://nbviewer.org/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
@@ -104,12 +155,82 @@ async function onDateChange(container) {
   }
 }
 
+function updateAllNotebookLinks(repoSlug, branchOrSha) {
+  const blocks = document.querySelectorAll(".launch-buttons[data-nb-path]");
+  blocks.forEach((launch) => {
+    const nbPath = launch.getAttribute("data-nb-path");
+    if (!nbPath) return;
+
+    const pathEnc = encodePath(nbPath);
+    const nbviewer = `https://nbviewer.org/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
+    const github = `https://github.com/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
+    const raw = `https://raw.githubusercontent.com/${repoSlug}/${branchOrSha}/${pathEnc}`;
+
+    const nbviewerLink = launch.querySelector("a.js-nbviewer");
+    if (nbviewerLink) nbviewerLink.href = nbviewer;
+
+    const githubLink = launch.querySelector("a.js-github");
+    if (githubLink) githubLink.href = github;
+
+    const downloadLink = launch.querySelector("a.js-download");
+    if (downloadLink) downloadLink.href = raw;
+  });
+}
+
+async function initGlobalHistory() {
+  const container = document.querySelector(".nb-history-global[data-repo-slug][data-history-path]");
+  if (!container) return false;
+
+  const repoSlug = container.getAttribute("data-repo-slug");
+  const branch = container.getAttribute("data-repo-branch") || "main";
+  const historyPath = container.getAttribute("data-history-path");
+  const select = container.querySelector(".nb-history-select");
+  if (!repoSlug || !historyPath || !select) return false;
+
+  setStatus(container, "Lade Stände …");
+  try {
+    const options = await buildDayOptions(repoSlug, historyPath, 10);
+    options.forEach(({ day, sha }) => {
+      const opt = document.createElement("option");
+      opt.value = sha;
+      opt.textContent = day;
+      opt.title = sha;
+      select.appendChild(opt);
+    });
+
+    setStatus(container, options.length ? "" : "Keine Stände gefunden.");
+  } catch (_e) {
+    setStatus(container, "Fehler beim Laden.");
+  }
+
+  select.addEventListener("change", () => {
+    const sha = select.value;
+    if (!sha) {
+      updateAllNotebookLinks(repoSlug, branch);
+      setStatus(container, "");
+      return;
+    }
+    updateAllNotebookLinks(repoSlug, sha);
+    setStatus(container, `Stand: ${sha.substring(0, 7)}`);
+  });
+
+  // Ensure initial state is consistent
+  updateAllNotebookLinks(repoSlug, branch);
+  return true;
+}
+
 function initNotebookHistory() {
-  const containers = document.querySelectorAll(".nb-history[data-repo-slug][data-nb-path]");
-  containers.forEach((container) => {
-    const input = container.querySelector(".nb-history-date");
-    if (!input) return;
-    input.addEventListener("change", () => onDateChange(container));
+  // Prefer the new global UI if present.
+  initGlobalHistory().then((didInit) => {
+    if (didInit) return;
+
+    // Legacy per-notebook date pickers (kept for backwards compatibility).
+    const containers = document.querySelectorAll(".nb-history[data-repo-slug][data-nb-path]");
+    containers.forEach((c) => {
+      const input = c.querySelector(".nb-history-date");
+      if (!input) return;
+      input.addEventListener("change", () => onDateChange(c));
+    });
   });
 }
 
