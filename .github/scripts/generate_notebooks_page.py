@@ -77,6 +77,22 @@ def url_escape(value: str) -> str:
     return quote(value, safe="")
 
 
+def choose_history_path(notebooks: list[Path]) -> str | None:
+    if not notebooks:
+        return None
+
+    preferred = {
+        "statistic-federal_state.ipynb",
+        "inspection-invalid_multiple_facets_values.ipynb",
+    }
+
+    for nb in notebooks:
+        if nb.name in preferred:
+            return nb.relative_to(REPO_ROOT).as_posix()
+
+    return notebooks[0].relative_to(REPO_ROOT).as_posix()
+
+
 def main() -> int:
     repo_slug = os.getenv("REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or DEFAULT_REPO_SLUG
     branch = os.getenv("REPO_BRANCH") or os.getenv("GITHUB_REF_NAME") or DEFAULT_BRANCH
@@ -85,6 +101,7 @@ def main() -> int:
     vscode_clone = f"vscode://vscode.git/clone?url={url_escape(repo_url + '.git')}"
 
     notebooks = sorted(iter_notebooks(REPO_ROOT), key=lambda p: p.as_posix().lower())
+    history_path = choose_history_path(notebooks)
 
     lines: list[str] = []
     lines += [
@@ -102,6 +119,23 @@ def main() -> int:
             "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.",
             "",
         ]
+
+        if history_path:
+            lines += [
+                "```{=html}",
+                f"<div class=\"nb-history-global\" data-repo-slug=\"{repo_slug}\" data-repo-branch=\"{branch}\" data-history-path=\"{history_path}\">",
+                "  <div class=\"nb-history-global-row\">",
+                "    <label class=\"form-label\" for=\"nb-history-global-select\">Historischer Stand:</label>",
+                "    <select class=\"form-select form-select-sm nb-history-select\" id=\"nb-history-global-select\">",
+                "      <option value=\"\">Aktuell</option>",
+                "    </select>",
+                "    <span class=\"nb-history-status\"></span>",
+                "  </div>",
+                "</div>",
+                "```",
+                "",
+            ]
+
         for nb in notebooks:
             rel = nb.relative_to(REPO_ROOT).as_posix()
             rel_escaped = url_escape_path(rel)
@@ -122,7 +156,7 @@ def main() -> int:
             lines += [
                 f"### {title} <span class=\"nb-filename\">{rel}</span>",
                 "",
-                "::: {.launch-buttons}",
+                f"::: {{.launch-buttons data-nb-path=\"{rel}\"}}",
                 f"<a class=\"btn btn-sm btn-primary\" href=\"{page_href}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{colab}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{binder}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
@@ -131,17 +165,6 @@ def main() -> int:
                 f"<a class=\"btn btn-sm btn-outline-secondary js-github\" href=\"{github_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-download\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
                 ":::",
-                "",
-                "```{=html}",
-                "<div class=\"nb-history\" data-repo-slug=\"" + repo_slug + "\" data-repo-branch=\"" + branch + "\" data-nb-path=\"" + rel + "\">",
-                "  <label class=\"form-label\" for=\"nb-history-" + rel_escaped.replace("%", "").replace("/", "-") + "\">Historischer Stand:</label>",
-                "  <div class=\"nb-history-row\">",
-                "    <input class=\"form-control form-control-sm nb-history-date\" type=\"date\" id=\"nb-history-" + rel_escaped.replace("%", "").replace("/", "-") + "\" />",
-                "    <a class=\"btn btn-sm btn-outline-secondary nb-history-open\" href=\"" + nbviewer + "\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Historischen Notebook-Stand in nbviewer öffnen\">Öffnen</a>",
-                "    <span class=\"nb-history-status\"></span>",
-                "  </div>",
-                "</div>",
-                "```",
                 "",
             ]
 
