@@ -155,7 +155,19 @@ async function onDateChange(container) {
   }
 }
 
-function updateAllNotebookLinks(repoSlug, branchOrSha) {
+function stashOriginal(link) {
+  if (!link) return;
+  if (!link.dataset.origHref) link.dataset.origHref = link.getAttribute("href") || "";
+  if (!link.dataset.origTitle) link.dataset.origTitle = link.getAttribute("title") || "";
+}
+
+function restoreOriginal(link) {
+  if (!link) return;
+  if (link.dataset.origHref) link.setAttribute("href", link.dataset.origHref);
+  if (link.dataset.origTitle) link.setAttribute("title", link.dataset.origTitle);
+}
+
+function updateAllNotebookLinks(repoSlug, branchOrSha, branch) {
   const blocks = document.querySelectorAll(".launch-buttons[data-nb-path]");
   blocks.forEach((launch) => {
     const nbPath = launch.getAttribute("data-nb-path");
@@ -165,15 +177,62 @@ function updateAllNotebookLinks(repoSlug, branchOrSha) {
     const nbviewer = `https://nbviewer.org/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
     const github = `https://github.com/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
     const raw = `https://raw.githubusercontent.com/${repoSlug}/${branchOrSha}/${pathEnc}`;
+    const colab = `https://colab.research.google.com/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
+    const binder = `https://mybinder.org/v2/gh/${repoSlug}/${branchOrSha}?filepath=${pathEnc}`;
+
+    const isCurrent = !branchOrSha || (branch && branchOrSha === branch);
+
+    // Primary button (Quarto page). GitHub Pages only hosts the *current* build.
+    // When a historical SHA is selected, point "Seite" to nbviewer for that SHA.
+    const pageLink = launch.querySelector("a.btn-primary");
+    if (pageLink) {
+      stashOriginal(pageLink);
+      if (isCurrent) {
+        restoreOriginal(pageLink);
+      } else {
+        pageLink.setAttribute("href", nbviewer);
+        pageLink.setAttribute(
+          "title",
+          "Historischer Stand wird in nbviewer geöffnet (Quarto-Seiten sind immer der aktuelle Build)."
+        );
+      }
+    }
+
+    // Colab / Binder
+    const colabLink = launch.querySelector("a.js-colab") || Array.from(launch.querySelectorAll("a")).find((a) => (a.textContent || "").trim() === "Colab");
+    if (colabLink) {
+      stashOriginal(colabLink);
+      if (isCurrent) restoreOriginal(colabLink);
+      else colabLink.setAttribute("href", colab);
+    }
+
+    const binderLink = launch.querySelector("a.js-binder") || Array.from(launch.querySelectorAll("a")).find((a) => (a.textContent || "").trim() === "Binder");
+    if (binderLink) {
+      stashOriginal(binderLink);
+      if (isCurrent) restoreOriginal(binderLink);
+      else binderLink.setAttribute("href", binder);
+    }
 
     const nbviewerLink = launch.querySelector("a.js-nbviewer");
-    if (nbviewerLink) nbviewerLink.href = nbviewer;
+    if (nbviewerLink) {
+      stashOriginal(nbviewerLink);
+      if (isCurrent) restoreOriginal(nbviewerLink);
+      else nbviewerLink.href = nbviewer;
+    }
 
     const githubLink = launch.querySelector("a.js-github");
-    if (githubLink) githubLink.href = github;
+    if (githubLink) {
+      stashOriginal(githubLink);
+      if (isCurrent) restoreOriginal(githubLink);
+      else githubLink.href = github;
+    }
 
     const downloadLink = launch.querySelector("a.js-download");
-    if (downloadLink) downloadLink.href = raw;
+    if (downloadLink) {
+      stashOriginal(downloadLink);
+      if (isCurrent) restoreOriginal(downloadLink);
+      else downloadLink.href = raw;
+    }
   });
 }
 
@@ -206,16 +265,16 @@ async function initGlobalHistory() {
   select.addEventListener("change", () => {
     const sha = select.value;
     if (!sha) {
-      updateAllNotebookLinks(repoSlug, branch);
+      updateAllNotebookLinks(repoSlug, branch, branch);
       setStatus(container, "");
       return;
     }
-    updateAllNotebookLinks(repoSlug, sha);
+    updateAllNotebookLinks(repoSlug, sha, branch);
     setStatus(container, `Stand: ${sha.substring(0, 7)}`);
   });
 
   // Ensure initial state is consistent
-  updateAllNotebookLinks(repoSlug, branch);
+  updateAllNotebookLinks(repoSlug, branch, branch);
   return true;
 }
 
