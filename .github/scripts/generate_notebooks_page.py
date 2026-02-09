@@ -166,6 +166,7 @@ def main() -> int:
                 f"<a class=\"btn btn-sm btn-outline-secondary js-colab\" href=\"{colab}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-binder\" href=\"{binder}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{vscode_clone}\" title=\"Repository in lokalem VS Code öffnen/klonen (danach Notebook-Datei öffnen)\">VS Code (lokal)</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"x-github-client://openRepo/{repo_url}\" title=\"Repository in GitHub Desktop öffnen (GitHub Desktop muss lokal installiert sein)\">GitHub Desktop</a>",
                 ":::",
                 "",
             ]
