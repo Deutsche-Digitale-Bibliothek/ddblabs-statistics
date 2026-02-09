@@ -3,6 +3,11 @@ name: Publish Quarto site to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["Refresh notebook outputs"]
+    branches: [main]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -10,10 +15,13 @@ permissions:
 
 jobs:
   build-deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
