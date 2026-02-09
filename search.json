@@ -32,7 +32,7 @@
     "href": "index.html#nachnutzen",
     "title": "ddblabs-statistics",
     "section": "Nachnutzen",
-    "text": "Nachnutzen\nDiese Links beziehen sich auf die Nachnutzung des gesamten Repositories (nicht auf ein einzelnes Notebook).\n\nNotebooks Download ZIP VS Code (Web) Codespaces Kaggle GitHub Desktop\n\nHinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.\nKaggle-Import: im Editor File → Import Notebook → GitHub (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics)."
+    "text": "Nachnutzen\nDiese Links beziehen sich auf die Nachnutzung des gesamten Repositories (nicht auf ein einzelnes Notebook).\n\nNotebooks VS Code (lokal) VS Code (Web) Codespaces Kaggle GitHub Desktop Download ZIP\n\nHinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.\nKaggle-Import: im Editor File → Import Notebook → GitHub (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics)."
   },
   {
     "objectID": "index.html#weitere-ausführungsoptionen",
@@ -46,13 +46,13 @@
     "href": "pages/notebooks.html",
     "title": "Notebooks",
     "section": "",
-    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n  Historischer Stand:\n  \n    \n    Öffnen\n    \n  \n\n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n  Historischer Stand:\n  \n    \n    Öffnen"
+    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n  \n    Historischer Stand:\n    \n      Aktuell\n    \n    \n  \n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download"
   },
   {
     "objectID": "pages/notebooks.html#nachnutzen",
     "href": "pages/notebooks.html#nachnutzen",
     "title": "Notebooks",
     "section": "",
-    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n  Historischer Stand:\n  \n    \n    Öffnen\n    \n  \n\n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n  Historischer Stand:\n  \n    \n    Öffnen"
+    "text": "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\n  \n    Historischer Stand:\n    \n      Aktuell\n    \n    \n  \n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n\n\n\nSeite Colab Binder VS Code nbviewer GitHub Download"
   }
 ]
