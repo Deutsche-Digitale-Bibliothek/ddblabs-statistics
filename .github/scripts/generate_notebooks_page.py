@@ -113,12 +113,6 @@ def main() -> int:
     if not notebooks:
         lines += ["Keine Notebooks gefunden.", ""]
     else:
-        lines += [
-            "## Nachnutzen",
-            "",
-            "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.",
-            "",
-        ]
 
         if history_path:
             lines += [
@@ -135,6 +129,12 @@ def main() -> int:
                 "```",
                 "",
             ]
+
+        lines += [
+            "",
+            "Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.",
+            "",
+        ]
 
         for nb in notebooks:
             rel = nb.relative_to(REPO_ROOT).as_posix()

@@ -82,6 +82,9 @@ target/
 .quarto/
 _site/
 
+# Generated Quarto content (built in CI)
+pages/notebooks.qmd
+
 # IPython
 profile_default/
 ipython_config.py

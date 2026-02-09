@@ -39,6 +39,12 @@ jupyter lab
 
 Die Notebook-Übersicht wird für GitHub Pages automatisch generiert.
 
+Lokal vor einem `quarto render` erzeugen:
+
+```bash
+python .github/scripts/generate_notebooks_page.py
+```
+
 ## Neue Notebooks hinzufügen
 
 - Notebook als `.ipynb` ins Repository legen (idealerweise ins Wurzelverzeichnis).
