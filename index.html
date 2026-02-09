@@ -166,44 +166,26 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <!--
 	Quarto includes this file verbatim on every page.
-	Relative paths like "assets/..." break on nested pages (e.g. /pages/notebooks.html).
-	Load scripts with a small fallback mechanism that tries common prefixes.
+	The notebooks overview lives under /pages/, where the correct relative path is "../assets/...".
+	Notebook pages and the homepage are at the root, where the correct relative path is "assets/...".
 -->
 
 <script>
 	(function () {
-		function loadScriptWithFallback(candidates) {
-			return new Promise(function (resolve, reject) {
-				function tryNext(i) {
-					if (i >= candidates.length) {
-						reject(new Error("All candidates failed: " + candidates.join(", ")));
-						return;
-					}
+		var isPages = (window.location.pathname || "").indexOf("/pages/") !== -1;
+		var prefix = isPages ? "../" : "";
 
-					var s = document.createElement("script");
-					s.src = candidates[i];
-					s.onload = function () { resolve(candidates[i]); };
-					s.onerror = function () { tryNext(i + 1); };
-					document.body.appendChild(s);
-				}
-
-				tryNext(0);
-			});
+		function load(src) {
+			var s = document.createElement("script");
+			s.src = prefix + src;
+			document.body.appendChild(s);
 		}
 
 		// Table export buttons (CSV + Clipboard; Shift-click CSV for Excel if SheetJS loaded)
-		loadScriptWithFallback([
-			"assets/table-export.js",
-			"../assets/table-export.js",
-			"../../assets/table-export.js",
-		]).catch(function () { /* ignore */ });
+		load("assets/table-export.js");
 
 		// Notebook history date picker (used on the notebooks overview page)
-		loadScriptWithFallback([
-			"assets/notebook-history.js",
-			"../assets/notebook-history.js",
-			"../../assets/notebook-history.js",
-		]).catch(function () { /* ignore */ });
+		load("assets/notebook-history.js");
 	})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
