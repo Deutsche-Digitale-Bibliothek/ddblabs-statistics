@@ -152,18 +152,20 @@ def main() -> int:
             colab = f"https://colab.research.google.com/github/{repo_slug}/blob/{branch}/{rel_escaped}"
             binder = f"https://mybinder.org/v2/gh/{repo_slug}/{branch}?filepath={rel_escaped}"
             nbviewer = f"https://nbviewer.org/github/{repo_slug}/blob/{branch}/{rel_escaped}"
+            vscode_web = f"https://vscode.dev/github/{repo_slug}/blob/{branch}/{rel_escaped}"
 
             lines += [
                 f"### {title} <span class=\"nb-filename\">{rel}</span>",
                 "",
                 f"::: {{.launch-buttons data-nb-path=\"{rel}\"}}",
                 f"<a class=\"btn btn-sm btn-primary\" href=\"{page_href}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary js-download\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary js-github\" href=\"{github_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary js-nbviewer\" href=\"{nbviewer}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary js-vscodeweb\" href=\"{vscode_web}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in VS Code (Web) öffnen\">VS Code (Web)</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-colab\" href=\"{colab}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-binder\" href=\"{binder}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{vscode_clone}\" title=\"Repository in lokalem VS Code öffnen/klonen (danach Notebook-Datei öffnen)\">VS Code</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary js-nbviewer\" href=\"{nbviewer}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary js-github\" href=\"{github_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
-                f"<a class=\"btn btn-sm btn-outline-secondary js-download\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{vscode_clone}\" title=\"Repository in lokalem VS Code öffnen/klonen (danach Notebook-Datei öffnen)\">VS Code (lokal)</a>",
                 ":::",
                 "",
             ]
