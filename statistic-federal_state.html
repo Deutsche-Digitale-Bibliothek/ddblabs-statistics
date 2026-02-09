@@ -174,13 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dieses Notebook ruft Statistiken aus der API der Deutschen Digitalen Bibliothek ab und bereitet sie für eine Auswertung nach Bundesland auf:</p>
-<ol type="1">
-<li>Aus der Solr-Suche wird eine Facet-Statistik pro <code>dataprovider_id</code> geladen (Objektanzahlen je Datenpartner).</li>
-<li>Aus dem Organisationsindex kommen Metadaten zu Einrichtungen/Providern (u.a. Name und Bundesland).</li>
-<li>Beides wird zu <code>df_join</code> zusammengeführt (und kann als Excel exportiert werden).</li>
-<li>Anschließend wird nach Bundesland aggregiert (<code>agg</code>) und als Diagramme visualisiert.</li>
-</ol>
+<p>Dieses Notebook ruft Statistiken aus der API der Deutschen Digitalen Bibliothek ab und bereitet sie für eine Auswertung nach Bundesland auf.</p>
 <div id="2e7adfe2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:52.818530Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:52.818278Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:56.084330Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:56.083452Z&quot;}}" data-execution_count="9">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
@@ -460,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="da8d3c73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.635063Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.634886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.987642Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.986641Z&quot;}}">
+<div id="da8d3c73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.635063Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.634886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.987642Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.986641Z&quot;}}" data-execution_count="10">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
