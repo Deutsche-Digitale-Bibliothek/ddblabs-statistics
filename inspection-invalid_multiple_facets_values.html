@@ -461,11 +461,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 </main> <!-- /main -->
-<!-- Table export buttons (CSV + Clipboard; Shift-click CSV for Excel if SheetJS loaded) -->
-<script src="assets/table-export.js"></script>
+<!--
+	Quarto includes this file verbatim on every page.
+	Relative paths like "assets/..." break on nested pages (e.g. /pages/notebooks.html).
+	Load scripts with a small fallback mechanism that tries common prefixes.
+-->
 
-<!-- Notebook history date picker (used on the notebooks overview page) -->
-<script src="assets/notebook-history.js"></script>
+<script>
+	(function () {
+		function loadScriptWithFallback(candidates) {
+			return new Promise(function (resolve, reject) {
+				function tryNext(i) {
+					if (i >= candidates.length) {
+						reject(new Error("All candidates failed: " + candidates.join(", ")));
+						return;
+					}
+
+					var s = document.createElement("script");
+					s.src = candidates[i];
+					s.onload = function () { resolve(candidates[i]); };
+					s.onerror = function () { tryNext(i + 1); };
+					document.body.appendChild(s);
+				}
+
+				tryNext(0);
+			});
+		}
+
+		// Table export buttons (CSV + Clipboard; Shift-click CSV for Excel if SheetJS loaded)
+		loadScriptWithFallback([
+			"assets/table-export.js",
+			"../assets/table-export.js",
+			"../../assets/table-export.js",
+		]).catch(function () { /* ignore */ });
+
+		// Notebook history date picker (used on the notebooks overview page)
+		loadScriptWithFallback([
+			"assets/notebook-history.js",
+			"../assets/notebook-history.js",
+			"../../assets/notebook-history.js",
+		]).catch(function () { /* ignore */ });
+	})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
