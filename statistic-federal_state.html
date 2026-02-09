@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Dieses Notebook ruft Statistiken aus der API der Deutschen Digitalen Bibliothek ab und bereitet sie für eine Auswertung nach Bundesland auf.</p>
-<div id="2e7adfe2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:52.818530Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:52.818278Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:56.084330Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:56.083452Z&quot;}}" data-execution_count="9">
+<div id="2e7adfe2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:52.818530Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:52.818278Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:56.084330Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:56.083452Z&quot;}}">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Stand: Datum/Uhrzeit der Notebook-Ausführung (lokale Zeitzone)</span></span>
 <span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>stand <span class="op">=</span> datetime.now().astimezone().strftime(<span class="st">"</span><span class="sc">%d</span><span class="st">.%m.%Y um %H:%M:%S Uhr"</span>)</span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="ss">f"&gt; **Letzte Aktualisierung:** </span><span class="sc">{</span>stand<span class="sc">}</span><span class="ss">"</span>))</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="ss">f"**Letzte Aktualisierung:** </span><span class="sc">{</span>stand<span class="sc">}</span><span class="ss">"</span>))</span>
 <span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="co"># Anzeige</span></span>
 <span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>agg</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
