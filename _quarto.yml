@@ -3,6 +3,9 @@ project:
   output-dir: _site
   # Render all site content by default. This avoids maintaining a manual list
   # when the number of notebooks grows.
+  resources:
+    - assets/table-export.js
+    - assets/notebook-history.js
 
 execute:
   enabled: false

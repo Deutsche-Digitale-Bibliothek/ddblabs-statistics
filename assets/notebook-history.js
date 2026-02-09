@@ -104,11 +104,17 @@ async function onDateChange(container) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function initNotebookHistory() {
   const containers = document.querySelectorAll(".nb-history[data-repo-slug][data-nb-path]");
   containers.forEach((container) => {
     const input = container.querySelector(".nb-history-date");
     if (!input) return;
     input.addEventListener("change", () => onDateChange(container));
   });
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initNotebookHistory);
+} else {
+  initNotebookHistory();
+}
