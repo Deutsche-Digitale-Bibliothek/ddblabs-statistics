@@ -17,6 +17,7 @@ Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.
 <a class="btn btn-sm btn-outline-secondary js-download" href="https://raw.githubusercontent.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main/inspection-invalid_multiple_facets_values.ipynb" target="_blank" rel="noopener noreferrer" title="Notebook-Datei (.ipynb) direkt herunterladen">Download</a>
 :::
 
+```{=html}
 <div class="nb-history" data-repo-slug="Deutsche-Digitale-Bibliothek/ddblabs-statistics" data-repo-branch="main" data-nb-path="inspection-invalid_multiple_facets_values.ipynb">
   <label class="form-label" for="nb-history-inspection-invalid_multiple_facets_values.ipynb">Historischer Stand:</label>
   <div class="nb-history-row">
@@ -25,6 +26,7 @@ Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.
     <span class="nb-history-status"></span>
   </div>
 </div>
+```
 
 ### Datenpartner mit Anzahl der Objekte pro Bundesland <span class="nb-filename">statistic-federal_state.ipynb</span>
 
@@ -38,6 +40,7 @@ Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.
 <a class="btn btn-sm btn-outline-secondary js-download" href="https://raw.githubusercontent.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics/main/statistic-federal_state.ipynb" target="_blank" rel="noopener noreferrer" title="Notebook-Datei (.ipynb) direkt herunterladen">Download</a>
 :::
 
+```{=html}
 <div class="nb-history" data-repo-slug="Deutsche-Digitale-Bibliothek/ddblabs-statistics" data-repo-branch="main" data-nb-path="statistic-federal_state.ipynb">
   <label class="form-label" for="nb-history-statistic-federal_state.ipynb">Historischer Stand:</label>
   <div class="nb-history-row">
@@ -46,3 +49,4 @@ Hier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.
     <span class="nb-history-status"></span>
   </div>
 </div>
+```

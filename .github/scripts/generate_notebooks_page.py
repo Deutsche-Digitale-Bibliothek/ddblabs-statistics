@@ -132,6 +132,7 @@ def main() -> int:
                 f"<a class=\"btn btn-sm btn-outline-secondary js-download\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
                 ":::",
                 "",
+                "```{=html}",
                 "<div class=\"nb-history\" data-repo-slug=\"" + repo_slug + "\" data-repo-branch=\"" + branch + "\" data-nb-path=\"" + rel + "\">",
                 "  <label class=\"form-label\" for=\"nb-history-" + rel_escaped.replace("%", "").replace("/", "-") + "\">Historischer Stand:</label>",
                 "  <div class=\"nb-history-row\">",
@@ -140,6 +141,7 @@ def main() -> int:
                 "    <span class=\"nb-history-status\"></span>",
                 "  </div>",
                 "</div>",
+                "```",
                 "",
             ]
 
