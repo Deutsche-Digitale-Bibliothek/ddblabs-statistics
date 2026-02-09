@@ -41,3 +41,23 @@
 .table-export-buttons .btn:focus {
   opacity: 1;
 }
+
+.nb-history {
+  margin: 0.25rem 0 1.25rem 0;
+}
+
+.nb-history-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nb-history-date {
+  max-width: 12rem;
+}
+
+.nb-history-status {
+  font-size: 0.85rem;
+  color: #6c757d;
+}

@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Beides wird zu <code>df_join</code> zusammengeführt (und kann als Excel exportiert werden).</li>
 <li>Anschließend wird nach Bundesland aggregiert (<code>agg</code>) und als Diagramme visualisiert.</li>
 </ol>
-<div id="ba02542b" class="cell" data-execution_count="16">
+<div id="ba02542b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:51.710706Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:51.710503Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:52.816425Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:52.815626Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="2e7adfe2" class="cell" data-execution_count="17">
+<div id="2e7adfe2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:52.818530Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:52.818278Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:56.084330Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:56.083452Z&quot;}}" data-execution_count="2">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zuerst wird aus der DDB-Suche eine Facet-Statistik zu `dataprovider_id` geladen. </span></span>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># df</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="b0b04fd9" class="cell" data-execution_count="18">
+<div id="b0b04fd9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:56.086109Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:56.085939Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.573837Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.572680Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als nächstes werden Organisationsdaten (Einrichtungen und Aggregatoren) aus dem Organisation-Index geladen. </span></span>
@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># df_org</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="e86d5a05" class="cell" data-execution_count="19">
+<div id="e86d5a05" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.576029Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.575817Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.598638Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.597710Z&quot;}}" data-execution_count="4">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anschließend werden die Provider-Statistik (`df`) und die Organisationsdaten (`df_org`) zusammengeführt.</span></span>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># df_join</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="13ae74aa" class="cell" data-execution_count="20">
+<div id="13ae74aa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.600760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.600544Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.606987Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.606163Z&quot;}}" data-execution_count="5">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stand: Datum/Uhrzeit der Notebook-Ausführung (lokale Zeitzone)</span></span>
@@ -306,11 +306,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <blockquote class="blockquote">
-<p><strong>Letzte Aktualisierung:</strong> 06.02.2026 um 17:46:19 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 09.02.2026 um 05:05:57 Uhr</p>
 </blockquote>
 </div>
 </div>
-<div id="f3e5fd64" class="cell" data-execution_count="21">
+<div id="f3e5fd64" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.608979Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.608750Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.633214Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.632230Z&quot;}}" data-execution_count="6">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Im nächsten Schritt wird `df_join` nach Bundesland ausgewertet. Dafür wird das (ggf. mehrfach belegte)</span></span>
@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>agg</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -481,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="da8d3c73" class="cell" data-execution_count="22">
+<div id="da8d3c73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:57.635063Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:57.634886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:57.987642Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:57.986641Z&quot;}}" data-execution_count="7">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zum Schluss werden die aggregierten Werte aus `agg` als horizontale Balkendiagramme dargestellt:</span></span>
@@ -529,6 +529,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </main> <!-- /main -->
 <!-- Table export buttons (CSV + Clipboard; Shift-click CSV for Excel if SheetJS loaded) -->
 <script src="assets/table-export.js"></script>
+
+<!-- Notebook history date picker (used on the notebooks overview page) -->
+<script src="assets/notebook-history.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
