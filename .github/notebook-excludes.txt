@@ -1,0 +1,5 @@
+# Optional: repo-relative glob patterns of notebooks to exclude from CI execution.
+# One pattern per line. Lines starting with # are comments.
+# Examples:
+# statistic-federal_state.ipynb
+# experiments/**

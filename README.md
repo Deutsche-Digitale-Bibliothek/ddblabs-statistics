@@ -51,6 +51,13 @@ python .github/scripts/generate_notebooks_page.py
 - Dateinamen ohne Leerzeichen/Sonderzeichen bevorzugen.
 - Commit & Push nach `main` – die GitHub-Pages-Seite „Notebooks“ aktualisiert sich automatisch.
 
+## Notebooks von der CI-Ausführung ausschließen
+
+Wenn ein Notebook in der Action „Refresh notebook outputs“ nicht ausgeführt werden soll:
+
+- Pattern (glob) in [.github/notebook-excludes.txt](.github/notebook-excludes.txt) eintragen **oder**
+- env var `NOTEBOOK_EXCLUDE` setzen (kommagetrennte Patterns, repo-relativ).
+
 ## Hinweise zur GitHub-Pages-Ansicht
 
 - Die Website rendert Notebooks **ohne Ausführung** (keine API-Calls im Build). Sichtbar sind nur bereits gespeicherte Outputs.
