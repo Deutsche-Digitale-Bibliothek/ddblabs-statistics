@@ -25,27 +25,20 @@
     "href": "index.html",
     "title": "ddblabs-statistics",
     "section": "",
-    "text": "Eine kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digitalen Bibliothek."
+    "text": "Eine kleine Sammlung von Jupyter-Notebooks für Auswertungen zur Deutschen Digitalen Bibliothek.\nDiese Links beziehen sich auf die Nachnutzung des gesamten Repositories (nicht auf ein einzelnes Notebook)."
   },
   {
-    "objectID": "index.html#nachnutzen",
-    "href": "index.html#nachnutzen",
+    "objectID": "index.html#hinweise",
+    "href": "index.html#hinweise",
     "title": "ddblabs-statistics",
-    "section": "Nachnutzen",
-    "text": "Nachnutzen\nDiese Links beziehen sich auf die Nachnutzung des gesamten Repositories (nicht auf ein einzelnes Notebook).\n\nNotebooks VS Code (lokal) VS Code (Web) Codespaces Kaggle GitHub Desktop Download ZIP\n\nHinweis: Für GitHub Desktop muss die Anwendung lokal installiert sein.\nKaggle-Import: im Editor File → Import Notebook → GitHub (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics)."
-  },
-  {
-    "objectID": "index.html#weitere-ausführungsoptionen",
-    "href": "index.html#weitere-ausführungsoptionen",
-    "title": "ddblabs-statistics",
-    "section": "Weitere Ausführungsoptionen",
-    "text": "Weitere Ausführungsoptionen\nWeitere Ausführungsoptionen sind auf der Notebook-Seite pro Notebook verlinkt.\n\nHinweis: Die Website rendert die Notebooks ohne Ausführung (keine API-Calls während des Builds)."
+    "section": "Hinweise",
+    "text": "Hinweise\n\nFür „GitHub Desktop“ und „VS Code (lokal)“ muss die Anwendung lokal installiert sein.\nKaggle-Import: im Editor File → Import Notebook → GitHub (Repository-URL: https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-statistics).\nWeitere Ausführungsoptionen sind auf der Notebook-Seite pro Notebook verlinkt."
   },
   {
     "objectID": "pages/notebooks.html",
     "href": "pages/notebooks.html",
     "title": "Notebooks",
     "section": "",
-    "text": "Historischer Stand:\n    \n      Aktuell\n    \n    \n  \n\nHier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\nAuffällige Mehrfachwerte je Provider inspection-invalid_multiple_facets_values.ipynb\n\nSeite Colab Binder VS Code nbviewer GitHub Download\n\n\n\nDatenpartner mit Anzahl der Objekte pro Bundesland statistic-federal_state.ipynb\n\nSeite Colab Binder VS Code nbviewer GitHub Download"
+    "text": "Historischer Stand:\n    \n      Aktuell\n    \n    \n  \n\nHier sind die einzelnen Notebooks mit direkten Start-Links aufgelistet.\n\nAuffällige Mehrfachwerte je Provider inspection-invalid_multiple_facets_values.ipynb\n\nSeite Download GitHub nbviewer VS Code (Web) Colab Binder VS Code (lokal)\n\n\n\nDatenpartner mit Anzahl der Objekte pro Bundesland statistic-federal_state.ipynb\n\nSeite Download GitHub nbviewer VS Code (Web) Colab Binder VS Code (lokal)"
   }
 ]

@@ -39,6 +39,29 @@ async function resolveCommitSha(repoSlug, path, untilIso) {
   return data[0]?.sha || null;
 }
 
+async function resolveBranchCommitSha(repoSlug, branchName, untilIso) {
+  const api = new URL(`https://api.github.com/repos/${repoSlug}/commits`);
+  api.searchParams.set("sha", branchName);
+  api.searchParams.set("per_page", "1");
+  api.searchParams.set("until", untilIso);
+
+  const resp = await fetch(api.toString(), {
+    headers: {
+      "Accept": "application/vnd.github+json",
+    },
+  });
+
+  if (!resp.ok) {
+    throw new Error(`GitHub API ${resp.status}`);
+  }
+
+  const data = await resp.json();
+  if (!Array.isArray(data) || data.length === 0) {
+    return null;
+  }
+  return data[0]?.sha || null;
+}
+
 async function fetchCommits(repoSlug, path, page) {
   const api = new URL(`https://api.github.com/repos/${repoSlug}/commits`);
   api.searchParams.set("path", path);
@@ -167,7 +190,21 @@ function restoreOriginal(link) {
   if (link.dataset.origTitle) link.setAttribute("title", link.dataset.origTitle);
 }
 
-function updateAllNotebookLinks(repoSlug, branchOrSha, branch) {
+function nbPathToHtmlPath(nbPath) {
+  if (!nbPath) return nbPath;
+  if (nbPath.toLowerCase().endsWith(".ipynb")) {
+    return nbPath.slice(0, -6) + ".html";
+  }
+  return nbPath;
+}
+
+function ghPagesHtmlUrl(repoSlug, ghPagesSha, htmlPath) {
+  // raw.githack renders static HTML from a specific commit.
+  const pathEnc = encodePath(htmlPath);
+  return `https://raw.githack.com/${repoSlug}/${ghPagesSha}/${pathEnc}`;
+}
+
+function updateAllNotebookLinks(repoSlug, branchOrSha, branch, ghPagesSha) {
   const blocks = document.querySelectorAll(".launch-buttons[data-nb-path]");
   blocks.forEach((launch) => {
     const nbPath = launch.getAttribute("data-nb-path");
@@ -179,22 +216,34 @@ function updateAllNotebookLinks(repoSlug, branchOrSha, branch) {
     const raw = `https://raw.githubusercontent.com/${repoSlug}/${branchOrSha}/${pathEnc}`;
     const colab = `https://colab.research.google.com/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
     const binder = `https://mybinder.org/v2/gh/${repoSlug}/${branchOrSha}?filepath=${pathEnc}`;
+    const vscodeWeb = `https://vscode.dev/github/${repoSlug}/blob/${branchOrSha}/${pathEnc}`;
 
     const isCurrent = !branchOrSha || (branch && branchOrSha === branch);
 
     // Primary button (Quarto page). GitHub Pages only hosts the *current* build.
-    // When a historical SHA is selected, point "Seite" to nbviewer for that SHA.
+    // When a historical day is selected, point "Seite" to the rendered HTML in gh-pages
+    // at the matching gh-pages commit (by day).
     const pageLink = launch.querySelector("a.btn-primary");
     if (pageLink) {
       stashOriginal(pageLink);
       if (isCurrent) {
         restoreOriginal(pageLink);
       } else {
-        pageLink.setAttribute("href", nbviewer);
-        pageLink.setAttribute(
-          "title",
-          "Historischer Stand wird in nbviewer geöffnet (Quarto-Seiten sind immer der aktuelle Build)."
-        );
+        const htmlPath = nbPathToHtmlPath(nbPath);
+        if (ghPagesSha && htmlPath) {
+          pageLink.setAttribute("href", ghPagesHtmlUrl(repoSlug, ghPagesSha, htmlPath));
+          pageLink.setAttribute(
+            "title",
+            "Historischer Stand wird aus dem gh-pages-Branch (gerendertes HTML) geöffnet."
+          );
+        } else {
+          // Fallback: at least open the historical notebook itself.
+          pageLink.setAttribute("href", nbviewer);
+          pageLink.setAttribute(
+            "title",
+            "Historischer Stand wird in nbviewer geöffnet (gh-pages Commit konnte nicht aufgelöst werden)."
+          );
+        }
       }
     }
 
@@ -211,6 +260,15 @@ function updateAllNotebookLinks(repoSlug, branchOrSha, branch) {
       stashOriginal(binderLink);
       if (isCurrent) restoreOriginal(binderLink);
       else binderLink.setAttribute("href", binder);
+    }
+
+    // VS Code (Web)
+    const vscodeWebLink = launch.querySelector("a.js-vscodeweb")
+      || Array.from(launch.querySelectorAll("a")).find((a) => (a.textContent || "").trim() === "VS Code (Web)");
+    if (vscodeWebLink) {
+      stashOriginal(vscodeWebLink);
+      if (isCurrent) restoreOriginal(vscodeWebLink);
+      else vscodeWebLink.setAttribute("href", vscodeWeb);
     }
 
     const nbviewerLink = launch.querySelector("a.js-nbviewer");
@@ -252,6 +310,7 @@ async function initGlobalHistory() {
     options.forEach(({ day, sha }) => {
       const opt = document.createElement("option");
       opt.value = sha;
+      opt.dataset.day = day;
       opt.textContent = day;
       opt.title = sha;
       select.appendChild(opt);
@@ -262,19 +321,44 @@ async function initGlobalHistory() {
     setStatus(container, "Fehler beim Laden.");
   }
 
-  select.addEventListener("change", () => {
+  const ghPagesBranch = "gh-pages";
+  const ghPagesByDay = new Map();
+
+  select.addEventListener("change", async () => {
     const sha = select.value;
+    const day = select.selectedOptions && select.selectedOptions[0]
+      ? select.selectedOptions[0].dataset.day
+      : null;
+
     if (!sha) {
-      updateAllNotebookLinks(repoSlug, branch, branch);
+      updateAllNotebookLinks(repoSlug, branch, branch, null);
       setStatus(container, "");
       return;
     }
-    updateAllNotebookLinks(repoSlug, sha, branch);
+
+    let ghPagesSha = null;
+    if (day) {
+      ghPagesSha = ghPagesByDay.get(day) || null;
+      if (!ghPagesSha) {
+        try {
+          setStatus(container, "Lade gh-pages Stand …");
+          const untilIso = `${day}T23:59:59Z`;
+          ghPagesSha = await resolveBranchCommitSha(repoSlug, ghPagesBranch, untilIso);
+          if (ghPagesSha) {
+            ghPagesByDay.set(day, ghPagesSha);
+          }
+        } catch (_e) {
+          ghPagesSha = null;
+        }
+      }
+    }
+
+    updateAllNotebookLinks(repoSlug, sha, branch, ghPagesSha);
     setStatus(container, `Stand: ${sha.substring(0, 7)}`);
   });
 
   // Ensure initial state is consistent
-  updateAllNotebookLinks(repoSlug, branch, branch);
+  updateAllNotebookLinks(repoSlug, branch, branch, null);
   return true;
 }
 
