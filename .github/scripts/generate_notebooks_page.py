@@ -71,11 +71,18 @@ def url_escape_path(path: str) -> str:
     return quote(path)
 
 
+def url_escape(value: str) -> str:
+    from urllib.parse import quote
+
+    return quote(value, safe="")
+
+
 def main() -> int:
     repo_slug = os.getenv("REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or DEFAULT_REPO_SLUG
     branch = os.getenv("REPO_BRANCH") or os.getenv("GITHUB_REF_NAME") or DEFAULT_BRANCH
 
     repo_url = f"https://github.com/{repo_slug}"
+    vscode_clone = f"vscode://vscode.git/clone?url={url_escape(repo_url + '.git')}"
 
     notebooks = sorted(iter_notebooks(REPO_ROOT), key=lambda p: p.as_posix().lower())
 
@@ -119,6 +126,7 @@ def main() -> int:
                 f"<a class=\"btn btn-sm btn-primary\" href=\"{page_href}\" title=\"Gerenderte Notebook-Seite auf dieser Website öffnen\">Seite</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{colab}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Google Colab öffnen\">Colab</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{binder}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook in Binder starten (reproduzierbare Umgebung; Start kann dauern)\">Binder</a>",
+                f"<a class=\"btn btn-sm btn-outline-secondary\" href=\"{vscode_clone}\" title=\"Repository in lokalem VS Code öffnen/klonen (danach Notebook-Datei öffnen)\">VS Code</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-nbviewer\" href=\"{nbviewer}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook nur ansehen (nbviewer)\">nbviewer</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-github\" href=\"{github_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook auf GitHub ansehen\">GitHub</a>",
                 f"<a class=\"btn btn-sm btn-outline-secondary js-download\" href=\"{raw_file}\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Notebook-Datei (.ipynb) direkt herunterladen\">Download</a>",
