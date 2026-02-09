@@ -1,5 +1,6 @@
 jupyterlab>=4.0
 matplotlib>=3.8
+nbconvert>=7.0
 openpyxl>=3.1
 pandas>=2.1
 requests>=2.31
