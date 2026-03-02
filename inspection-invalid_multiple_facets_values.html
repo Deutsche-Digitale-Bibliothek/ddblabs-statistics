@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Einige Felder können je <code>dataprovider_id</code> mehrere unterschiedliche Werte haben (z.B. durch Datenmischung). Dafür wird ein Solr JSON-Facet genutzt und anschließend client-seitig auf <code>nvals &gt; 1</code> sowie 32-stellige IDs gefiltert. Hinweis: <code>unique(...)</code> ist in Solr oft ein schneller, näherungsweiser Distinct-Count (für das Finden von Kandidaten meist ausreichend).</p>
-<div id="2d5998e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-17T04:57:00.802292Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-17T04:57:00.802119Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-17T04:57:01.080416Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-17T04:57:01.079697Z&quot;}}" data-execution_count="1">
+<div id="2d5998e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:33.423052Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:33.422888Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:33.696485Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:33.695621Z&quot;}}" data-execution_count="14">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="9b396cd4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-17T04:57:01.082669Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-17T04:57:01.082412Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-17T04:57:02.745697Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-17T04:57:02.745024Z&quot;}}" data-execution_count="2">
+<div id="9b396cd4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:33.698463Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:33.698209Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:35.005235Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:35.004369Z&quot;}}" data-execution_count="15">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Organization-Daten (ddb-institution) laden -&gt; DataFrame</span></span>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>df_org</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -245,18 +245,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
-<td>7GAIUS5GGMSBZWXPPPNTXAQPG5UPXKUA</td>
-<td>[Rheinische Friedrich-Wilhelms-Universität Bonn]</td>
+<td>3IJSQ3OFJZCXLJLKDTIQIPYYS5TUMJLB</td>
+<td>[Bayerische Julius-Maximilians-Universität Wür...</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
-<td>X5L26OPZUGHRAXCAENZ4YSIABDSQBDCG</td>
-<td>[Georg-August-Universität Göttingen]</td>
+<td>6MZ5APQTMS5AH2UGHRWBKVAOZ7LSCCMS</td>
+<td>[Freies Deutsches Hochstift / Frankfurter Goet...</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
-<td>IWHIY724L2AQF33GY3GGGIMUMQB5IJ3L</td>
-<td>[Universität Hamburg]</td>
+<td>CIWC35SIYKOD7CW2ZKW3ZFLVZ4DZD7Z5</td>
+<td>[Eberhard Karls Universität Tübingen]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">...</th>
@@ -264,38 +264,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4944</th>
-<td>QGCRF5ETJ7S746OUN3EWT76HLCI2EJNF</td>
-<td>[Stadtarchiv Holzminden]</td>
+<th data-quarto-table-cell-role="th">4949</th>
+<td>3IDGTKZE5BLBCYT6SDNT7ZFSVDAC6DVT</td>
+<td>[Stiftung Christliche Kunst Wittenberg]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4945</th>
-<td>5XW2AKKSDPK3RF5NXIFRV4WOYOVF5UFW</td>
-<td>[Kreisarchiv des Landkreises Verden]</td>
+<th data-quarto-table-cell-role="th">4950</th>
+<td>VLZ3NV47B4VOR52KSCK5L6PRYXISGL55</td>
+<td>[Unternehmensarchiv der Städtische Werke Krefe...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4946</th>
-<td>6RZWY2PNOT35GHAV3V5A3WOOMMFLMCUA</td>
-<td>[Deutsches Adelsarchiv]</td>
+<th data-quarto-table-cell-role="th">4951</th>
+<td>6HL7PL2BM2H6OGOARBCU4TNWO4BSU63A</td>
+<td>[Sammlung des Winckelmann-Instituts der Humbol...</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4947</th>
-<td>DPKPCTEIZ5OAC4Z45H54PK3ABSCJTVZK</td>
-<td>[Stadtarchiv Friedrichroda]</td>
+<th data-quarto-table-cell-role="th">4952</th>
+<td>A6O6IOAFW4DNH3TAAM3VVATW2VPAAA5I</td>
+<td>[Stadtarchiv Braunschweig]</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4948</th>
-<td>5TLSCVVSTMDVOJH5ZVMKLFJPMQE5A3JH</td>
-<td>[Heimatmuseum]</td>
+<th data-quarto-table-cell-role="th">4953</th>
+<td>QFAPLRIY3GCCVAGINZLMKISBIQ6FG4PO</td>
+<td>[belladonna Kultur, Bildung und Wirtschaft für...</td>
 </tr>
 </tbody>
 </table>
 
-<p>4949 rows × 2 columns</p>
+<p>4954 rows × 2 columns</p>
 </div>
 </div>
 </div>
-<div id="dfcc0661" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-17T04:57:02.747750Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-17T04:57:02.747539Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-17T04:57:21.491983Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-17T04:57:21.491059Z&quot;}}" data-execution_count="3">
+<div id="dfcc0661" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:35.007175Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:35.006985Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:41.965281Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:41.964372Z&quot;}}" data-execution_count="16">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
@@ -333,19 +333,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> auffaellig</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>])</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># nur 32-stellige IDs behalten</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>df_auffaellig <span class="op">=</span> df_auffaellig[df_auffaellig[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].copy()</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Label aus df_org anreichern (falls df_org existiert)</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>df_auffaellig <span class="op">=</span> (</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    df_auffaellig</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    .merge(df_org[[<span class="st">"id"</span>, <span class="st">"label"</span>]], left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    .drop(columns<span class="op">=</span>[<span class="st">"id"</span>])</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>df_auffaellig</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> df_auffaellig.empty:</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nur 32-stellige IDs behalten, falls df_auffaellig nicht leer ist</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> df_auffaellig.empty:</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        df_auffaellig <span class="op">=</span> df_auffaellig[df_auffaellig[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].copy()</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Label aus df_org anreichern (falls df_org existiert)</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    df_auffaellig <span class="op">=</span> (</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        df_auffaellig</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        .merge(df_org[[<span class="st">"id"</span>, <span class="st">"label"</span>]], left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        .drop(columns<span class="op">=</span>[<span class="st">"id"</span>])</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    display(df_auffaellig)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Keine Mehrfachwerte gefunden!👍"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display">
 <div>
 
 
@@ -380,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variante-mehrfachwerte-in-sector_fct" class="level2">
 <h2 class="anchored" data-anchor-id="variante-mehrfachwerte-in-sector_fct">Variante: Mehrfachwerte in <code>sector_fct</code></h2>
 <p>Gleiche Logik wie oben, aber für <code>sector_fct</code> (Sektor-Klassifikation). Ergebnis: <code>df_auffaellig</code>, angereichert mit <code>label</code> aus <code>df_join</code>.</p>
-<div id="85032a1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-17T04:57:21.493721Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-17T04:57:21.493537Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-17T04:57:38.813293Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-17T04:57:38.812357Z&quot;}}" data-execution_count="4">
+<div id="85032a1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-02-09T05:05:41.967301Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-02-09T05:05:41.967068Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-02-09T05:05:48.365889Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-02-09T05:05:48.365028Z&quot;}}" data-execution_count="17">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
@@ -418,42 +421,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> auffaellig</span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>])</span>
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># nur 32-stellige IDs behalten</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>df_auffaellig <span class="op">=</span> df_auffaellig[df_auffaellig[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].copy()</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Label aus df_org anreichern (falls df_org existiert)</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>df_auffaellig <span class="op">=</span> (</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    df_auffaellig</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    .merge(df_org[[<span class="st">"id"</span>, <span class="st">"label"</span>]], left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    .drop(columns<span class="op">=</span>[<span class="st">"id"</span>])</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>df_auffaellig</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># nur 32-stellige IDs behalten, falls df_auffaellig nicht leer ist</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> df_auffaellig.empty:</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    df_auffaellig <span class="op">=</span> df_auffaellig[df_auffaellig[<span class="st">"dataprovider_id"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">==</span> <span class="dv">32</span>].copy()</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Label aus df_org anreichern (falls df_org existiert)</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    df_auffaellig <span class="op">=</span> (</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        df_auffaellig</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        .merge(df_org[[<span class="st">"id"</span>, <span class="st">"label"</span>]], left_on<span class="op">=</span><span class="st">"dataprovider_id"</span>, right_on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        .drop(columns<span class="op">=</span>[<span class="st">"id"</span>])</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    display(df_auffaellig)   </span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Keine Mehrfachwerte gefunden!👍"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">dataprovider_id</th>
-<th data-quarto-table-cell-role="th">sector_fct_nvalues</th>
-<th data-quarto-table-cell-role="th">label</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>A52WOLFHOQ4JDAPIGD7O7XJTP6N7FZ5E</td>
-<td>2</td>
-<td>[Stiftung Berliner Mauer]</td>
-</tr>
-</tbody>
-</table>
-
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Keine Mehrfachwerte gefunden!👍</code></pre>
 </div>
 </div>
 
