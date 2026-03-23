@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Einige Felder können je <code>dataprovider_id</code> mehrere unterschiedliche Werte haben (z.B. durch Datenmischung). Dafür wird ein Solr JSON-Facet genutzt und anschließend client-seitig auf <code>nvals &gt; 1</code> sowie 32-stellige IDs gefiltert. Hinweis: <code>unique(...)</code> ist in Solr oft ein schneller, näherungsweiser Distinct-Count (für das Finden von Kandidaten meist ausreichend).</p>
-<div id="9b396cd4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-21T04:41:24.939407Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-21T04:41:24.939215Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-21T04:41:26.990722Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-21T04:41:26.989646Z&quot;}}" data-execution_count="1">
+<div id="9b396cd4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-23T05:07:49.264132Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-23T05:07:49.263870Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-23T05:07:51.184559Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-23T05:07:51.183833Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># df_org</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="dfcc0661" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-21T04:41:26.993313Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-21T04:41:26.992973Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-21T04:41:54.878894Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-21T04:41:54.878062Z&quot;}}" data-execution_count="2">
+<div id="dfcc0661" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-23T05:07:51.187182Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-23T05:07:51.186884Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-23T05:08:02.078480Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-23T05:08:02.077509Z&quot;}}" data-execution_count="2">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variante-mehrfachwerte-in-sector_fct" class="level2">
 <h2 class="anchored" data-anchor-id="variante-mehrfachwerte-in-sector_fct">Variante: Mehrfachwerte in <code>sector_fct</code></h2>
 <p>Gleiche Logik wie oben, aber für <code>sector_fct</code> (Sektor-Klassifikation). Ergebnis: <code>df_auffaellig</code>, angereichert mit <code>label</code> aus <code>df_join</code>.</p>
-<div id="85032a1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-21T04:41:54.880959Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-21T04:41:54.880781Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-21T04:42:12.231430Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-21T04:42:12.230401Z&quot;}}" data-execution_count="3">
+<div id="85032a1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-03-23T05:08:02.080504Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-03-23T05:08:02.080327Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-03-23T05:08:14.856540Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-03-23T05:08:14.855468Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.deutsche-digitale-bibliothek.de/2/search/index/search/select"</span></span>
