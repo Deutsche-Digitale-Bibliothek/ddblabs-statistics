@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/statistics-dzp-title_map.html</loc>
-    <lastmod>2026-06-10T07:15:50.805Z</lastmod>
-  </url>
-  <url>
     <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/index.html</loc>
-    <lastmod>2026-06-10T07:15:50.788Z</lastmod>
+    <lastmod>2026-06-11T08:10:43.918Z</lastmod>
   </url>
   <url>
     <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/pages/notebooks.html</loc>
-    <lastmod>2026-06-10T07:16:46.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/inspection-invalid_multiple_facets_values.html</loc>
-    <lastmod>2026-06-10T07:15:50.788Z</lastmod>
+    <lastmod>2026-06-11T08:11:20.343Z</lastmod>
   </url>
   <url>
     <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/statistic-federal_state.html</loc>
-    <lastmod>2026-06-10T07:15:50.789Z</lastmod>
+    <lastmod>2026-06-11T08:10:43.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/statistics-dzp-title_map.html</loc>
+    <lastmod>2026-06-11T08:10:43.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://deutsche-digitale-bibliothek.github.io/ddblabs-statistics/inspection-invalid_multiple_facets_values.html</loc>
+    <lastmod>2026-06-11T08:10:43.918Z</lastmod>
   </url>
 </urlset>
