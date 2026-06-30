@@ -83,3 +83,11 @@
 .nb-history-select {
   max-width: 14rem;
 }
+
+/* Hide stderr stream output in rendered Quarto pages (e.g. tqdm progress bars). */
+.cell-output-stderr,
+.cell-output-stderr pre,
+div.cell-output[data-mime-type="application/vnd.code.notebook.stderr"],
+pre.stderr {
+  display: none !important;
+}
