@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-01T07:18:42.217517Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-01T07:18:42.217333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-01T07:18:51.674375Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-01T07:18:51.673420Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -753,22 +753,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a>display(HTML(df.drop(columns<span class="op">=</span>[<span class="st">"supplier_id"</span>, <span class="st">"dataprovider_id"</span>], errors<span class="op">=</span><span class="st">"ignore"</span>).to_html(escape<span class="op">=</span><span class="va">False</span>, index<span class="op">=</span><span class="va">False</span>)))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>d:\GitHub\Deutsche-Digitale-Bibliothek\ddblabs-statistics\.venv\Lib\site-packages\tqdm\auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<pre><code>/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
-100%|██████████| 7/7 [00:00&lt;00:00, 6818.42it/s]&lt;00:13,  1.46s/Schritt]
-100%|██████████| 7/7 [00:03&lt;00:00,  1.81it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 16221.07it/s]00:08,  1.36s/Schritt]
-100%|██████████| 7/7 [00:00&lt;00:00, 19277.83it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 17686.82it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 18582.36it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 19508.39it/s]
-Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  1.50Schritt/s]</code></pre>
+
+Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:42,  3.86s/Schritt]
+
+Pivot-Ergebnis verarbeiten:   0%|          | 0/3 [00:00&lt;?, ?Dataset/s]
+
+                                                                      
+
+Zusatzdaten je dataset_id laden:   0%|          | 0/3 [00:00&lt;?, ?Dataset/s]
+
+Zusatzdaten je dataset_id laden:  33%|███▎      | 1/3 [00:00&lt;00:01,  1.19Dataset/s]
+
+Zusatzdaten je dataset_id laden:  67%|██████▋   | 2/3 [00:01&lt;00:00,  1.02Dataset/s]
+
+Zusatzdaten je dataset_id laden: 100%|██████████| 3/3 [00:02&lt;00:00,  1.18Dataset/s]
+
+                                                                                   
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:06&lt;00:17,  1.97s/Schritt]
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 4771.68it/s]
+
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+
+ 67%|██████▋   | 2/3 [00:00&lt;00:00,  3.23it/s]
+
+100%|██████████| 3/3 [00:01&lt;00:00,  1.62it/s]
+100%|██████████| 3/3 [00:02&lt;00:00,  1.14it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:09&lt;00:07,  1.30s/Schritt]
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 8035.07it/s]
+
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 10875.46it/s]
+
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 10442.25it/s]
+
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 12360.42it/s]
+
+
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 8805.40it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:09&lt;00:00,  1.31Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 30.06.2026 um 11:04:31 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 01.07.2026 um 07:18:51 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 23.06.2026 bis 01.07.2026</p>
+<p><strong>Zeitraum:</strong> 24.06.2026 bis 02.07.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -786,16 +830,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/SM4XY73XJVMFWSRQHSJDJYCHL7QWR5HA" target="_blank">Akademie der Künste, Archiv</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>374</td>
-<td>Text (374)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18522987361598419gadF" target="_blank">18522987361598419gadF</a></td>
-<td>Gesamtlieferung - digiS 2024 - Max Liebermann - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/SM4XY73XJVMFWSRQHSJDJYCHL7QWR5HA" target="_blank">Akademie der Künste, Archiv</a></td>
-</tr>
-<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NWNEPSPSGSSYWU3IP75BYGGBRNQORN6A" target="_blank">MARCHIVUM Mannheim</a></td>
 <td>Archiv</td>
 <td>newspaper-mets</td>
@@ -805,27 +839,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td>Zeitungsportal: Gesamtlieferung - Q2 2026 - METS/MODS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NWNEPSPSGSSYWU3IP75BYGGBRNQORN6A" target="_blank">MARCHIVUM Mannheim</a></td>
 </tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5GQTM6UNGFE6GCIOIWL5NU7XSGXAYX22" target="_blank">Saarländische Universitäts- und Landesbibliothek</a></td>
-<td>Bibliothek</td>
-<td>mets</td>
-<td>1542</td>
-<td>Text (1542)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A20155556986811645mynn" target="_blank">20155556986811645mynn</a></td>
-<td>Gesamtlieferung - METS/MODS</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5GQTM6UNGFE6GCIOIWL5NU7XSGXAYX22" target="_blank">Saarländische Universitäts- und Landesbibliothek</a></td>
-</tr>
 <tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/6GFV3I4ELFEEFQIN2WECOXMTI5FUWHCK" target="_blank">Staatsbibliothek zu Berlin - Preußischer Kulturbesitz</a></td>
-<td>Bibliothek</td>
-<td>mets</td>
-<td>89972</td>
-<td>Bild (35802), Text (54170)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18009140448368729cfEV" target="_blank">18009140448368729cfEV</a></td>
-<td>Gesamtlieferung kinder.und.jugendbuecher- DE-1 SBB (00008125) - METS/MODS</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/6GFV3I4ELFEEFQIN2WECOXMTI5FUWHCK" target="_blank">Staatsbibliothek zu Berlin - Preußischer Kulturbesitz</a></td>
-</tr>
-<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/4E6QWP2Z7ZV3XWT6D6MX7WSQN4HOKEWO" target="_blank">Technische Informationsbibliothek (TIB)</a></td>
 <td>Bibliothek</td>
 <td>mets</td>
@@ -835,7 +849,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td>Hauptportal: 1796g - komplett - Hannover TIB (oid1445246948215) - METS/MODS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/4E6QWP2Z7ZV3XWT6D6MX7WSQN4HOKEWO" target="_blank">Technische Informationsbibliothek (TIB)</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/3R45UFKO3XAMI5XMAWY67CLDJK4NZPY6" target="_blank">Technische Universität Darmstadt. Universitäts- und Landesbibliothek</a></td>
 <td>Bibliothek</td>
 <td>mets</td>
@@ -844,16 +858,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A20418595395783221NeiR" target="_blank">20418595395783221NeiR</a></td>
 <td>Hauptportal: 1770g - komplett - Darmstadt ULB (00014107) - METS/MODS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/3R45UFKO3XAMI5XMAWY67CLDJK4NZPY6" target="_blank">Technische Universität Darmstadt. Universitäts- und Landesbibliothek</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MVEZEPSZSFQYVOPTQMHGXDPA2WZWI76F" target="_blank">Universitätsbibliothek Stuttgart</a></td>
-<td>Bibliothek</td>
-<td>mets</td>
-<td>50772</td>
-<td>Bild (9470), Text (41302)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A15931535691865534xJOy" target="_blank">15931535691865534xJOy</a></td>
-<td>Gesamtlieferung - METS/MODS</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MVEZEPSZSFQYVOPTQMHGXDPA2WZWI76F" target="_blank">Universitätsbibliothek Stuttgart</a></td>
 </tr>
 </tbody>
 </table>
