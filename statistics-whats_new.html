@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-08T05:59:21.677429Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-08T05:59:21.677259Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-08T05:59:29.161340Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-08T05:59:29.160518Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-09T06:56:39.982516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-09T06:56:39.982340Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-09T06:56:48.937860Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-09T06:56:48.936941Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -757,58 +757,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:43,  3.93s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:47,  4.28s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/2 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/4 [00:00&lt;?, ?Dataset/s]
 
                                                                       
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/2 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/4 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:  50%|█████     | 1/2 [00:00&lt;00:00,  1.89Dataset/s]
+Zusatzdaten je dataset_id laden:  25%|██▌       | 1/4 [00:00&lt;00:01,  1.77Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 2/2 [00:01&lt;00:00,  1.76Dataset/s]
+Zusatzdaten je dataset_id laden:  50%|█████     | 2/4 [00:01&lt;00:01,  1.53Dataset/s]
+
+Zusatzdaten je dataset_id laden:  75%|███████▌  | 3/4 [00:01&lt;00:00,  1.82Dataset/s]
+
+Zusatzdaten je dataset_id laden: 100%|██████████| 4/4 [00:02&lt;00:00,  1.66Dataset/s]
 
                                                                                    
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:05&lt;00:12,  1.44s/Schritt]
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:06&lt;00:17,  2.00s/Schritt]
 
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 3907.13it/s]
-
-
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-
-100%|██████████| 2/2 [00:01&lt;00:00,  1.93it/s]
-100%|██████████| 2/2 [00:02&lt;00:00,  1.03s/it]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:07&lt;00:05,  1.02Schritt/s]
-
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 6437.92it/s]
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 7377.84it/s]
 
 
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 7200.52it/s]
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+
+ 50%|█████     | 2/4 [00:00&lt;00:00,  4.75it/s]
+
+ 75%|███████▌  | 3/4 [00:00&lt;00:00,  2.79it/s]
+
+100%|██████████| 4/4 [00:01&lt;00:00,  2.65it/s]
+100%|██████████| 4/4 [00:01&lt;00:00,  2.10it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:08&lt;00:06,  1.17s/Schritt]
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 12354.36it/s]
 
 
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 7182.03it/s]
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 11184.81it/s]
 
 
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 5062.53it/s]
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 12122.27it/s]
 
 
-  0%|          | 0/2 [00:00&lt;?, ?it/s]
-100%|██████████| 2/2 [00:00&lt;00:00, 6004.73it/s]
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 16611.10it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  1.68Schritt/s]</code></pre>
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 15101.00it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  1.39Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 08.07.2026 um 05:59:29 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 09.07.2026 um 06:56:48 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 01.07.2026 bis 09.07.2026</p>
+<p><strong>Zeitraum:</strong> 02.07.2026 bis 10.07.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -826,6 +834,16 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/C6RIFZJB5DTD3G6SDKQTST2W2TXZXJ4H" target="_blank">Stiftung Brandenburg. Archiv</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>151</td>
+<td>Kein Medientyp (151)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A7481610203120828gWyx" target="_blank">7481610203120828gWyx</a></td>
+<td>Gesamtlieferung - Findbuch (EAD)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/C6RIFZJB5DTD3G6SDKQTST2W2TXZXJ4H" target="_blank">Stiftung Brandenburg. Archiv</a></td>
+</tr>
+<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ARZ2OTHXQLQDZJWX425RXVKGIKJSWEYW" target="_blank">LVR-Amt für Denkmalpflege im Rheinland</a></td>
 <td>Denkmalpflege</td>
 <td>lido</td>
@@ -835,7 +853,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  
 <td>Gesamtlieferung LVR LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ARZ2OTHXQLQDZJWX425RXVKGIKJSWEYW" target="_blank">LVR-Amt für Denkmalpflege im Rheinland</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/JJUO42747XGNHECFH7ZFVLVQYPXS4ZBK" target="_blank">SLUB Dresden. Musik und AV-Medien</a></td>
 <td>Mediathek</td>
 <td>lido</td>
@@ -844,6 +862,16 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A8214877930552945wTgL" target="_blank">8214877930552945wTgL</a></td>
 <td>Gesamtlieferung: SLUB-Mediathek (AdS) - LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/JJUO42747XGNHECFH7ZFVLVQYPXS4ZBK" target="_blank">SLUB Dresden. Musik und AV-Medien</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/PZ3NIDL45GFLQZ356NLKAHITDEURUGOR" target="_blank">Technische Universität Bergakademie Freiberg. Kustodie</a></td>
+<td>Wissenschaft</td>
+<td>lido</td>
+<td>1081</td>
+<td>Bild (1081)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A390046911389078cOkv" target="_blank">390046911389078cOkv</a></td>
+<td>Gesamtlieferung: TU Freiberg Kustodie (museum-digital) - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/PZ3NIDL45GFLQZ356NLKAHITDEURUGOR" target="_blank">Technische Universität Bergakademie Freiberg. Kustodie</a></td>
 </tr>
 </tbody>
 </table>
