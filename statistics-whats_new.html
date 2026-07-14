@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-13T06:26:17.527244Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-13T06:26:17.527061Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-13T06:26:26.411709Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-13T06:26:26.410806Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-14T05:39:04.918543Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-14T05:39:04.918324Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-14T05:39:19.664179Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-14T05:39:19.663310Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -757,70 +757,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:35,  3.19s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:36,  3.31s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/5 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/10 [00:00&lt;?, ?Dataset/s]
 
-                                                                      
+                                                                       
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/5 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/10 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:  20%|██        | 1/5 [00:00&lt;00:01,  2.89Dataset/s]
+Zusatzdaten je dataset_id laden:  10%|█         | 1/10 [00:00&lt;00:06,  1.35Dataset/s]
 
-Zusatzdaten je dataset_id laden:  40%|████      | 2/5 [00:00&lt;00:01,  2.59Dataset/s]
+Zusatzdaten je dataset_id laden:  20%|██        | 2/10 [00:01&lt;00:06,  1.30Dataset/s]
 
-Zusatzdaten je dataset_id laden:  60%|██████    | 3/5 [00:01&lt;00:01,  1.95Dataset/s]
+Zusatzdaten je dataset_id laden:  30%|███       | 3/10 [00:02&lt;00:04,  1.53Dataset/s]
 
-Zusatzdaten je dataset_id laden:  80%|████████  | 4/5 [00:01&lt;00:00,  1.94Dataset/s]
+Zusatzdaten je dataset_id laden:  40%|████      | 4/10 [00:02&lt;00:03,  1.60Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 5/5 [00:02&lt;00:00,  2.02Dataset/s]
+Zusatzdaten je dataset_id laden:  50%|█████     | 5/10 [00:03&lt;00:03,  1.54Dataset/s]
 
-                                                                                   
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:05&lt;00:15,  1.72s/Schritt]
+Zusatzdaten je dataset_id laden:  60%|██████    | 6/10 [00:03&lt;00:02,  1.63Dataset/s]
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 7350.69it/s]
+Zusatzdaten je dataset_id laden:  70%|███████   | 7/10 [00:04&lt;00:01,  1.55Dataset/s]
 
+Zusatzdaten je dataset_id laden:  80%|████████  | 8/10 [00:05&lt;00:01,  1.47Dataset/s]
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
+Zusatzdaten je dataset_id laden:  90%|█████████ | 9/10 [00:05&lt;00:00,  1.59Dataset/s]
 
- 40%|████      | 2/5 [00:00&lt;00:00,  4.81it/s]
+Zusatzdaten je dataset_id laden: 100%|██████████| 10/10 [00:06&lt;00:00,  1.68Dataset/s]
 
- 60%|██████    | 3/5 [00:00&lt;00:00,  2.89it/s]
+                                                                                     
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:09&lt;00:28,  3.22s/Schritt]
 
- 80%|████████  | 4/5 [00:01&lt;00:00,  2.43it/s]
-
-100%|██████████| 5/5 [00:02&lt;00:00,  1.85it/s]
-100%|██████████| 5/5 [00:02&lt;00:00,  1.71it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:08&lt;00:07,  1.26s/Schritt]
-
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 14324.81it/s]
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 19859.39it/s]
 
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 20763.88it/s]
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+
+ 20%|██        | 2/10 [00:00&lt;00:02,  3.50it/s]
+
+ 30%|███       | 3/10 [00:01&lt;00:02,  2.51it/s]
+
+ 50%|█████     | 5/10 [00:01&lt;00:01,  2.81it/s]
+
+ 60%|██████    | 6/10 [00:02&lt;00:01,  2.14it/s]
+
+ 70%|███████   | 7/10 [00:03&lt;00:01,  2.05it/s]
+
+ 80%|████████  | 8/10 [00:03&lt;00:01,  1.99it/s]
+
+ 90%|█████████ | 9/10 [00:04&lt;00:00,  1.47it/s]
+100%|██████████| 10/10 [00:04&lt;00:00,  2.12it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:14&lt;00:13,  2.21s/Schritt]
+
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 26698.31it/s]
 
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 15899.56it/s]
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 29454.38it/s]
 
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 16435.36it/s]
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 40880.16it/s]
 
 
-  0%|          | 0/5 [00:00&lt;?, ?it/s]
-100%|██████████| 5/5 [00:00&lt;00:00, 21959.71it/s]
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 42799.02it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  1.40Schritt/s]</code></pre>
+
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 37249.59it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:14&lt;00:00,  1.20s/Schritt]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 13.07.2026 um 06:26:26 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 14.07.2026 um 05:39:19 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 06.07.2026 bis 14.07.2026</p>
+<p><strong>Zeitraum:</strong> 07.07.2026 bis 15.07.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -838,6 +854,26 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>52375</td>
+<td>Kein Medientyp (52375)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18922344786108738DJZT" target="_blank">18922344786108738DJZT</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>830</td>
+<td>Kein Medientyp (830)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18922351954214516phAk" target="_blank">18922351954214516phAk</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+</tr>
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/C6RIFZJB5DTD3G6SDKQTST2W2TXZXJ4H" target="_blank">Stiftung Brandenburg. Archiv</a></td>
 <td>Archiv</td>
 <td>ead</td>
@@ -848,6 +884,36 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/C6RIFZJB5DTD3G6SDKQTST2W2TXZXJ4H" target="_blank">Stiftung Brandenburg. Archiv</a></td>
 </tr>
 <tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+<td>Bibliothek</td>
+<td>dc_rdf</td>
+<td>27426</td>
+<td>Bild (27426)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A63672138812071341IchT" target="_blank">63672138812071341IchT</a></td>
+<td>Gesamtlieferung - BAW - Pool 3 - Historisches Bildarchiv der Bundeswasserstraßen - DC-RDF</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+<td>Bibliothek</td>
+<td>dc_rdf</td>
+<td>1515</td>
+<td>Bild (1515)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A7531770060141399qhRx" target="_blank">7531770060141399qhRx</a></td>
+<td>Gesamtlieferung - BAW - Pool 32 - Rhein-Museum Koblenz - DC-RDF</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+<td>Bibliothek</td>
+<td>dc_rdf</td>
+<td>688</td>
+<td>Bild (688)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A8046805750566347gAwE" target="_blank">8046805750566347gAwE</a></td>
+<td>Gesamtlieferung - Pool 7 - Historisches Bildarchiv Internationale Mosel-Gesellschaft mbH &amp; Moselkommission - DC-RDF</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/5SDC3RNQINGOQ5Y2SD4LA6E47XO6XSLU" target="_blank">Bundesanstalt für Wasserbau (BAW). Infozentrum Wasserbau</a></td>
+</tr>
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ARZ2OTHXQLQDZJWX425RXVKGIKJSWEYW" target="_blank">LVR-Amt für Denkmalpflege im Rheinland</a></td>
 <td>Denkmalpflege</td>
 <td>lido</td>
@@ -857,7 +923,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td>Gesamtlieferung LVR LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ARZ2OTHXQLQDZJWX425RXVKGIKJSWEYW" target="_blank">LVR-Amt für Denkmalpflege im Rheinland</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/HWOKEKYTTDYW7C3UW5434NU7263LBD7T" target="_blank">Bildarchiv des Herder-Instituts für historische Ostmitteleuropaforschung</a></td>
 <td>Mediathek</td>
 <td>lido</td>
@@ -867,7 +933,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td>Gesamtlieferung - LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/HWOKEKYTTDYW7C3UW5434NU7263LBD7T" target="_blank">Bildarchiv des Herder-Instituts für historische Ostmitteleuropaforschung</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/KK4A6EHE2TFIRFTJHARTPTKJEDDEQMUL" target="_blank">BINE Informationsdienst</a></td>
 <td>Wissenschaft</td>
 <td>dc_rdf</td>
@@ -877,7 +943,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:08&lt;00:00,  
 <td>Zuwachs30DS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/KK4A6EHE2TFIRFTJHARTPTKJEDDEQMUL" target="_blank">BINE Informationsdienst</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/PZ3NIDL45GFLQZ356NLKAHITDEURUGOR" target="_blank">Technische Universität Bergakademie Freiberg. Kustodie</a></td>
 <td>Wissenschaft</td>
 <td>lido</td>
