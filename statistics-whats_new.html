@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a547dd1b4798262c927e2e52fa668cb1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6ac2aec46ad7f46b16024ee4409aa65c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -177,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-24T05:56:18.710939Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-24T05:56:18.710747Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-24T05:56:48.185932Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-24T05:56:48.185010Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-25T05:49:16.280850Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-25T05:49:16.280667Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-25T05:49:47.681570Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-25T05:49:47.680812Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -757,101 +760,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:45,  4.10s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:49,  4.47s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/13 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/21 [00:00&lt;?, ?Dataset/s]
 
                                                                        
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/13 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/21 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:   8%|▊         | 1/13 [00:00&lt;00:11,  1.01Dataset/s]
+Zusatzdaten je dataset_id laden:   5%|▍         | 1/21 [00:00&lt;00:12,  1.54Dataset/s]
 
-Zusatzdaten je dataset_id laden:  15%|█▌        | 2/13 [00:01&lt;00:09,  1.10Dataset/s]
+Zusatzdaten je dataset_id laden:  10%|▉         | 2/21 [00:01&lt;00:09,  2.01Dataset/s]
 
-Zusatzdaten je dataset_id laden:  23%|██▎       | 3/13 [00:07&lt;00:30,  3.00s/Dataset]
+Zusatzdaten je dataset_id laden:  14%|█▍        | 3/21 [00:01&lt;00:10,  1.74Dataset/s]
 
-Zusatzdaten je dataset_id laden:  31%|███       | 4/13 [00:08&lt;00:19,  2.20s/Dataset]
+Zusatzdaten je dataset_id laden:  19%|█▉        | 4/21 [00:02&lt;00:10,  1.69Dataset/s]
 
-Zusatzdaten je dataset_id laden:  38%|███▊      | 5/13 [00:08&lt;00:13,  1.65s/Dataset]
+Zusatzdaten je dataset_id laden:  24%|██▍       | 5/21 [00:02&lt;00:08,  1.78Dataset/s]
 
-Zusatzdaten je dataset_id laden:  46%|████▌     | 6/13 [00:09&lt;00:08,  1.28s/Dataset]
+Zusatzdaten je dataset_id laden:  29%|██▊       | 6/21 [00:03&lt;00:08,  1.76Dataset/s]
 
-Zusatzdaten je dataset_id laden:  54%|█████▍    | 7/13 [00:10&lt;00:06,  1.05s/Dataset]
+Zusatzdaten je dataset_id laden:  33%|███▎      | 7/21 [00:04&lt;00:08,  1.73Dataset/s]
 
-Zusatzdaten je dataset_id laden:  62%|██████▏   | 8/13 [00:10&lt;00:04,  1.13Dataset/s]
+Zusatzdaten je dataset_id laden:  38%|███▊      | 8/21 [00:04&lt;00:09,  1.43Dataset/s]
 
-Zusatzdaten je dataset_id laden:  69%|██████▉   | 9/13 [00:11&lt;00:03,  1.17Dataset/s]
+Zusatzdaten je dataset_id laden:  43%|████▎     | 9/21 [00:05&lt;00:07,  1.67Dataset/s]
 
-Zusatzdaten je dataset_id laden:  77%|███████▋  | 10/13 [00:12&lt;00:02,  1.12Dataset/s]
+Zusatzdaten je dataset_id laden:  48%|████▊     | 10/21 [00:06&lt;00:06,  1.62Dataset/s]
 
-Zusatzdaten je dataset_id laden:  85%|████████▍ | 11/13 [00:12&lt;00:01,  1.28Dataset/s]
+Zusatzdaten je dataset_id laden:  52%|█████▏    | 11/21 [00:06&lt;00:06,  1.60Dataset/s]
 
-Zusatzdaten je dataset_id laden:  92%|█████████▏| 12/13 [00:13&lt;00:00,  1.39Dataset/s]
+Zusatzdaten je dataset_id laden:  57%|█████▋    | 12/21 [00:07&lt;00:05,  1.62Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 13/13 [00:14&lt;00:00,  1.30Dataset/s]
+Zusatzdaten je dataset_id laden:  62%|██████▏   | 13/21 [00:07&lt;00:05,  1.60Dataset/s]
+
+Zusatzdaten je dataset_id laden:  67%|██████▋   | 14/21 [00:08&lt;00:04,  1.57Dataset/s]
+
+Zusatzdaten je dataset_id laden:  71%|███████▏  | 15/21 [00:09&lt;00:03,  1.57Dataset/s]
+
+Zusatzdaten je dataset_id laden:  76%|███████▌  | 16/21 [00:09&lt;00:02,  1.82Dataset/s]
+
+Zusatzdaten je dataset_id laden:  81%|████████  | 17/21 [00:09&lt;00:01,  2.01Dataset/s]
+
+Zusatzdaten je dataset_id laden:  86%|████████▌ | 18/21 [00:10&lt;00:01,  2.21Dataset/s]
+
+Zusatzdaten je dataset_id laden:  90%|█████████ | 19/21 [00:10&lt;00:00,  2.38Dataset/s]
+
+Zusatzdaten je dataset_id laden:  95%|█████████▌| 20/21 [00:11&lt;00:00,  2.08Dataset/s]
+
+Zusatzdaten je dataset_id laden: 100%|██████████| 21/21 [00:12&lt;00:00,  1.72Dataset/s]
 
                                                                                      
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:18&lt;00:57,  6.40s/Schritt]
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:16&lt;00:50,  5.62s/Schritt]
 
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 25780.59it/s]
-
-
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-
- 15%|█▌        | 2/13 [00:01&lt;00:06,  1.74it/s]
-
- 31%|███       | 4/13 [00:01&lt;00:04,  2.11it/s]
-
- 38%|███▊      | 5/13 [00:02&lt;00:04,  1.99it/s]
-
- 46%|████▌     | 6/13 [00:03&lt;00:04,  1.48it/s]
-
- 54%|█████▍    | 7/13 [00:04&lt;00:04,  1.26it/s]
-
- 62%|██████▏   | 8/13 [00:05&lt;00:03,  1.30it/s]
-
- 69%|██████▉   | 9/13 [00:05&lt;00:02,  1.41it/s]
-
- 77%|███████▋  | 10/13 [00:06&lt;00:01,  1.51it/s]
-
- 85%|████████▍ | 11/13 [00:07&lt;00:01,  1.42it/s]
-
- 92%|█████████▏| 12/13 [00:08&lt;00:00,  1.29it/s]
-
-100%|██████████| 13/13 [00:09&lt;00:00,  1.29it/s]
-100%|██████████| 13/13 [00:09&lt;00:00,  1.33it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:28&lt;00:26,  4.48s/Schritt]
-
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 34466.47it/s]
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 38245.93it/s]
 
 
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 16.03it/s]
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
 
-Gesamtfortschritt:  67%|██████▋   | 8/12 [00:29&lt;00:11,  2.98s/Schritt]
+ 10%|▉         | 2/21 [00:00&lt;00:03,  5.53it/s]
 
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 35614.60it/s]
+ 14%|█▍        | 3/21 [00:00&lt;00:04,  3.89it/s]
+
+ 19%|█▉        | 4/21 [00:01&lt;00:05,  3.17it/s]
+
+ 24%|██▍       | 5/21 [00:01&lt;00:05,  2.98it/s]
+
+ 29%|██▊       | 6/21 [00:01&lt;00:05,  2.60it/s]
+
+ 33%|███▎      | 7/21 [00:02&lt;00:07,  1.97it/s]
+
+ 38%|███▊      | 8/21 [00:03&lt;00:06,  2.15it/s]
+
+ 43%|████▎     | 9/21 [00:03&lt;00:05,  2.28it/s]
+
+ 48%|████▊     | 10/21 [00:03&lt;00:04,  2.41it/s]
+
+ 52%|█████▏    | 11/21 [00:04&lt;00:04,  2.14it/s]
+
+ 57%|█████▋    | 12/21 [00:04&lt;00:04,  2.16it/s]
+
+ 62%|██████▏   | 13/21 [00:05&lt;00:03,  2.31it/s]
+
+ 67%|██████▋   | 14/21 [00:05&lt;00:03,  2.27it/s]
+
+ 71%|███████▏  | 15/21 [00:06&lt;00:02,  2.40it/s]
+
+ 76%|███████▌  | 16/21 [00:06&lt;00:02,  2.36it/s]
+
+ 81%|████████  | 17/21 [00:06&lt;00:01,  2.47it/s]
+
+ 86%|████████▌ | 18/21 [00:07&lt;00:01,  1.77it/s]
+
+ 90%|█████████ | 19/21 [00:08&lt;00:01,  1.95it/s]
+
+ 95%|█████████▌| 20/21 [00:09&lt;00:00,  1.66it/s]
+
+100%|██████████| 21/21 [00:09&lt;00:00,  1.77it/s]
+100%|██████████| 21/21 [00:14&lt;00:00,  1.48it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:30&lt;00:30,  5.08s/Schritt]
+
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 70183.57it/s]
 
 
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 40751.83it/s]
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 63.79it/s]
+
+Gesamtfortschritt:  67%|██████▋   | 8/12 [00:31&lt;00:13,  3.27s/Schritt]
+
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 69354.63it/s]
 
 
-  0%|          | 0/13 [00:00&lt;?, ?it/s]
-100%|██████████| 13/13 [00:00&lt;00:00, 41718.40it/s]
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 62291.64it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:29&lt;00:00,  2.43s/Schritt]</code></pre>
+
+  0%|          | 0/21 [00:00&lt;?, ?it/s]
+100%|██████████| 21/21 [00:00&lt;00:00, 60205.32it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:31&lt;00:00,  2.59s/Schritt]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 24.07.2026 um 05:56:48 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 25.07.2026 um 05:49:47 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 17.07.2026 bis 25.07.2026</p>
+<p><strong>Zeitraum:</strong> 18.07.2026 bis 26.07.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -877,26 +914,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:29&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18522987361598419gadF" target="_blank">18522987361598419gadF</a></td>
 <td>Gesamtlieferung - digiS 2024 - Max Liebermann - LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/SM4XY73XJVMFWSRQHSJDJYCHL7QWR5HA" target="_blank">Akademie der Künste, Archiv</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/N3PSTUXQ7SXKKOYUCMJPQTRMN26KWSHW" target="_blank">Kreisarchiv des Landkreises Karlsruhe</a></td>
-<td>Archiv</td>
-<td>ead</td>
-<td>1134</td>
-<td>Kein Medientyp (1134)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A10679601901290407jJBW" target="_blank">10679601901290407jJBW</a></td>
-<td>Gesamtlieferung (Findbuch) - EAD</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/N3PSTUXQ7SXKKOYUCMJPQTRMN26KWSHW" target="_blank">Kreisarchiv des Landkreises Karlsruhe</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/N3PSTUXQ7SXKKOYUCMJPQTRMN26KWSHW" target="_blank">Kreisarchiv des Landkreises Karlsruhe</a></td>
-<td>Archiv</td>
-<td>ead</td>
-<td>629</td>
-<td>Kein Medientyp (629)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A10679445448508201vELg" target="_blank">10679445448508201vELg</a></td>
-<td>Gesamtlieferung (Tektonik) - EAD</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/N3PSTUXQ7SXKKOYUCMJPQTRMN26KWSHW" target="_blank">Kreisarchiv des Landkreises Karlsruhe</a></td>
 </tr>
 <tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/F6LKSDG2JZWKXRKEBZD4XL2CTNA4WUOZ" target="_blank">Max-Planck-Institut für Rechtsgeschichte und Rechtstheorie</a></td>
@@ -939,6 +956,16 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:29&lt;00:00,  
 <td></td>
 </tr>
 <tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/AUTMNFMZDFE2AHAMY2RXHZMP5YPAZOJO" target="_blank">Landesamt für Denkmalpflege Bremen</a></td>
+<td>Denkmalpflege</td>
+<td>lido</td>
+<td>2346</td>
+<td>Bild (2326), Kein Medientyp (20)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A3650162876215193sslX" target="_blank">3650162876215193sslX</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/AUTMNFMZDFE2AHAMY2RXHZMP5YPAZOJO" target="_blank">Landesamt für Denkmalpflege Bremen</a></td>
+</tr>
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/TQPCK55R4ZMO4QBUTINTVXJ5FTLQ5MLJ" target="_blank">Kunsthistorisches Institut in Florenz – Max-Planck-Institut</a></td>
 <td>Mediathek</td>
 <td>mets</td>
@@ -948,15 +975,105 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:29&lt;00:00,  
 <td>Gesamtlieferung - METS/MODS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/TQPCK55R4ZMO4QBUTINTVXJ5FTLQ5MLJ" target="_blank">Kunsthistorisches Institut in Florenz – Max-Planck-Institut</a></td>
 </tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/H73CKHCUWIS4BIMXMYTBCZVY4HQAWBQ4" target="_blank">Kurpfälzisches Museum</a></td>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/34HWUPPVCQX7URUX2ULAEOGPUXF7KCFG" target="_blank">Deutsches Sport &amp; Olympia Museum</a></td>
 <td>Museum</td>
 <td>lido</td>
-<td>909</td>
-<td>Bild (909)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A24739504757837788lwuh" target="_blank">24739504757837788lwuh</a></td>
-<td>Gesamtbestand: KPM_heidICON - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/H73CKHCUWIS4BIMXMYTBCZVY4HQAWBQ4" target="_blank">Kurpfälzisches Museum</a></td>
+<td>49</td>
+<td>Bild (49)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A31533957729906021fKcK" target="_blank">31533957729906021fKcK</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/34HWUPPVCQX7URUX2ULAEOGPUXF7KCFG" target="_blank">Deutsches Sport &amp; Olympia Museum</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/WE5ZA6H4DQVYDLBQGYPWWM2AK3VKC6BV" target="_blank">Deutsches Uhrenmuseum Furtwangen</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>1221</td>
+<td>Bild (1204), Video (17)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A30518639765730352fFEb" target="_blank">30518639765730352fFEb</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/WE5ZA6H4DQVYDLBQGYPWWM2AK3VKC6BV" target="_blank">Deutsches Uhrenmuseum Furtwangen</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ZG32WOEJLOHYLXIYZ7YSKWPPB6QYA7D4" target="_blank">Geomuseum der WWU Münster</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>216</td>
+<td>Bild (216)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A11577880235971219ClIn" target="_blank">11577880235971219ClIn</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ZG32WOEJLOHYLXIYZ7YSKWPPB6QYA7D4" target="_blank">Geomuseum der WWU Münster</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/LXT6FYRN57Y6YBMRPDUZMTCVV5PJXDA3" target="_blank">Kunsthalle Bremen - Der Kunstverein in Bremen</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>37158</td>
+<td>Bild (34986), Kein Medientyp (2172)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A4167248951507697VGAm" target="_blank">4167248951507697VGAm</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/LXT6FYRN57Y6YBMRPDUZMTCVV5PJXDA3" target="_blank">Kunsthalle Bremen - Der Kunstverein in Bremen</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NDG3JNDBRSCIAINXKA4BLJOAQWWIK2LS" target="_blank">Museumsdorf Cloppenburg - Niedersächsisches Freilichtmuseum</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>1654</td>
+<td>Bild (1654)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A34820057645685581YZEf" target="_blank">34820057645685581YZEf</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NDG3JNDBRSCIAINXKA4BLJOAQWWIK2LS" target="_blank">Museumsdorf Cloppenburg - Niedersächsisches Freilichtmuseum</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/SDJYUIPHSPLZ35AYE66Q7KXBF2JISO3A" target="_blank">Ofen- und Keramikmuseum Velten</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>224</td>
+<td>Bild (224)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A5262445338733162LcoO" target="_blank">5262445338733162LcoO</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/SDJYUIPHSPLZ35AYE66Q7KXBF2JISO3A" target="_blank">Ofen- und Keramikmuseum Velten</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/P4BEPNYYNAANYHFC5VKQWTA7QKEMBEMR" target="_blank">Stadtmuseum Cottbus</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>39</td>
+<td>Bild (39)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A5263649376382980nDuu" target="_blank">5263649376382980nDuu</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/P4BEPNYYNAANYHFC5VKQWTA7QKEMBEMR" target="_blank">Stadtmuseum Cottbus</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/HYKWL4B74FU4J6JNZISSHIMVVUAT7YTH" target="_blank">Stiftung Domäne Dahlem - Landgut und Museum</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>2624</td>
+<td>Bild (2624)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A34819564567847600lGPV" target="_blank">34819564567847600lGPV</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/HYKWL4B74FU4J6JNZISSHIMVVUAT7YTH" target="_blank">Stiftung Domäne Dahlem - Landgut und Museum</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MTWX5SFURAUFEVL6YWAL6H253ES3CZQH" target="_blank">Stiftung Wredowsche Zeichenschule</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>62</td>
+<td>Bild (62)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A5267231352036595cTfh" target="_blank">5267231352036595cTfh</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MTWX5SFURAUFEVL6YWAL6H253ES3CZQH" target="_blank">Stiftung Wredowsche Zeichenschule</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ECKD2VETLGOMS22K4BD6BA5OZV7POBUW" target="_blank">Artothek Charlottenburg-Wilmersdorf</a></td>
+<td>Sonstige</td>
+<td>lido</td>
+<td>258</td>
+<td>Bild (170), Kein Medientyp (88)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A34062318179446992aLno" target="_blank">34062318179446992aLno</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/ECKD2VETLGOMS22K4BD6BA5OZV7POBUW" target="_blank">Artothek Charlottenburg-Wilmersdorf</a></td>
 </tr>
 <tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/QPG2VRGTZFBSVVGSAYU7BLUQSJGZIO5P" target="_blank">Theater o.N.</a></td>
