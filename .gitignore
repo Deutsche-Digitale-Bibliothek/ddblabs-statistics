@@ -219,3 +219,5 @@ __marimo__/
 *.xls*
 *.csv
 /*.html
+provider_item_id_dupletten/processed_provider_ids.txt
+Untitled-1.ipynb
