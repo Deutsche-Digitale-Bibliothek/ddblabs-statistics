@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-08-19T03:53:07.578709Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-08-19T03:53:07.578512Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-08-19T03:53:23.156273Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-08-19T03:53:23.155286Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-08-20T03:53:11.464650Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-08-20T03:53:11.464458Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-08-20T03:53:20.996463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-08-20T03:53:20.995475Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -756,92 +756,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a>display(HTML(df.drop(columns<span class="op">=</span>[<span class="st">"supplier_id"</span>, <span class="st">"dataprovider_id"</span>], errors<span class="op">=</span><span class="st">"ignore"</span>).to_html(escape<span class="op">=</span><span class="va">False</span>, index<span class="op">=</span><span class="va">False</span>)))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<pre><code>/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:37,  3.43s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:49,  4.50s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/12 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/3 [00:00&lt;?, ?Dataset/s]
 
-                                                                       
+                                                                      
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/12 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/3 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:   8%|▊         | 1/12 [00:00&lt;00:05,  1.84Dataset/s]
+Zusatzdaten je dataset_id laden:  33%|███▎      | 1/3 [00:00&lt;00:01,  1.49Dataset/s]
 
-Zusatzdaten je dataset_id laden:  17%|█▋        | 2/12 [00:01&lt;00:06,  1.49Dataset/s]
+Zusatzdaten je dataset_id laden:  67%|██████▋   | 2/3 [00:01&lt;00:00,  1.34Dataset/s]
 
-Zusatzdaten je dataset_id laden:  25%|██▌       | 3/12 [00:02&lt;00:06,  1.46Dataset/s]
+Zusatzdaten je dataset_id laden: 100%|██████████| 3/3 [00:02&lt;00:00,  1.11Dataset/s]
 
-Zusatzdaten je dataset_id laden:  33%|███▎      | 4/12 [00:02&lt;00:05,  1.46Dataset/s]
+                                                                                   
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:07&lt;00:19,  2.12s/Schritt]
 
-Zusatzdaten je dataset_id laden:  42%|████▏     | 5/12 [00:03&lt;00:04,  1.50Dataset/s]
-
-Zusatzdaten je dataset_id laden:  50%|█████     | 6/12 [00:04&lt;00:04,  1.29Dataset/s]
-
-Zusatzdaten je dataset_id laden:  58%|█████▊    | 7/12 [00:04&lt;00:03,  1.45Dataset/s]
-
-Zusatzdaten je dataset_id laden:  67%|██████▋   | 8/12 [00:05&lt;00:02,  1.57Dataset/s]
-
-Zusatzdaten je dataset_id laden:  75%|███████▌  | 9/12 [00:05&lt;00:01,  1.68Dataset/s]
-
-Zusatzdaten je dataset_id laden:  83%|████████▎ | 10/12 [00:06&lt;00:01,  1.57Dataset/s]
-
-Zusatzdaten je dataset_id laden:  92%|█████████▏| 11/12 [00:07&lt;00:00,  1.65Dataset/s]
-
-Zusatzdaten je dataset_id laden: 100%|██████████| 12/12 [00:07&lt;00:00,  1.74Dataset/s]
-
-                                                                                     
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:11&lt;00:33,  3.72s/Schritt]
-
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 25432.87it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 6232.25it/s]
 
 
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
 
- 17%|█▋        | 2/12 [00:00&lt;00:03,  2.51it/s]
+ 67%|██████▋   | 2/3 [00:01&lt;00:00,  1.90it/s]
 
- 25%|██▌       | 3/12 [00:01&lt;00:04,  1.99it/s]
+100%|██████████| 3/3 [00:02&lt;00:00,  1.37it/s]
+100%|██████████| 3/3 [00:02&lt;00:00,  1.45it/s]
 
- 33%|███▎      | 4/12 [00:02&lt;00:04,  1.71it/s]
+Gesamtfortschritt:  50%|█████     | 6/12 [00:09&lt;00:07,  1.24s/Schritt]
 
- 42%|████▏     | 5/12 [00:02&lt;00:04,  1.72it/s]
-
- 67%|██████▋   | 8/12 [00:03&lt;00:01,  2.66it/s]
-
- 92%|█████████▏| 11/12 [00:04&lt;00:00,  3.24it/s]
-100%|██████████| 12/12 [00:04&lt;00:00,  2.89it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:15&lt;00:13,  2.29s/Schritt]
-
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 31145.82it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 7869.24it/s]
 
 
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 32305.29it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 8842.52it/s]
 
 
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 31815.20it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 9118.05it/s]
 
 
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 36711.63it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 13617.87it/s]
 
 
-  0%|          | 0/12 [00:00&lt;?, ?it/s]
-100%|██████████| 12/12 [00:00&lt;00:00, 35519.86it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+100%|██████████| 3/3 [00:00&lt;00:00, 13857.83it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:15&lt;00:00,  1.27s/Schritt]</code></pre>
+Gesamtfortschritt: 100%|██████████| 12/12 [00:09&lt;00:00,  1.31Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 19.08.2026 um 03:53:23 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 20.08.2026 um 03:53:20 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 12.08.2026 bis 20.08.2026</p>
+<p><strong>Zeitraum:</strong> 13.08.2026 bis 21.08.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -859,56 +833,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:15&lt;00:00,  
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>67104</td>
-<td>Bild (67104)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A2073899441946559rZlt" target="_blank">2073899441946559rZlt</a></td>
-<td>Gesamtlieferung: BBWA (Holzmann Archiv) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>16438</td>
-<td>Bild (4371), Kein Medientyp (12067)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A39338557427575957YrBw" target="_blank">39338557427575957YrBw</a></td>
-<td>Gesamtlieferung: BBWA (Bildarchiv Busch) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>875</td>
-<td>Bild (875)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A38810613583044334FZca" target="_blank">38810613583044334FZca</a></td>
-<td>Gesamtlieferung: BBWA (Plakate Busch) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>673</td>
-<td>Bild (673)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A996371553333361CQvJ" target="_blank">996371553333361CQvJ</a></td>
-<td>Gesamtlieferung: BBWA (Gobelin) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-<td>Archiv</td>
-<td>lido</td>
-<td>113</td>
-<td>Bild (112), Kein Medientyp (1)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A6386065205867862VsUU" target="_blank">6386065205867862VsUU</a></td>
-<td>Gesamtlieferung: BBWA (Foto Harry Lehmann) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/MGWFPAWRGVKJ3YVWDOYVLRJQG2CKCLIC" target="_blank">Berlin-Brandenburgisches Wirtschaftsarchiv e.V.</a></td>
-</tr>
-<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/W3I5OEEGYZIRSV6IOYKWA5SU26T4ZKLR" target="_blank">Sammlung des Theatermuseums &amp; Dumont-Lindemann-Archivs</a></td>
 <td>Archiv</td>
 <td>ead</td>
@@ -918,7 +842,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:15&lt;00:00,  
 <td>Gesamtlieferung (Findbuch) - Theatermuseum Düsseldorf - EAD</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/W3I5OEEGYZIRSV6IOYKWA5SU26T4ZKLR" target="_blank">Sammlung des Theatermuseums &amp; Dumont-Lindemann-Archivs</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/W3I5OEEGYZIRSV6IOYKWA5SU26T4ZKLR" target="_blank">Sammlung des Theatermuseums &amp; Dumont-Lindemann-Archivs</a></td>
 <td>Archiv</td>
 <td>ead</td>
@@ -928,27 +852,7 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:15&lt;00:00,  
 <td>Gesamtlieferung (Tektonik) - Theatermuseum Düsseldorf - EAD</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/W3I5OEEGYZIRSV6IOYKWA5SU26T4ZKLR" target="_blank">Sammlung des Theatermuseums &amp; Dumont-Lindemann-Archivs</a></td>
 </tr>
-<tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XYCKXKIKV46RBADXEYVSVYSEYS2ZYWUM" target="_blank">Rheinisches Bildarchiv Köln</a></td>
-<td>Mediathek</td>
-<td>lido</td>
-<td>516</td>
-<td>Bild (516)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A8020637830503365UJAe" target="_blank">8020637830503365UJAe</a></td>
-<td>Gesamtlieferung: RBA - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XYCKXKIKV46RBADXEYVSVYSEYS2ZYWUM" target="_blank">Rheinisches Bildarchiv Köln</a></td>
-</tr>
 <tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XYCKXKIKV46RBADXEYVSVYSEYS2ZYWUM" target="_blank">Rheinisches Bildarchiv Köln</a></td>
-<td>Mediathek</td>
-<td>lido</td>
-<td>147</td>
-<td>Bild (147)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A8714683592682554uUac" target="_blank">8714683592682554uUac</a></td>
-<td>Gesamtlieferung: RBA (Direktmigration) - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XYCKXKIKV46RBADXEYVSVYSEYS2ZYWUM" target="_blank">Rheinisches Bildarchiv Köln</a></td>
-</tr>
-<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/LYBHUKBBF3C2SXAZPYCB44BCJVY4D5WJ" target="_blank">Stadtmuseum Einbeck</a></td>
 <td>Museum</td>
 <td>lido</td>
@@ -957,26 +861,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:15&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A29028998624205041RaCs" target="_blank">29028998624205041RaCs</a></td>
 <td>Gesamtlieferung - LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/LYBHUKBBF3C2SXAZPYCB44BCJVY4D5WJ" target="_blank">Stadtmuseum Einbeck</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/25GREAWETDZSVK3OZQQEGVG7COL73QBJ" target="_blank">DEFA-Stiftung</a></td>
-<td>Sonstige</td>
-<td>edm</td>
-<td>266</td>
-<td>Bild (266)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A2501318529934484RzYo" target="_blank">2501318529934484RzYo</a></td>
-<td>Gesamtlieferung - DEFA-Stiftung - DFF-EDM</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/25GREAWETDZSVK3OZQQEGVG7COL73QBJ" target="_blank">DEFA-Stiftung</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/GTUQ2NP3VNOLGZUDWU5UXRJQTPCOL43T" target="_blank">Wuppertal Institut für Klima, Umwelt, Energie gGmbH</a></td>
-<td>Wissenschaft</td>
-<td>marc21</td>
-<td>124</td>
-<td>Text (124)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A201102919551725FKcW" target="_blank">201102919551725FKcW</a></td>
-<td>Gesamtlieferung - MARC</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/GTUQ2NP3VNOLGZUDWU5UXRJQTPCOL43T" target="_blank">Wuppertal Institut für Klima, Umwelt, Energie gGmbH</a></td>
 </tr>
 </tbody>
 </table>
