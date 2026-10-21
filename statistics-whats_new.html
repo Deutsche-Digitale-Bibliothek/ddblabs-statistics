@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d3c09cf01b9717715406c5b992d80823.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-12a87ce4a3db8ae78ad34dc8821cdee3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-20T08:21:25.477582Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-20T08:21:25.477450Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-20T08:21:39.704168Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-20T08:21:39.703632Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-21T08:25:47.190524Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-21T08:25:47.190353Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-21T08:25:58.960635Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-21T08:25:58.959636Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -760,78 +760,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:05&lt;00:57,  5.25s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:06&lt;01:09,  6.34s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/8 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/5 [00:00&lt;?, ?Dataset/s]
 
                                                                       
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/8 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/5 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:  12%|█▎        | 1/8 [00:00&lt;00:06,  1.14Dataset/s]
+Zusatzdaten je dataset_id laden:  20%|██        | 1/5 [00:00&lt;00:02,  1.76Dataset/s]
 
-Zusatzdaten je dataset_id laden:  25%|██▌       | 2/8 [00:01&lt;00:04,  1.24Dataset/s]
+Zusatzdaten je dataset_id laden:  40%|████      | 2/5 [00:01&lt;00:01,  1.69Dataset/s]
 
-Zusatzdaten je dataset_id laden:  38%|███▊      | 3/8 [00:02&lt;00:03,  1.40Dataset/s]
+Zusatzdaten je dataset_id laden:  60%|██████    | 3/5 [00:01&lt;00:01,  1.97Dataset/s]
 
-Zusatzdaten je dataset_id laden:  50%|█████     | 4/8 [00:02&lt;00:02,  1.68Dataset/s]
+Zusatzdaten je dataset_id laden:  80%|████████  | 4/5 [00:01&lt;00:00,  2.15Dataset/s]
 
-Zusatzdaten je dataset_id laden:  62%|██████▎   | 5/8 [00:03&lt;00:01,  1.68Dataset/s]
-
-Zusatzdaten je dataset_id laden:  75%|███████▌  | 6/8 [00:03&lt;00:01,  1.66Dataset/s]
-
-Zusatzdaten je dataset_id laden:  88%|████████▊ | 7/8 [00:04&lt;00:00,  1.64Dataset/s]
-
-Zusatzdaten je dataset_id laden: 100%|██████████| 8/8 [00:05&lt;00:00,  1.58Dataset/s]
+Zusatzdaten je dataset_id laden: 100%|██████████| 5/5 [00:02&lt;00:00,  1.84Dataset/s]
 
                                                                                    
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:10&lt;00:29,  3.28s/Schritt]
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:09&lt;00:23,  2.64s/Schritt]
 
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 17494.49it/s]
-
-
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-
- 25%|██▌       | 2/8 [00:00&lt;00:02,  2.47it/s]
-
- 38%|███▊      | 3/8 [00:01&lt;00:02,  1.68it/s]
-
- 50%|█████     | 4/8 [00:02&lt;00:02,  1.45it/s]
-
- 75%|███████▌  | 6/8 [00:03&lt;00:00,  2.06it/s]
-
- 88%|████████▊ | 7/8 [00:03&lt;00:00,  2.09it/s]
-100%|██████████| 8/8 [00:03&lt;00:00,  2.24it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:14&lt;00:11,  2.00s/Schritt]
-
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 41786.34it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 8103.37it/s]
 
 
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 56394.00it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+
+ 40%|████      | 2/5 [00:00&lt;00:01,  2.52it/s]
+
+ 60%|██████    | 3/5 [00:01&lt;00:00,  2.02it/s]
+
+100%|██████████| 5/5 [00:01&lt;00:00,  2.88it/s]
+100%|██████████| 5/5 [00:02&lt;00:00,  2.07it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:11&lt;00:09,  1.51s/Schritt]
+
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 17008.53it/s]
 
 
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 57752.90it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 19691.57it/s]
 
 
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 40378.38it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 18657.94it/s]
 
 
-  0%|          | 0/8 [00:00&lt;?, ?it/s]
-100%|██████████| 8/8 [00:00&lt;00:00, 47326.42it/s]
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 20971.52it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:14&lt;00:00,  1.17s/Schritt]</code></pre>
+
+  0%|          | 0/5 [00:00&lt;?, ?it/s]
+100%|██████████| 5/5 [00:00&lt;00:00, 22501.63it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:11&lt;00:00,  1.05Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 20.10.2026 um 08:21:39 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 21.10.2026 um 08:25:58 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 13.10.2026 bis 21.10.2026</p>
+<p><strong>Zeitraum:</strong> 14.10.2026 bis 22.10.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -879,26 +869,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:14&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/6DAMJQBAZZO56IACLOUZORD4IOQPNFAI" target="_blank">Universität Leipzig. Universitätsbibliothek Leipzig</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/VECB5BSONGM7ZDOBUGJUE4MCB5HDNZIM" target="_blank">Universitätsbibliothek der Humboldt-Universität zu Berlin</a></td>
-<td>Bibliothek</td>
-<td>mets</td>
-<td>1694</td>
-<td>Text (1694)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A973829759176383dHoK" target="_blank">973829759176383dHoK</a></td>
-<td>Hauptportal: 1661g - historischedrucke - Berlin HU - (oid1465911351292) - METS/MODS</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/VECB5BSONGM7ZDOBUGJUE4MCB5HDNZIM" target="_blank">Universitätsbibliothek der Humboldt-Universität zu Berlin</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/VECB5BSONGM7ZDOBUGJUE4MCB5HDNZIM" target="_blank">Universitätsbibliothek der Humboldt-Universität zu Berlin</a></td>
-<td>Bibliothek</td>
-<td>mets</td>
-<td>760</td>
-<td>Text (760)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A185791733647608pzLZ" target="_blank">185791733647608pzLZ</a></td>
-<td>Hauptportal: 1727g - evifa - Humboldt UB - (oid1465911351292) - METS/MODS</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/VECB5BSONGM7ZDOBUGJUE4MCB5HDNZIM" target="_blank">Universitätsbibliothek der Humboldt-Universität zu Berlin</a></td>
-</tr>
-<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XGWPWGDXHVEOQBJMMUTUI6BBLJICGJFK" target="_blank">Deutsches Apotheken-Museum</a></td>
 <td>Museum</td>
 <td>lido</td>
@@ -909,16 +879,6 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:14&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/XGWPWGDXHVEOQBJMMUTUI6BBLJICGJFK" target="_blank">Deutsches Apotheken-Museum</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/2AWLPFSSY7MVWADIVJW53ZPYQ4BUASAN" target="_blank">Freilichtmuseum Roscheider Hof, Konz e.V.</a></td>
-<td>Museum</td>
-<td>lido</td>
-<td>5744</td>
-<td>Bild (5736), Text (1), Video (6), mediatype_010 (1)</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A6949397762544819aZWK" target="_blank">6949397762544819aZWK</a></td>
-<td>Gesamtlieferung - Volkskunde- und Freilichtmuseum Roscheider Hof - LIDO</td>
-<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/2AWLPFSSY7MVWADIVJW53ZPYQ4BUASAN" target="_blank">Freilichtmuseum Roscheider Hof, Konz e.V.</a></td>
-</tr>
-<tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/2AWLPFSSY7MVWADIVJW53ZPYQ4BUASAN" target="_blank">Freilichtmuseum Roscheider Hof, Konz e.V.</a></td>
 <td>Museum</td>
 <td>lido</td>
