@@ -16,18 +16,19 @@ permissions:
 jobs:
   build-deploy:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+    # Keep the OS stable instead of following ubuntu-latest migrations.
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7.0.1
         with:
           ref: main
 
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+        uses: quarto-dev/quarto-actions/setup@v2.2.0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.12'
 
@@ -44,7 +45,7 @@ jobs:
         run: quarto render
 
       - name: Publish to gh-pages
-        uses: quarto-dev/quarto-actions/publish@v2
+        uses: quarto-dev/quarto-actions/publish@v2.2.0
         with:
           target: gh-pages
           path: _site

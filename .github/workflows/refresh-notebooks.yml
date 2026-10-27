@@ -15,16 +15,17 @@ concurrency:
 
 jobs:
   execute-and-commit:
-    runs-on: ubuntu-latest
+    # Keep the OS stable instead of following ubuntu-latest migrations.
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: "3.12"
 
