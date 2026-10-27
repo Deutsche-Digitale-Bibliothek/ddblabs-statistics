@@ -35,6 +35,16 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
+### Regressionstests
+
+Die Tests verwenden simulierte API-Antworten und benötigen keinen Zugriff auf die DDB-API:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Die Refresh-Action führt diese Tests vor den Notebooks aus. Leere Wochenberichte gelten als erfolgreiches Ergebnis. DDB-API-Abfragen wiederholen vorübergehende HTTP-Fehler bis zu dreimal; dauerhafte Fehler brechen die Aktualisierung weiterhin ab.
+
 ## Inhalt
 
 Die Notebook-Übersicht wird für GitHub Pages automatisch generiert.
