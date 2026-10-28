@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a14d652b86e00f03abd5043129e363d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-27T08:18:25.094950Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-27T08:18:25.094772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-27T08:18:29.774073Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-27T08:18:29.772798Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-10-28T09:29:33.687479Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-10-28T09:29:33.687298Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-10-28T09:29:47.887240Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-10-28T09:29:47.886213Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -774,56 +774,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:47,  4.35s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:05&lt;01:02,  5.70s/Schritt]
 
-Pivot-Ergebnis verarbeiten: 0Dataset [00:00, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/4 [00:00&lt;?, ?Dataset/s]
 
-                                                        </code></pre>
+                                                                      
+
+Zusatzdaten je dataset_id laden:   0%|          | 0/4 [00:00&lt;?, ?Dataset/s]
+
+Zusatzdaten je dataset_id laden:  25%|██▌       | 1/4 [00:02&lt;00:08,  2.96s/Dataset]
+
+Zusatzdaten je dataset_id laden:  50%|█████     | 2/4 [00:03&lt;00:02,  1.28s/Dataset]
+
+Zusatzdaten je dataset_id laden:  75%|███████▌  | 3/4 [00:05&lt;00:01,  1.76s/Dataset]
+
+Zusatzdaten je dataset_id laden: 100%|██████████| 4/4 [00:07&lt;00:00,  1.97s/Dataset]
+
+                                                                                   
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:13&lt;00:38,  4.33s/Schritt]
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 5731.88it/s]
+
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+
+ 50%|█████     | 2/4 [00:00&lt;00:00, 14.02it/s]
+
+100%|██████████| 4/4 [00:00&lt;00:00,  8.11it/s]
+100%|██████████| 4/4 [00:00&lt;00:00,  8.63it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:13&lt;00:10,  1.77s/Schritt]
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 15902.57it/s]
+
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 18020.64it/s]
+
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 15196.75it/s]
+
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 15363.75it/s]
+
+
+  0%|          | 0/4 [00:00&lt;?, ?it/s]
+100%|██████████| 4/4 [00:00&lt;00:00, 18040.02it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:13&lt;00:00,  1.16s/Schritt]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p>Keine Treffer im gewählten Zeitraum gefunden.</p>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-
-Zusatzdaten je dataset_id laden: 0Dataset [00:00, ?Dataset/s]
-
-                                                             
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-
-0it [00:00, ?it/s]
-0it [00:00, ?it/s]
-
-Gesamtfortschritt: 100%|██████████| 12/12 [00:04&lt;00:00,  2.73Schritt/s]</code></pre>
+<p><strong>Letzte Aktualisierung:</strong> 28.10.2026 um 09:29:47 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 27.10.2026 um 08:18:29 Uhr</p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 20.10.2026 bis 28.10.2026</p>
+<p><strong>Zeitraum:</strong> 21.10.2026 bis 29.10.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -840,6 +848,46 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:04&lt;00:00,  
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NWNEPSPSGSSYWU3IP75BYGGBRNQORN6A" target="_blank">MARCHIVUM Mannheim</a></td>
+<td>Archiv</td>
+<td>newspaper-mets</td>
+<td>5771</td>
+<td>Text (5771)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A296697315903576IzOY" target="_blank">296697315903576IzOY</a></td>
+<td>Zeitungsportal: inkrementelles Update - Q4 2026 - METS/MODS</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/NWNEPSPSGSSYWU3IP75BYGGBRNQORN6A" target="_blank">MARCHIVUM Mannheim</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/UQZA7YG6RCTIMUUI5P4P2BKEFAJQVF4L" target="_blank">Staatsarchiv Bamberg</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>1963</td>
+<td>Kein Medientyp (2068)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A1325921700193356PTyt" target="_blank">1325921700193356PTyt</a></td>
+<td>Gesamtlieferung (Tektonik) - Staatsarchiv Bamberg - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/UQZA7YG6RCTIMUUI5P4P2BKEFAJQVF4L" target="_blank">Staatsarchiv Bamberg</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/DRYC5ICJD2ERAGMDONBF6NHXZCRMUQZ5" target="_blank">Stadtarchiv Tübingen</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>92427</td>
+<td>Kein Medientyp (92592)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A3717008906445957fWzH" target="_blank">3717008906445957fWzH</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/DRYC5ICJD2ERAGMDONBF6NHXZCRMUQZ5" target="_blank">Stadtarchiv Tübingen</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/DRYC5ICJD2ERAGMDONBF6NHXZCRMUQZ5" target="_blank">Stadtarchiv Tübingen</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>565</td>
+<td>Kein Medientyp (565)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A3709224114404554bOjn" target="_blank">3709224114404554bOjn</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/DRYC5ICJD2ERAGMDONBF6NHXZCRMUQZ5" target="_blank">Stadtarchiv Tübingen</a></td>
+</tr>
 </tbody>
 </table>
 </div>
