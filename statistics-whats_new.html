@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-05T10:35:27.641693Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-05T10:35:27.641409Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-05T10:35:37.109766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-05T10:35:37.108794Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-06T10:38:57.242997Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-06T10:38:57.242856Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-06T10:39:08.182023Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-06T10:39:08.181223Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -771,78 +771,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-585"><a href="#cb1-585" aria-hidden="true" tabindex="-1"></a>display(HTML(df.drop(columns<span class="op">=</span>[<span class="st">"supplier_id"</span>, <span class="st">"dataprovider_id"</span>], errors<span class="op">=</span><span class="st">"ignore"</span>).to_html(escape<span class="op">=</span><span class="va">False</span>, index<span class="op">=</span><span class="va">False</span>)))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<pre><code>/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:05&lt;01:05,  5.95s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:49,  4.51s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/7 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/13 [00:00&lt;?, ?Dataset/s]
 
-                                                                      
+                                                                       
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/7 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/13 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:  14%|█▍        | 1/7 [00:00&lt;00:00,  7.57Dataset/s]
+Zusatzdaten je dataset_id laden:   8%|▊         | 1/13 [00:00&lt;00:02,  4.83Dataset/s]
 
-Zusatzdaten je dataset_id laden:  29%|██▊       | 2/7 [00:01&lt;00:03,  1.39Dataset/s]
+Zusatzdaten je dataset_id laden:  15%|█▌        | 2/13 [00:01&lt;00:09,  1.16Dataset/s]
 
-Zusatzdaten je dataset_id laden:  43%|████▎     | 3/7 [00:01&lt;00:01,  2.22Dataset/s]
+Zusatzdaten je dataset_id laden:  23%|██▎       | 3/13 [00:01&lt;00:05,  1.77Dataset/s]
 
-Zusatzdaten je dataset_id laden:  57%|█████▋    | 4/7 [00:01&lt;00:00,  3.18Dataset/s]
+Zusatzdaten je dataset_id laden:  31%|███       | 4/13 [00:01&lt;00:03,  2.52Dataset/s]
 
-Zusatzdaten je dataset_id laden:  71%|███████▏  | 5/7 [00:01&lt;00:00,  4.17Dataset/s]
+Zusatzdaten je dataset_id laden:  38%|███▊      | 5/13 [00:02&lt;00:02,  3.08Dataset/s]
 
-Zusatzdaten je dataset_id laden:  86%|████████▌ | 6/7 [00:01&lt;00:00,  5.15Dataset/s]
+Zusatzdaten je dataset_id laden:  46%|████▌     | 6/13 [00:02&lt;00:02,  2.35Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 7/7 [00:01&lt;00:00,  6.03Dataset/s]
+Zusatzdaten je dataset_id laden:  54%|█████▍    | 7/13 [00:02&lt;00:02,  2.99Dataset/s]
 
-                                                                                   
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:07&lt;00:19,  2.22s/Schritt]
+Zusatzdaten je dataset_id laden:  62%|██████▏   | 8/13 [00:03&lt;00:01,  3.30Dataset/s]
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 14211.10it/s]
+Zusatzdaten je dataset_id laden:  69%|██████▉   | 9/13 [00:03&lt;00:01,  3.99Dataset/s]
 
+Zusatzdaten je dataset_id laden:  77%|███████▋  | 10/13 [00:03&lt;00:00,  4.43Dataset/s]
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
+Zusatzdaten je dataset_id laden:  85%|████████▍ | 11/13 [00:03&lt;00:00,  4.89Dataset/s]
 
- 29%|██▊       | 2/7 [00:00&lt;00:00, 14.62it/s]
+Zusatzdaten je dataset_id laden:  92%|█████████▏| 12/13 [00:03&lt;00:00,  5.46Dataset/s]
 
- 57%|█████▋    | 4/7 [00:00&lt;00:00, 10.28it/s]
+Zusatzdaten je dataset_id laden: 100%|██████████| 13/13 [00:03&lt;00:00,  5.94Dataset/s]
 
- 86%|████████▌ | 6/7 [00:00&lt;00:00,  7.38it/s]
+                                                                                     
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:08&lt;00:23,  2.58s/Schritt]
 
-100%|██████████| 7/7 [00:00&lt;00:00,  6.15it/s]
-100%|██████████| 7/7 [00:01&lt;00:00,  5.20it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:09&lt;00:06,  1.14s/Schritt]
-
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 19354.07it/s]
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 23212.41it/s]
 
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 19784.45it/s]
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+
+ 15%|█▌        | 2/13 [00:00&lt;00:00, 11.54it/s]
+
+ 31%|███       | 4/13 [00:00&lt;00:01,  6.91it/s]
+
+ 38%|███▊      | 5/13 [00:00&lt;00:01,  6.40it/s]
+
+ 46%|████▌     | 6/13 [00:01&lt;00:01,  4.47it/s]
+
+ 54%|█████▍    | 7/13 [00:01&lt;00:01,  4.81it/s]
+
+ 69%|██████▉   | 9/13 [00:01&lt;00:00,  6.24it/s]
+
+ 85%|████████▍ | 11/13 [00:01&lt;00:00,  6.85it/s]
+
+ 92%|█████████▏| 12/13 [00:01&lt;00:00,  6.35it/s]
+100%|██████████| 13/13 [00:02&lt;00:00,  5.57it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:10&lt;00:08,  1.48s/Schritt]
+
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 31175.50it/s]
 
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 21780.51it/s]
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 44914.29it/s]
 
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 24589.72it/s]
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 60719.32it/s]
 
 
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 22654.42it/s]
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 46247.63it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:09&lt;00:00,  1.31Schritt/s]</code></pre>
+
+  0%|          | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████| 13/13 [00:00&lt;00:00, 53614.51it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:10&lt;00:00,  1.12Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 05.11.2026 um 10:35:37 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 06.11.2026 um 10:39:08 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 29.10.2026 bis 06.11.2026</p>
+<p><strong>Zeitraum:</strong> 30.10.2026 bis 07.11.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -868,6 +888,46 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:09&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A5155087583210665vGjL" target="_blank">5155087583210665vGjL</a></td>
 <td>Gesamtlieferung: DRadio (ARD-Retro) - LIDO</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/DDZHTURHI2YLS5GHZU5YFUMLCIP57GIU" target="_blank">Deutschlandradio Dokumentation und Archive, Köln</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/RLD22AVANNV2ZSINA3I5372Y3SPC6IVC" target="_blank">Evangelisches Archiv Baden und Württemberg</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>408729</td>
+<td>Bild (7577), Kein Medientyp (401152)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A3907999133134616tyhJ" target="_blank">3907999133134616tyhJ</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/RLD22AVANNV2ZSINA3I5372Y3SPC6IVC" target="_blank">Evangelisches Archiv Baden und Württemberg</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/RLD22AVANNV2ZSINA3I5372Y3SPC6IVC" target="_blank">Evangelisches Archiv Baden und Württemberg</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>2257</td>
+<td>Kein Medientyp (2257)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A3908008535503807bqqZ" target="_blank">3908008535503807bqqZ</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/RLD22AVANNV2ZSINA3I5372Y3SPC6IVC" target="_blank">Evangelisches Archiv Baden und Württemberg</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/IG57TNCPFDAQKFUOHTG2QVPLVKNTEURH" target="_blank">Gedenkstätte Buchenwald</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>21609</td>
+<td>Kein Medientyp (21609)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A66026100546099888aBHf" target="_blank">66026100546099888aBHf</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/IG57TNCPFDAQKFUOHTG2QVPLVKNTEURH" target="_blank">Gedenkstätte Buchenwald</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/IG57TNCPFDAQKFUOHTG2QVPLVKNTEURH" target="_blank">Gedenkstätte Buchenwald</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>43</td>
+<td>Kein Medientyp (43)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A66026108022439098MnSK" target="_blank">66026108022439098MnSK</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/IG57TNCPFDAQKFUOHTG2QVPLVKNTEURH" target="_blank">Gedenkstätte Buchenwald</a></td>
 </tr>
 <tr class="even">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/RHBKWIYKIH2FXAPVNXFRQKPMKMOYNV7X" target="_blank">Historisches Archiv des Germanischen Nationalmuseums</a></td>
@@ -898,6 +958,26 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:09&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A10497832985506040GKNK" target="_blank">10497832985506040GKNK</a></td>
 <td>Gesamtlieferung (Tektonik) - EAD</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/URIY2TZIE4FK57ZV6VEYVF7EDVRS2B3E" target="_blank">Landesarchiv Nordrhein-Westfalen. Abteilung Rheinland</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/YVHOES2Z76CG2KLXJLBQI6QLQPLLAKP6" target="_blank">Stadt-und Hospitalarchiv Schwäbisch Hall</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>83877</td>
+<td>Kein Medientyp (83877)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A462572956552718sSTJ" target="_blank">462572956552718sSTJ</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/YVHOES2Z76CG2KLXJLBQI6QLQPLLAKP6" target="_blank">Stadt-und Hospitalarchiv Schwäbisch Hall</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/YVHOES2Z76CG2KLXJLBQI6QLQPLLAKP6" target="_blank">Stadt-und Hospitalarchiv Schwäbisch Hall</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>188</td>
+<td>Kein Medientyp (188)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A462592723438459kHnI" target="_blank">462592723438459kHnI</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/YVHOES2Z76CG2KLXJLBQI6QLQPLLAKP6" target="_blank">Stadt-und Hospitalarchiv Schwäbisch Hall</a></td>
 </tr>
 <tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/OYOVAXJJJJLHWDJBDGQR4QKCBMVH54LU" target="_blank">Beethoven-Haus Bonn</a></td>
