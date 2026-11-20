@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3191446cf01d07254cce00ea98dcb138.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ea67d19c76e621e4bbc67ae8277c98bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-19T11:20:22.432765Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-19T11:20:22.432632Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-19T11:20:26.346407Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-19T11:20:26.345718Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-20T11:08:23.491020Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-20T11:08:23.490855Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-20T11:08:30.684861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-20T11:08:30.684175Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -776,54 +776,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:36,  3.34s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:04&lt;00:49,  4.52s/Schritt]
 
-Pivot-Ergebnis verarbeiten:   0%|          | 0/1 [00:00&lt;?, ?Dataset/s]
+Pivot-Ergebnis verarbeiten:   0%|          | 0/6 [00:00&lt;?, ?Dataset/s]
 
                                                                       
 
-Zusatzdaten je dataset_id laden:   0%|          | 0/1 [00:00&lt;?, ?Dataset/s]
+Zusatzdaten je dataset_id laden:   0%|          | 0/6 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 1/1 [00:00&lt;00:00,  8.12Dataset/s]
+Zusatzdaten je dataset_id laden:  17%|█▋        | 1/6 [00:00&lt;00:01,  4.11Dataset/s]
+
+Zusatzdaten je dataset_id laden:  33%|███▎      | 2/6 [00:00&lt;00:00,  4.14Dataset/s]
+
+Zusatzdaten je dataset_id laden:  50%|█████     | 3/6 [00:00&lt;00:00,  4.64Dataset/s]
+
+Zusatzdaten je dataset_id laden:  67%|██████▋   | 4/6 [00:00&lt;00:00,  4.93Dataset/s]
+
+Zusatzdaten je dataset_id laden:  83%|████████▎ | 5/6 [00:01&lt;00:00,  5.07Dataset/s]
+
+Zusatzdaten je dataset_id laden: 100%|██████████| 6/6 [00:01&lt;00:00,  4.77Dataset/s]
 
                                                                                    
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:03&lt;00:08,  1.09Schritt/s]
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:05&lt;00:14,  1.65s/Schritt]
 
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 2213.35it/s]
-
-
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  4.94it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:03&lt;00:02,  2.53Schritt/s]
-
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 2699.04it/s]
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 12892.33it/s]
 
 
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 3289.65it/s]
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+
+ 33%|███▎      | 2/6 [00:00&lt;00:00,  9.70it/s]
+
+ 67%|██████▋   | 4/6 [00:00&lt;00:00,  7.51it/s]
+
+ 83%|████████▎ | 5/6 [00:00&lt;00:00,  6.47it/s]
+
+100%|██████████| 6/6 [00:00&lt;00:00,  5.78it/s]
+100%|██████████| 6/6 [00:01&lt;00:00,  5.20it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:06&lt;00:05,  1.15Schritt/s]
+
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 24966.10it/s]
 
 
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 3371.63it/s]
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 24291.34it/s]
 
 
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 4894.17it/s]
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 25784.66it/s]
 
 
-  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 3945.72it/s]
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 18724.57it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:03&lt;00:00,  3.25Schritt/s]</code></pre>
+
+  0%|          | 0/6 [00:00&lt;?, ?it/s]
+100%|██████████| 6/6 [00:00&lt;00:00, 22651.51it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:06&lt;00:00,  1.72Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 19.11.2026 um 11:20:26 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 20.11.2026 um 11:08:30 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 12.11.2026 bis 20.11.2026</p>
+<p><strong>Zeitraum:</strong> 13.11.2026 bis 21.11.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -841,6 +859,46 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:03&lt;00:00,  
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/L3CWGT7C45REVSMVN5ANWAI2SHDYU4ZQ" target="_blank">Kreisarchiv des Enzkreises</a></td>
+<td>Archiv</td>
+<td>newspaper-mets</td>
+<td>16574</td>
+<td>Text (16574)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A198854284428161BSXq" target="_blank">198854284428161BSXq</a></td>
+<td>Zeitungsportal: 1846g - zeitungenenzkreis - Enzkreis-KA - (oid1444315262193) - METS/MODS</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/L3CWGT7C45REVSMVN5ANWAI2SHDYU4ZQ" target="_blank">Kreisarchiv des Enzkreises</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>60544</td>
+<td>Ohne Digitalisat (60544)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18922344786108738DJZT" target="_blank">18922344786108738DJZT</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>850</td>
+<td>Ohne Digitalisat (850)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A18922351954214516phAk" target="_blank">18922351954214516phAk</a></td>
+<td>Gesamtlieferung (Tektonik) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/FUWFVTNAD22HJOK4LAWCMXFDT3P7PPH2" target="_blank">Landeskirchliches Archiv der Evangelisch-Lutherischen Kirche in Norddeutschland</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/7TQCEO6XOA4WNL5KU55PNZX3K4PLYFQG" target="_blank">Stadtarchiv Frankenthal (Pfalz)</a></td>
+<td>Archiv</td>
+<td>ead</td>
+<td>3042</td>
+<td>Text (337), Ohne Digitalisat (2705)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A44841392331327954Suvg" target="_blank">44841392331327954Suvg</a></td>
+<td>Gesamtlieferung (Findbuch) - EAD</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/7TQCEO6XOA4WNL5KU55PNZX3K4PLYFQG" target="_blank">Stadtarchiv Frankenthal (Pfalz)</a></td>
+</tr>
+<tr class="odd">
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/4EV676FQPACNVNHFEJHGKUY55BXC3QMB" target="_blank">Universitäts- und Landesbibliothek Münster</a></td>
 <td>Bibliothek</td>
 <td>mets</td>
@@ -849,6 +907,16 @@ Gesamtfortschritt: 100%|██████████| 12/12 [00:03&lt;00:00,  
 <td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A20318949340030542TbIM" target="_blank">20318949340030542TbIM</a></td>
 <td>Hauptportal: 1784g - ulbmsob usw. - ULB Muenster (00014261) - METS/MODS</td>
 <td><a href="https://www.deutsche-digitale-bibliothek.de/organization/4EV676FQPACNVNHFEJHGKUY55BXC3QMB" target="_blank">Universitäts- und Landesbibliothek Münster</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/H6TKDLAIWE6TF6PEXF3NDI4AUX6VZMBV" target="_blank">Bayerisches Nationalmuseum</a></td>
+<td>Museum</td>
+<td>lido</td>
+<td>15436</td>
+<td>Bild (15365), Ohne Digitalisat (71)</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/searchresults?query=dataset_id%3A20308473258273145cliK" target="_blank">20308473258273145cliK</a></td>
+<td>Gesamtlieferung - LIDO</td>
+<td><a href="https://www.deutsche-digitale-bibliothek.de/organization/H6TKDLAIWE6TF6PEXF3NDI4AUX6VZMBV" target="_blank">Bayerisches Nationalmuseum</a></td>
 </tr>
 </tbody>
 </table>
