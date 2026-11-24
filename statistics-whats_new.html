@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ea67d19c76e621e4bbc67ae8277c98bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3191446cf01d07254cce00ea98dcb138.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Diese Tabelle zeigt, was in den letzten sieben Tagen in der Deutsche Digitale Bibliothek hinzugekommen ist.</p>
-<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T12:02:32.133146Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T12:02:32.133011Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T12:02:40.046917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T12:02:40.046407Z&quot;}}" data-execution_count="1">
+<div id="cc03a8e7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-24T13:28:24.758201Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-24T13:28:24.758058Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-24T13:28:32.525655Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-24T13:28:32.525000Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Quelltext anzeigen</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -776,7 +776,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm
 
 Gesamtfortschritt:   0%|          | 0/12 [00:00&lt;?, ?Schritt/s]
-Gesamtfortschritt:   8%|▊         | 1/12 [00:05&lt;00:58,  5.32s/Schritt]
+Gesamtfortschritt:   8%|▊         | 1/12 [00:03&lt;00:42,  3.87s/Schritt]
 
 Pivot-Ergebnis verarbeiten:   0%|          | 0/7 [00:00&lt;?, ?Dataset/s]
 
@@ -784,64 +784,68 @@ Pivot-Ergebnis verarbeiten:   0%|          | 0/7 [00:00&lt;?, ?Dataset/s]
 
 Zusatzdaten je dataset_id laden:   0%|          | 0/7 [00:00&lt;?, ?Dataset/s]
 
-Zusatzdaten je dataset_id laden:  14%|█▍        | 1/7 [00:00&lt;00:01,  4.46Dataset/s]
+Zusatzdaten je dataset_id laden:  14%|█▍        | 1/7 [00:00&lt;00:01,  4.76Dataset/s]
 
-Zusatzdaten je dataset_id laden:  29%|██▊       | 2/7 [00:00&lt;00:00,  5.73Dataset/s]
+Zusatzdaten je dataset_id laden:  29%|██▊       | 2/7 [00:00&lt;00:00,  5.22Dataset/s]
 
-Zusatzdaten je dataset_id laden:  43%|████▎     | 3/7 [00:00&lt;00:00,  6.45Dataset/s]
+Zusatzdaten je dataset_id laden:  43%|████▎     | 3/7 [00:00&lt;00:00,  5.30Dataset/s]
 
-Zusatzdaten je dataset_id laden:  57%|█████▋    | 4/7 [00:00&lt;00:00,  6.57Dataset/s]
+Zusatzdaten je dataset_id laden:  57%|█████▋    | 4/7 [00:00&lt;00:00,  5.27Dataset/s]
 
-Zusatzdaten je dataset_id laden:  71%|███████▏  | 5/7 [00:00&lt;00:00,  6.54Dataset/s]
+Zusatzdaten je dataset_id laden:  71%|███████▏  | 5/7 [00:00&lt;00:00,  5.29Dataset/s]
 
-Zusatzdaten je dataset_id laden:  86%|████████▌ | 6/7 [00:00&lt;00:00,  6.74Dataset/s]
+Zusatzdaten je dataset_id laden:  86%|████████▌ | 6/7 [00:01&lt;00:00,  4.27Dataset/s]
 
-Zusatzdaten je dataset_id laden: 100%|██████████| 7/7 [00:01&lt;00:00,  7.23Dataset/s]
+Zusatzdaten je dataset_id laden: 100%|██████████| 7/7 [00:01&lt;00:00,  3.91Dataset/s]
 
                                                                                    
-Gesamtfortschritt:  25%|██▌       | 3/12 [00:06&lt;00:15,  1.77s/Schritt]
+Gesamtfortschritt:  25%|██▌       | 3/12 [00:05&lt;00:14,  1.59s/Schritt]
 
   0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 15291.73it/s]
-
-
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-
- 29%|██▊       | 2/7 [00:00&lt;00:00, 14.94it/s]
-
- 57%|█████▋    | 4/7 [00:00&lt;00:00, 14.58it/s]
-
- 86%|████████▌ | 6/7 [00:00&lt;00:00, 10.07it/s]
-100%|██████████| 7/7 [00:01&lt;00:00,  5.38it/s]
-
-Gesamtfortschritt:  50%|█████     | 6/12 [00:07&lt;00:05,  1.05Schritt/s]
-
-  0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 24224.53it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 13901.58it/s]
 
 
   0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 35161.83it/s]
+
+ 29%|██▊       | 2/7 [00:00&lt;00:00,  5.46it/s]
+
+ 57%|█████▋    | 4/7 [00:00&lt;00:00,  7.21it/s]
+
+ 71%|███████▏  | 5/7 [00:00&lt;00:00,  6.25it/s]
+
+ 86%|████████▌ | 6/7 [00:01&lt;00:00,  5.67it/s]
+
+100%|██████████| 7/7 [00:01&lt;00:00,  2.98it/s]
+100%|██████████| 7/7 [00:02&lt;00:00,  3.39it/s]
+
+Gesamtfortschritt:  50%|█████     | 6/12 [00:07&lt;00:06,  1.04s/Schritt]
+
+  0%|          | 0/7 [00:00&lt;?, ?it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 18453.88it/s]
 
 
   0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 35459.09it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 22619.51it/s]
 
 
   0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 20956.55it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 25137.10it/s]
 
 
   0%|          | 0/7 [00:00&lt;?, ?it/s]
-100%|██████████| 7/7 [00:00&lt;00:00, 34339.33it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 30583.47it/s]
 
-Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  1.56Schritt/s]</code></pre>
+
+  0%|          | 0/7 [00:00&lt;?, ?it/s]
+100%|██████████| 7/7 [00:00&lt;00:00, 35980.55it/s]
+
+Gesamtfortschritt: 100%|██████████| 12/12 [00:07&lt;00:00,  1.59Schritt/s]</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Letzte Aktualisierung:</strong> 23.11.2026 um 12:02:40 Uhr</p>
+<p><strong>Letzte Aktualisierung:</strong> 24.11.2026 um 13:28:32 Uhr</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Zeitraum:</strong> 16.11.2026 bis 24.11.2026</p>
+<p><strong>Zeitraum:</strong> 17.11.2026 bis 25.11.2026</p>
 </div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
